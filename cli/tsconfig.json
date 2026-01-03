@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@career-profile": ["../career_profile.json"],
+		},
+		"strict": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowImportingTsExtensions": true,
+		"noEmit": true,
+		"outDir": "./dist",
+		"rootDir": "./",
+		"types": ["bun-types", "node", "commander"],
+		"typeRoots": ["./node_modules/@types", "./node_modules"],
+	},
+	"include": ["index.ts", "./src/**/*.ts", "../career_profile.json"],
+	"exclude": ["./node_modules", "./dist"],
+}
