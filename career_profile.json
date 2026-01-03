@@ -16,10 +16,10 @@
 			"location": "Seattle, WA",
 			"start_date": "2023-03",
 			"end_date": "Present",
-			"description": "Lead Architect for the 'Maestro' product frontend and core contributor to the 1DS Micro-Frontend Platform. Driving the technical roadmap for developer experience (DX) and infrastructure modernization affecting 400+ engineers.",
+			"description": "Lead Architect for Developer Experience (DX) & DevOps on the 'Maestro' product frontend, and core contributor to the 1DS Micro-Frontend Platform. Driving the technical roadmap for infrastructure modernization affecting 440+ engineers.",
 			"highlights": [
 				"Architected a scalable Monorepo CI/CD strategy (Azure DevOps), enabling atomic deployments and previously impossible multi-package workflows.",
-				"Engineered the '1FE' open-source initiative, decoupling the core platform to accelerate internal adoption and community contribution.",
+				"Engineered the '1FE' open-source initiative (1fe.com), decoupling the core platform to accelerate internal adoption and community contribution.",
 				"Designed a custom runtime isolation environment (Storybook-style) for Micro-Frontends, eliminating brittle end-to-end mocks and boosting component discoverability.",
 				"Implemented a Cross-MFE Component Variant system, standardizing UI elements across 16 high-traffic applications and eliminating code duplication.",
 				"Spearheaded the unification of frontend architecture standards, reducing technical debt and aligning deployment strategies across the organization."
@@ -33,7 +33,7 @@
 			"end_date": "2023-02",
 			"description": "Technical Lead for the Teams Admin Center (TAC) and M365 ecosystems. Pioneered the adoption of Micro-Frontend architectures to decouple monolithic legacy systems.",
 			"highlights": [
-				"Pioneered Module Federation adoption within Teams, reducing developer onboarding time from 8 weeks to 1 week by enabling isolated local development.",
+				"Pioneered Module Federation adoption within Teams, drastically reducing onboarding time and developer loop cost by enabling isolated local development.",
 				"Architected the frontend integration for 'Visits' analytics, orchestrating data flow between React MFEs and C#/CosmosDB backend services.",
 				"Modernized the build infrastructure for multiple product lines, migrating legacy toolchains to Webpack 5 and Yarn PnP to improve build performance.",
 				"Authored and maintained core shared libraries used across M365, enforcing strict type safety and standardization.",
