@@ -8,7 +8,7 @@
 		"github": "sushruth",
 		"title": "Senior Software Engineer"
 	},
-	"summary": "Senior Software Engineer with 12+ years of experience architecting scalable web ecosystems. Specialist in Frontend Infrastructure, Developer Tooling, and Performance Optimization. Expert in transforming legacy codebases into modern Monorepo and Micro-Frontend architectures (Module Federation, NX). Proven ability to drive technical strategy, unify engineering standards across teams, and deliver enterprise-grade solutions for global user bases.",
+	"summary": "Senior Software Engineer with 12+ years of experience leading frontend architecture at scale. Specialized in Frontend Platform Engineering, Developer Experience, and performance-sensitive web systems. Known for modernizing large legacy codebases into maintainable monorepo and micro-frontend platforms, defining engineering standards across organizations, and enabling hundreds of engineers to ship reliably.",
 	"experience": [
 		{
 			"company": "DocuSign, Inc.",
@@ -16,13 +16,13 @@
 			"location": "Seattle, WA",
 			"start_date": "2023-03",
 			"end_date": "Present",
-			"description": "Lead Architect for Developer Experience (DX) & DevOps on the 'Maestro' product frontend, and core contributor to the 1DS Micro-Frontend Platform. Driving the technical roadmap for infrastructure modernization affecting 440+ engineers.",
+			"description": "Senior engineer operating at platform and architectural scope for the Maestro frontend. Technical owner for Developer Experience and frontend infrastructure initiatives impacting 440+ engineers across multiple product teams.",
 			"highlights": [
-				"Architected a scalable Monorepo CI/CD strategy (Azure DevOps), enabling atomic deployments and previously impossible multi-package workflows.",
-				"Engineered the '1FE' open-source initiative (1fe.com), decoupling the core platform to accelerate internal adoption and community contribution.",
-				"Designed a custom runtime isolation environment (Storybook-style) for Micro-Frontends, eliminating brittle end-to-end mocks and boosting component discoverability.",
-				"Implemented a Cross-MFE Component Variant system, standardizing UI elements across 16 high-traffic applications and eliminating code duplication.",
-				"Spearheaded the unification of frontend architecture standards, reducing technical debt and aligning deployment strategies across the organization."
+				"Designed and led adoption of a monorepo-based CI/CD model using Azure DevOps, enabling atomic releases and coordinated multi-package changes across teams.",
+				"Core contributor to the internal 1DS Micro-Frontend Platform, influencing architecture, tooling, and operational standards used across the organization.",
+				"Built an isolated local runtime environment for Micro-Frontends (Storybook-style), enabling independent development and eliminating brittle cross-team mocks.",
+				"Defined a shared component variant strategy consumed by 16 production applications, reducing UI divergence and duplicated implementation effort.",
+				"Drove convergence on frontend architectural standards through design reviews and platform tooling, reducing long-term maintenance cost."
 			]
 		},
 		{
@@ -31,13 +31,13 @@
 			"location": "Bellevue, WA",
 			"start_date": "2019-11",
 			"end_date": "2023-02",
-			"description": "Technical Lead for the Teams Admin Center (TAC) and M365 ecosystems. Pioneered the adoption of Micro-Frontend architectures to decouple monolithic legacy systems.",
+			"description": "Senior individual contributor and technical lead within the Teams Admin Center, focused on frontend architecture and platform modernization.",
 			"highlights": [
-				"Pioneered Module Federation adoption within Teams, drastically reducing onboarding time and developer loop cost by enabling isolated local development.",
-				"Architected the frontend integration for 'Visits' analytics, orchestrating data flow between React MFEs and C#/CosmosDB backend services.",
-				"Modernized the build infrastructure for multiple product lines, migrating legacy toolchains to Webpack 5 and Yarn PnP to improve build performance.",
-				"Authored and maintained core shared libraries used across M365, enforcing strict type safety and standardization.",
-				"Designed resilience patterns and risk mitigation strategies for high-scale Frontline Worker scenarios."
+				"Led early adoption of Webpack 5 Module Federation within Teams Admin Center, enabling independent feature deployment and reducing local dev loop time from several minutes to under a minute.",
+				"Owned frontend integration for the Visits analytics experience, coordinating data contracts between React MFEs and C#/CosmosDB backend services.",
+				"Modernized build pipelines across Teams Admin Center products, migrating legacy systems to Webpack 5 and Yarn PnP to improve build reliability and performance.",
+				"Authored and maintained shared TypeScript libraries for MS Graph API consumption, establishing type-safety and versioning patterns adopted by adjacent teams.",
+				"Designed frontend resilience strategies for high-scale Frontline Worker scenarios, implementing graceful degradation for intermittent connectivity."
 			]
 		},
 		{
@@ -47,9 +47,9 @@
 			"start_date": "2018-09",
 			"end_date": "2019-11",
 			"highlights": [
-				"Architected the 'Setup Wizard' framework for Teams Admin Center, establishing the pattern for future onboarding workflows.",
-				"Engineered the frontend for the EPIC-Teams Connector, delivering a critical healthcare integration from concept to production.",
-				"Established the team's core component library, including an OData-to-TypeScript generator and strict-typed MS Graph SDK wrappers."
+				"Designed and implemented the Setup Wizard framework for Teams Admin Center, which became the standard onboarding pattern for subsequent features.",
+				"Delivered the frontend for the EPIC–Teams healthcare integration, enabling clinical staff to join Teams meetings directly from EPIC workflows.",
+				"Created the team's first shared component and tooling libraries, including an OData-to-TypeScript generator and typed Microsoft Graph wrappers."
 			]
 		},
 		{
@@ -59,8 +59,8 @@
 			"start_date": "2016-08",
 			"end_date": "2018-07",
 			"highlights": [
-				"Led the migration of the 'CareGiver' platform from Angular 1.x to Angular 2+, modernizing the codebase for long-term maintainability.",
-				"Developed a custom RequireJS dependency generator to automate configuration management in a pre-Webpack environment."
+				"Led the migration of the CareGiver platform from AngularJS to Angular 2+, establishing a sustainable foundation for future development.",
+				"Developed a custom RequireJS dependency configuration generator to reduce manual errors in a pre-Webpack environment."
 			]
 		},
 		{
@@ -70,8 +70,8 @@
 			"start_date": "2015-11",
 			"end_date": "2016-06",
 			"highlights": [
-				"Evaluated and prototyped mobile architecture strategies, comparing React Native vs. Angular Hybrid solutions.",
-				"Executed the migration of legacy backend systems from PHP 5 to PHP 7, improving performance and security."
+				"Evaluated and prototyped mobile application architectures, comparing React Native with Angular-based hybrid approaches.",
+				"Executed backend modernization from PHP 5 to PHP 7, improving runtime performance and security posture."
 			]
 		},
 		{
@@ -81,7 +81,7 @@
 			"start_date": "2014-01",
 			"end_date": "2015-05",
 			"highlights": [
-				"Coordinated laboratory operations for Digital Signal Processing and Analog Signals courses."
+				"Supported instruction and laboratory operations for Digital Signal Processing and Analog Signals courses."
 			]
 		},
 		{
@@ -91,7 +91,7 @@
 			"start_date": "2013-07",
 			"end_date": "2014-04",
 			"highlights": [
-				"Founded a software services startup, successfully delivering a warehouse distribution application for Nestle using Cordova."
+				"Founded and led a small services startup, delivering a warehouse distribution system for Nestlé using Cordova-based mobile technology."
 			]
 		},
 		{
@@ -101,7 +101,7 @@
 			"start_date": "2012-09",
 			"end_date": "2013-06",
 			"highlights": [
-				"Established the initial frontend architecture and infrastructure for the company's flagship payment platform."
+				"Established the initial frontend architecture for the company's payment platform, including build tooling and UI foundations."
 			]
 		}
 	],
@@ -121,45 +121,41 @@
 	],
 	"skills": [
 		{
-			"category": "Architecture & Infrastructure",
+			"category": "Architecture & Platform Engineering",
 			"items": [
-				"Federated Runtime Orchestration (Module Federation)",
-				"Distributed Build Systems (NX, Remote Caching)",
-				"CI/CD Pipeline Governance (Azure DevOps)",
-				"Edge Delivery & Caching Strategy (Cloudflare/Akamai)",
-				"Micro-Frontend State Isolation",
-				"Design System Architecture"
+				"Micro-Frontend Architecture (Module Federation)",
+				"Monorepo Strategy & Distributed Builds (Nx, Remote Caching)",
+				"CI/CD System Design & Governance (Azure DevOps)",
+				"Frontend Platform Standardization",
+				"Design System Architecture & Versioning"
 			]
 		},
 		{
-			"category": "Frontend Engineering Core",
+			"category": "Frontend Engineering",
 			"items": [
-				"TypeScript Architecture (Strict Types, Generics)",
-				"React Internals & Concurrency (Hooks, Suspense)",
-				"State Management Strategy (Redux, MobX)",
-				"Web Performance Engineering (Core Web Vitals, RUM)",
-				"Package Management Strategy (Yarn Berry/PnP)",
-				"Browser Internals & Rendering Optimization"
+				"TypeScript System Design (Strict Typing, Generics, Conditional Types)",
+				"React (Hooks, Context, Suspense, Error Boundaries)",
+				"State Management (Redux Toolkit, MobX, Zustand)",
+				"Web Performance Engineering (Core Web Vitals, Bundle Analysis)",
+				"Package Management (Yarn Berry / PnP, npm workspaces)"
 			]
 		},
 		{
-			"category": "Backend & Data Layer",
+			"category": "Backend & Integration",
 			"items": [
-				"BFF Pattern & Node.js Middleware",
-				"API Schema Design (OData, REST)",
-				"C# / .NET Core Integration",
-				"Cloud Infrastructure (Azure)",
-				"Data Observability & Analytics"
+				"Backend-for-Frontend (BFF) Patterns",
+				"API Contract Design (REST, OData)",
+				"C# / .NET Service Integration",
+				"Azure (App Service, Functions, DevOps)"
 			]
 		},
 		{
-			"category": "Platform & Modernization",
+			"category": "Modernization & Developer Experience",
 			"items": [
 				"Developer Experience (DX) Platform Engineering",
-				"Legacy Modernization Strategy (Angular → React)",
-				"Cross-Platform Mobile (React Native)",
-				"Accessibility Standards (WCAG/A11y)",
-				"Automated Dependency Management"
+				"Legacy Frontend Modernization (AngularJS to React)",
+				"Accessibility Engineering (WCAG 2.1)",
+				"Automated Dependency Management (Renovate, Dependabot)"
 			]
 		}
 	],
@@ -171,7 +167,7 @@
 			"link": "https://scholarsmine.mst.edu/ele_comeng_facwork/index.50.html"
 		},
 		{
-			"title": "“i” — A novel algorithm for optical character recognition (OCR)",
+			"title": "\"i\" — A novel algorithm for optical character recognition (OCR)",
 			"conference": "IEEE International Multi-Conference (iMac4s)",
 			"year": "2013",
 			"link": "https://ieeexplore.ieee.org/document/6526442/"
