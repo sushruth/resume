@@ -9,6 +9,47 @@ import type {
 } from "../sync.types";
 
 /**
+ * Sanitizes a single string for LaTeX compatibility
+ */
+export const sanitizeStringForLaTeX = (str: string): string => {
+	if (typeof str !== "string") {
+		return str;
+	}
+	return str
+		.replace(/\\/g, "\\textbackslash{}")
+		.replace(/&/g, "\\&")
+		.replace(/%/g, "\\%")
+		.replace(/\$/g, "\\$")
+		.replace(/#/g, "\\#")
+		.replace(/_/g, "\\_")
+		.replace(/{/g, "\\{")
+		.replace(/}/g, "\\}")
+		.replace(/~/g, "\\textasciitilde{}")
+		.replace(/\^/g, "\\textasciicircum{}");
+};
+
+/**
+ * Recursively sanitizes an object's string properties for LaTeX compatibility
+ */
+export const sanitizeObjectForLaTeX = (obj: any): any => {
+	if (typeof obj === "string") {
+		return sanitizeStringForLaTeX(obj);
+	}
+	if (Array.isArray(obj)) {
+		return obj.map(sanitizeObjectForLaTeX);
+	}
+	if (typeof obj === "object" && obj !== null) {
+		return Object.fromEntries(
+			Object.entries(obj).map(([key, value]) => [
+				key,
+				sanitizeObjectForLaTeX(value),
+			]),
+		);
+	}
+	return obj;
+};
+
+/**
  * Reusable template compiler for single data objects
  */
 export const compileTemplate = async (

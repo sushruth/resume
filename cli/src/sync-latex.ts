@@ -30,7 +30,7 @@ const main = async () => {
 		publicationsLaTeX,
 	] = await Promise.all([
 		compileTemplate("header", careerProfile.personal_info),
-		compileArrayEntriesToLaTeX("experience", careerProfile.experience),
+		compileTemplate("experience", { entries: careerProfile.experience }),
 		compileArrayEntriesToLaTeX("education", careerProfile.education),
 		compileTemplate("skills", { skills: careerProfile.skills }),
 		compileTemplate("objective", { summary: careerProfile.summary }),

@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
 import { join, dirname, resolve } from "path";
 import { CLI_CONFIG } from "../config";
 import type { CareerProfile } from "../sync.types";
+import { sanitizeObjectForLaTeX } from "./converters";
 
 /**
  * Ensures the output directory for LaTeX sections exists
@@ -18,7 +19,8 @@ export const ensureSectionsDirectory = (): void => {
 export const readCareerProfile = (): CareerProfile => {
 	try {
 		const rawData = readFileSync(CLI_CONFIG.CAREER_PROFILE_PATH, "utf8");
-		return JSON.parse(rawData) as CareerProfile;
+		const parsedData = JSON.parse(rawData) as CareerProfile;
+		return sanitizeObjectForLaTeX(parsedData);
 	} catch (error) {
 		console.error(
 			`[E002] Failed to read career profile: ${(error as Error).message}`,

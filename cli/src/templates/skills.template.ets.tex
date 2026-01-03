@@ -1,9 +1,18 @@
-<? for (const [category, skillsList] of Object.entries(skills)) { ?>
-\subsubsection{<?= category ?>}
-\begin{zitemize}
-<? skillsList.forEach(skill => { ?>
-\item <?= skill ?>
-<? }) ?>
-\end{zitemize}
-\vspace*{3pt}
-<? } ?>
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black!30}
+
+% Table Setup:
+% Col 1: 28% width
+% Gap:   1.5em (approx 2-3 characters wide)
+% Col 2: 68% width
+\begin{tabular}{ @{} >{\bfseries\raggedright\arraybackslash}p{0.28\linewidth} @{\hspace{1.5em}} >{\small\raggedright\arraybackslash}p{0.68\linewidth} @{} }
+    \toprule
+    <?
+    skills.forEach((skill, index) => {
+    ?>
+        <?= skill.category ?> & <?= skill.items.join(', ') ?> \\
+
+        <? if (index < skills.length - 1) { ?> \cdashline{1-2} <? } ?>
+    <? }) ?>
+    \bottomrule
+\end{tabular}

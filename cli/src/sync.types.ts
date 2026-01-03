@@ -25,9 +25,12 @@ export type EducationEntry = {
 	year: string;
 };
 
-export type Skills = {
-	[key: string]: string[];
+export type SkillCategory = {
+	category: string;
+	items: string[];
 };
+
+export type Skills = SkillCategory[];
 
 export type CareerProfile = {
 	personal_info: PersonalInfo;

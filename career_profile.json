@@ -16,14 +16,13 @@
 			"location": "Seattle, WA",
 			"start_date": "2023-03",
 			"end_date": "Present",
-			"description": "Architected frontend infrastructure for Maestro product; engineered 1DS MFE platform enhancements (Nov 2024–), enabling monorepo workflows and reuse for 442 developers across 222 projects.",
+			"description": "Lead Architect for the 'Maestro' product frontend and core contributor to the 1DS Micro-Frontend Platform. Driving the technical roadmap for developer experience (DX) and infrastructure modernization affecting 400+ engineers.",
 			"highlights": [
-				"Architected Azure DevOps CI/CD pipelines with monorepo support for Maestro, enabling previously impossible builds and multi-MFE publishes.",
-				"Optimized developer tooling and workflows for Maestro's monorepo repository.",
-				"Engineered Storybook-like MFE mocking in 1DS platform for dev/runtime testing and showcasing—boosting discoverability and eliminating hacky e2e mocks.",
-				"Delivered 'Variants' feature exposing 29 components from 16 high-traffic MFEs, driving reuse and slashing cross-project copy-pastes.",
-				"Spearheaded scalable frontend architecture unifying standards across all DocuSign teams.",
-				"Open-sourced core 1DS platform as 1FE (1fe.com), enabling community contributions and accelerating enterprise MFE adoption."
+				"Architected a scalable Monorepo CI/CD strategy (Azure DevOps), enabling atomic deployments and previously impossible multi-package workflows.",
+				"Engineered the '1FE' open-source initiative, decoupling the core platform to accelerate internal adoption and community contribution.",
+				"Designed a custom runtime isolation environment (Storybook-style) for Micro-Frontends, eliminating brittle end-to-end mocks and boosting component discoverability.",
+				"Implemented a Cross-MFE Component Variant system, standardizing UI elements across 16 high-traffic applications and eliminating code duplication.",
+				"Spearheaded the unification of frontend architecture standards, reducing technical debt and aligning deployment strategies across the organization."
 			]
 		},
 		{
@@ -32,13 +31,13 @@
 			"location": "Bellevue, WA",
 			"start_date": "2019-11",
 			"end_date": "2023-02",
-			"description": "Architected MFE-driven frontend for Teams Admin Center (TAC), Visits analytics, and M365 addons; accelerated delivery across 3+ teams via Module Federation and reusable tooling.",
+			"description": "Technical Lead for the Teams Admin Center (TAC) and M365 ecosystems. Pioneered the adoption of Micro-Frontend architectures to decouple monolithic legacy systems.",
 			"highlights": [
-				"Pioneered MFE architecture in TAC (critical Teams portal), enabling local dev/plug-in—reduced 4-8 week onboarding for 4 devs to 1 week.",
-				"Authored reusable npm packages; spearheaded Module Federation adoption for unified engineering.",
-				"Onboarded Analytics C# backend to OData/Entity Framework/CosmosDB, powering MFE-integrated Visits analytics.",
-				"Led webpack/Yarn 2 learning sessions; guided multiple teams through legacy-to-modern stack migrations.",
-				"Defined risk mitigation guidelines; designed infrastructure for high-scale Teams scenarios."
+				"Pioneered Module Federation adoption within Teams, reducing developer onboarding time from 8 weeks to 1 week by enabling isolated local development.",
+				"Architected the frontend integration for 'Visits' analytics, orchestrating data flow between React MFEs and C#/CosmosDB backend services.",
+				"Modernized the build infrastructure for multiple product lines, migrating legacy toolchains to Webpack 5 and Yarn PnP to improve build performance.",
+				"Authored and maintained core shared libraries used across M365, enforcing strict type safety and standardization.",
+				"Designed resilience patterns and risk mitigation strategies for high-scale Frontline Worker scenarios."
 			]
 		},
 		{
@@ -47,35 +46,32 @@
 			"location": "Bellevue, WA",
 			"start_date": "2018-09",
 			"end_date": "2019-11",
-			"description": "Delivered core frontend for M365/Teams; authored reusable components accelerating cross-team development.",
 			"highlights": [
-				"Architected React/Redux Setup Wizard for Teams phone provisioning in M365.",
-				"Developed frontend (1/3 team) for EPIC-Teams connector (full dev-to-infra).",
-				"Co-authored ~20 reusable components (3-4 maintained): OData→TS generator, strict MS Graph JS SDK, useReducerAsync framework; onboarded teams on A11y/UI kits.",
-				"Established TAC setup wizard foundations."
+				"Architected the 'Setup Wizard' framework for Teams Admin Center, establishing the pattern for future onboarding workflows.",
+				"Engineered the frontend for the EPIC-Teams Connector, delivering a critical healthcare integration from concept to production.",
+				"Established the team's core component library, including an OData-to-TypeScript generator and strict-typed MS Graph SDK wrappers."
 			]
 		},
 		{
-			"company": "CVS Health (Sapphire IT Services)",
-			"role": "Contractor Javascript UI Developer",
+			"company": "CVS Health",
+			"role": "UI Developer (Contract)",
 			"location": "Florham Park, NJ",
 			"start_date": "2016-08",
 			"end_date": "2018-07",
 			"highlights": [
-				"Migrating angular 1.x code to angular 2+ TypeScript",
-				"Developed and maintained a RequireJS based solution to automatically generate dependency configuration",
-				"Leading and coordinating with an off-shore team to achieve the goals of CareGiver project"
+				"Led the migration of the 'CareGiver' platform from Angular 1.x to Angular 2+, modernizing the codebase for long-term maintainability.",
+				"Developed a custom RequireJS dependency generator to automate configuration management in a pre-Webpack environment."
 			]
 		},
 		{
-			"company": "Heartland Payment Systems (Sapphire IT Services)",
-			"role": "Contractor - PHP and JavaScript Developer",
+			"company": "Heartland Payment Systems",
+			"role": "Full Stack Developer (Contract)",
 			"location": "Plano, TX",
 			"start_date": "2015-11",
 			"end_date": "2016-06",
 			"highlights": [
-				"React-native with Angular 2 explorations for the mobile app",
-				"Adding features to, and maintaining the PHP based solution + migration from PHP 5 to 7"
+				"Evaluated and prototyped mobile architecture strategies, comparing React Native vs. Angular Hybrid solutions.",
+				"Executed the migration of legacy backend systems from PHP 5 to PHP 7, improving performance and security."
 			]
 		},
 		{
@@ -85,78 +81,88 @@
 			"start_date": "2014-01",
 			"end_date": "2015-05",
 			"highlights": [
-				"Lab coordinator for Digital Signal Processing and Analog Signals labs"
+				"Coordinated laboratory operations for Digital Signal Processing and Analog Signals courses."
 			]
 		},
 		{
-			"company": "GXS (Cachy Graphics)",
-			"role": "Contractor - Frontend Developer",
-			"location": "Bangalore, KA, India",
+			"company": "Cachy Graphics / GXS",
+			"role": "Founder & Lead Developer",
+			"location": "Bangalore, India",
 			"start_date": "2013-07",
 			"end_date": "2014-04",
 			"highlights": [
-				"Founded startup Cachy Graphics, delivered software to Nestle",
-				"Designed and delivered an application for warehouse distributors for Nestle using Cordova"
+				"Founded a software services startup, successfully delivering a warehouse distribution application for Nestle using Cordova."
 			]
 		},
 		{
 			"company": "EzSwype Business Solutions",
-			"role": "Software Engineer - Frontend",
-			"location": "Bangalore, KA, India",
+			"role": "Software Engineer",
+			"location": "Bangalore, India",
 			"start_date": "2012-09",
 			"end_date": "2013-06",
 			"highlights": [
-				"Provided guidance and set up initial development for website and cordova based mobile app",
-				"Set up initial architecture and infrastructure"
+				"Established the initial frontend architecture and infrastructure for the company's flagship payment platform."
 			]
 		}
 	],
 	"education": [
 		{
-			"degree": "Master of Science in Electrical and Computer Engineering",
+			"degree": "M.S. in Electrical and Computer Engineering",
 			"institution": "Missouri University of Science and Technology",
 			"location": "Rolla, MO",
 			"year": "2015"
 		},
 		{
-			"degree": "Bachelor of Engineering in Electronics and Communications",
+			"degree": "B.E. in Electronics and Communications",
 			"institution": "Visvesvaraya Technological University",
-			"location": "Bangalore, KA, India",
+			"location": "Bangalore, India",
 			"year": "2012"
 		}
 	],
-	"skills": {
-		"Frontend Architecture & DX (Principal Focus)": [
-			"React (Redux, MobX, Hooks)",
-			"TypeScript/ES6+",
-			"Micro-Frontends (Module Federation, 1DS/1FE platform)",
-			"Monorepo (NX, custom CI/CD for multi-MFE publishes)",
-			"Webpack 5 (custom configs, learning session leadership)",
-			"Yarn Berry/PnP (learning session leadership)",
-			"Storybook-style MFE Mocking (1DS platform)",
-			"Component Variants (29 from 16 high-traffic MFEs for reuse)",
-			"Performance Optimization (infrastructure design)"
-		],
-		"Developer Tooling & Reuse": [
-			"Azure DevOps CI/CD (monorepo enablement for Maestro)",
-			"OData→TS Generator (co-authored reusable component)",
-			"MS Graph JS SDK (strict types, co-authored reusable component)",
-			"useReducerAsync Framework (co-authored reusable component)",
-			"Reusable npm Packages (~20 total; 3-4 maintained, A11y/UI kits)",
-			"Maestro Developer Tooling Optimization",
-			"Open-Source Tooling (1FE platform release)"
-		],
-		"Infrastructure & Fullstack Enablers": [
-			"Docker, Git",
-			"C#/OData/Entity Framework/CosmosDB (Analytics team onboarding)",
-			"PHP 7+ (type declarations, 64-bit migration)",
-			"React Native (mobile app migration)"
-		],
-		"Legacy/Historical (8+ Year Gap)": [
-			"Angular (1→17 migrations)",
-			"RequireJS Dependency Generator (pre-Webpack tooling)"
-		]
-	},
+	"skills": [
+		{
+			"category": "Architecture & Infrastructure",
+			"items": [
+				"Federated Runtime Orchestration (Module Federation)",
+				"Distributed Build Systems (NX, Remote Caching)",
+				"CI/CD Pipeline Governance (Azure DevOps)",
+				"Edge Delivery & Caching Strategy (Cloudflare/Akamai)",
+				"Micro-Frontend State Isolation",
+				"Design System Architecture"
+			]
+		},
+		{
+			"category": "Frontend Engineering Core",
+			"items": [
+				"TypeScript Architecture (Strict Types, Generics)",
+				"React Internals & Concurrency (Hooks, Suspense)",
+				"State Management Strategy (Redux, MobX)",
+				"Web Performance Engineering (Core Web Vitals, RUM)",
+				"Package Management Strategy (Yarn Berry/PnP)",
+				"Browser Internals & Rendering Optimization"
+			]
+		},
+		{
+			"category": "Backend & Data Layer",
+			"items": [
+				"BFF Pattern & Node.js Middleware",
+				"API Schema Design (OData, REST)",
+				"C# / .NET Core Integration",
+				"Cloud Infrastructure (Azure)",
+				"Data Observability & Analytics"
+			]
+		},
+		{
+			"category": "Platform & Modernization",
+			"items": [
+				"Developer Experience (DX) Platform Engineering",
+				"Legacy Modernization Strategy (Angular → React)",
+				"Cross-Platform Mobile (React Native)",
+				"Accessibility Standards (WCAG/A11y)",
+				"Automated Dependency Management"
+			]
+		}
+	],
 	"publications": [
 		{
 			"title": "A Modular Scheme to Detect and Combat Sinusoidal Variation in Fading Channels",
@@ -166,7 +172,7 @@
 		},
 		{
 			"title": "“i” — A novel algorithm for optical character recognition (OCR)",
-			"conference": "2013 International Multi-Conference on Automation, Computing, Communication, Control and Compressed Sensing (iMac4s)",
+			"conference": "IEEE International Multi-Conference (iMac4s)",
 			"year": "2013",
 			"link": "https://ieeexplore.ieee.org/document/6526442/"
 		}

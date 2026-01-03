@@ -1,17 +1,19 @@
 <? import type { ExperienceEntry } from '../../sync.types'; ?>
-<? const entry: ExperienceEntry = it.entry; ?>
+
+<? entries.forEach(entry => { ?>
 <? const dateRange = `${entry.start_date} - ${entry.end_date}`; ?>
 
-\\subsection{{<?= entry.role ?> \\hfill <?= dateRange ?>}}
-\\subtext{<?= entry.company ?> \\hfill <?= entry.location ?>}
-\\vspace*{3pt}
+\subsection{{<?= entry.role ?> \hfill <?= dateRange ?>}}
+\subtext{<?= entry.company ?> \hfill <?= entry.location ?>}
+\vspace*{3pt}
 <? if (entry.description) { ?>
 <?= entry.description ?>
-\\vspace*{3pt}
+\vspace*{3pt}
 <? } ?>
-\\begin{zitemize}
+\begin{zitemize}
 <? entry.highlights.forEach(highlight => { ?>
-\\item <?= highlight ?>
+\item <?= highlight ?>
 <? }) ?>
-\\end{zitemize}
-\\vspace*{6pt}
+\end{zitemize}
+\vspace*{6pt}
+<? }) ?>
