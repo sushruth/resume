@@ -156,5 +156,19 @@
 			"Angular (1→17 migrations)",
 			"RequireJS Dependency Generator (pre-Webpack tooling)"
 		]
-	}
+	},
+	"publications": [
+		{
+			"title": "A Modular Scheme to Detect and Combat Sinusoidal Variation in Fading Channels",
+			"conference": "International Telemetering Conference",
+			"year": "2015",
+			"link": "https://scholarsmine.mst.edu/ele_comeng_facwork/index.50.html"
+		},
+		{
+			"title": "“i” — A novel algorithm for optical character recognition (OCR)",
+			"conference": "2013 International Multi-Conference on Automation, Computing, Communication, Control and Compressed Sensing (iMac4s)",
+			"year": "2013",
+			"link": "https://ieeexplore.ieee.org/document/6526442/"
+		}
+	]
 }

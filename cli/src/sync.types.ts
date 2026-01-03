@@ -35,4 +35,12 @@ export type CareerProfile = {
 	experience: ExperienceEntry[];
 	education: EducationEntry[];
 	skills: Skills;
+	publications: PublicationEntry[];
+};
+
+export type PublicationEntry = {
+	title: string;
+	conference: string;
+	year: string;
+	link: string;
 };
