@@ -9,6 +9,18 @@ import {
 } from "./utils/file-system";
 
 /**
+ * Enum for LaTeX section names
+ */
+export const enum LaTeXSection {
+	HEADER = "header",
+	EXPERIENCE = "experience",
+	EDUCATION = "education",
+	SKILLS = "skills",
+	OBJECTIVE = "objective",
+	PUBLICATIONS = "publications",
+}
+
+/**
  * Main CLI entry point for syncing career_profile.json to LaTeX sections
  */
 const main = async () => {
@@ -21,33 +33,38 @@ const main = async () => {
 	const careerProfile = readCareerProfile();
 
 	// 3. Convert data to LaTeX strings
-	const [
-		headerLaTeX,
-		experienceLaTeX,
-		educationLaTeX,
-		skillsLaTeX,
-		objectiveLaTeX,
-		publicationsLaTeX,
-	] = await Promise.all([
-		compileTemplate("header", careerProfile.personal_info),
-		compileTemplate("experience", { entries: careerProfile.experience }),
-		compileArrayEntriesToLaTeX("education", careerProfile.education),
-		compileTemplate("skills", { skills: careerProfile.skills }),
-		compileTemplate("objective", { summary: careerProfile.summary }),
-		compileTemplate("publications", {
-			publications: careerProfile.publications,
-		}),
-	]);
+	const sectionPromises: Promise<[LaTeXSection, string]>[] = [
+		compileTemplate(LaTeXSection.HEADER, careerProfile.personal_info).then(
+			(content) => [LaTeXSection.HEADER, content],
+		),
+		compileArrayEntriesToLaTeX(
+			LaTeXSection.EXPERIENCE,
+			careerProfile.experience,
+		).then((content) => [LaTeXSection.EXPERIENCE, content]),
+		compileArrayEntriesToLaTeX(
+			LaTeXSection.EDUCATION,
+			careerProfile.education,
+		).then((content) => [LaTeXSection.EDUCATION, content]),
+		compileTemplate(LaTeXSection.SKILLS, {
+			skills: careerProfile.skills,
+		}).then((content) => [LaTeXSection.SKILLS, content]),
+		compileTemplate(LaTeXSection.OBJECTIVE, {
+			summary: careerProfile.summary,
+		}).then((content) => [LaTeXSection.OBJECTIVE, content]),
+		compileArrayEntriesToLaTeX(
+			LaTeXSection.PUBLICATIONS,
+			careerProfile.publications,
+		).then((content) => [LaTeXSection.PUBLICATIONS, content]),
+	];
+
+	const sections = await Promise.all(sectionPromises);
+	const latexSections = Object.fromEntries(sections) as Record<
+		LaTeXSection,
+		string
+	>;
 
 	// 4. Write to files
-	writeLaTeXSections(
-		headerLaTeX,
-		experienceLaTeX,
-		educationLaTeX,
-		skillsLaTeX,
-		objectiveLaTeX,
-		publicationsLaTeX,
-	);
+	writeLaTeXSections(latexSections);
 
 	console.log("LaTeX sync completed successfully!");
 };

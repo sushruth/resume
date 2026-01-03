@@ -1,5 +1,5 @@
-<? for (const pub of publications) { ?>
-\skills {\href{<?= pub.link ?>}{<?= pub.title ?>}}
-(<?= pub.conference ?>)
-\hfill {<?= pub.year ?>}
-<? } ?>
+<? import type { PublicationEntry } from '../../sync.types'; ?>
+
+\skills {\href{<?= entry.link ?>}{<?= entry.title ?>}}
+(<?= entry.conference ?>)
+\hfill {<?= entry.year ?>}
