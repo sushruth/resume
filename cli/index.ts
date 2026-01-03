@@ -28,7 +28,7 @@ program
 			console.log("=== LaTeX Sync Completed Successfully ===");
 			exit(0);
 		} catch (error) {
-			console.error("=== LaTeX Sync Failed ===");
+			console.error("=== LaTeX Sync Failed (E001) ===");
 			console.error((error as Error).message);
 			exit(1);
 		}
