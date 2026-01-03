@@ -1,0 +1,160 @@
+{
+	"personal_info": {
+		"name": "Sushruth Sastry",
+		"email": "sushruth.sastry@gmail.com",
+		"phone": "573 200 5345",
+		"location": "Monroe, WA",
+		"linkedin": "sushruth-sastry",
+		"github": "sushruth",
+		"title": "Senior Software Engineer"
+	},
+	"summary": "Senior Software Engineer with 12+ years of experience architecting scalable web ecosystems. Specialist in Frontend Infrastructure, Developer Tooling, and Performance Optimization. Expert in transforming legacy codebases into modern Monorepo and Micro-Frontend architectures (Module Federation, NX). Proven ability to drive technical strategy, unify engineering standards across teams, and deliver enterprise-grade solutions for global user bases.",
+	"experience": [
+		{
+			"company": "DocuSign, Inc.",
+			"role": "Senior Software Engineer",
+			"location": "Seattle, WA",
+			"start_date": "2023-03",
+			"end_date": "Present",
+			"description": "Architected frontend infrastructure for Maestro product; engineered 1DS MFE platform enhancements (Nov 2024–), enabling monorepo workflows and reuse for 442 developers across 222 projects.",
+			"highlights": [
+				"Architected Azure DevOps CI/CD pipelines with monorepo support for Maestro, enabling previously impossible builds and multi-MFE publishes.",
+				"Optimized developer tooling and workflows for Maestro's monorepo repository.",
+				"Engineered Storybook-like MFE mocking in 1DS platform for dev/runtime testing and showcasing—boosting discoverability and eliminating hacky e2e mocks.",
+				"Delivered 'Variants' feature exposing 29 components from 16 high-traffic MFEs, driving reuse and slashing cross-project copy-pastes.",
+				"Spearheaded scalable frontend architecture unifying standards across all DocuSign teams.",
+				"Open-sourced core 1DS platform as 1FE (1fe.com), enabling community contributions and accelerating enterprise MFE adoption."
+			]
+		},
+		{
+			"company": "Microsoft Corporation",
+			"role": "Software Development Engineer II",
+			"location": "Bellevue, WA",
+			"start_date": "2019-11",
+			"end_date": "2023-02",
+			"description": "Architected MFE-driven frontend for Teams Admin Center (TAC), Visits analytics, and M365 addons; accelerated delivery across 3+ teams via Module Federation and reusable tooling.",
+			"highlights": [
+				"Pioneered MFE architecture in TAC (critical Teams portal), enabling local dev/plug-in—reduced 4-8 week onboarding for 4 devs to 1 week.",
+				"Authored reusable npm packages; spearheaded Module Federation adoption for unified engineering.",
+				"Onboarded Analytics C# backend to OData/Entity Framework/CosmosDB, powering MFE-integrated Visits analytics.",
+				"Led webpack/Yarn 2 learning sessions; guided multiple teams through legacy-to-modern stack migrations.",
+				"Defined risk mitigation guidelines; designed infrastructure for high-scale Teams scenarios."
+			]
+		},
+		{
+			"company": "Microsoft Corporation",
+			"role": "Software Development Engineer I",
+			"location": "Bellevue, WA",
+			"start_date": "2018-09",
+			"end_date": "2019-11",
+			"description": "Delivered core frontend for M365/Teams; authored reusable components accelerating cross-team development.",
+			"highlights": [
+				"Architected React/Redux Setup Wizard for Teams phone provisioning in M365.",
+				"Developed frontend (1/3 team) for EPIC-Teams connector (full dev-to-infra).",
+				"Co-authored ~20 reusable components (3-4 maintained): OData→TS generator, strict MS Graph JS SDK, useReducerAsync framework; onboarded teams on A11y/UI kits.",
+				"Established TAC setup wizard foundations."
+			]
+		},
+		{
+			"company": "CVS Health (Sapphire IT Services)",
+			"role": "Contractor Javascript UI Developer",
+			"location": "Florham Park, NJ",
+			"start_date": "2016-08",
+			"end_date": "2018-07",
+			"highlights": [
+				"Migrating angular 1.x code to angular 2+ TypeScript",
+				"Developed and maintained a RequireJS based solution to automatically generate dependency configuration",
+				"Leading and coordinating with an off-shore team to achieve the goals of CareGiver project"
+			]
+		},
+		{
+			"company": "Heartland Payment Systems (Sapphire IT Services)",
+			"role": "Contractor - PHP and JavaScript Developer",
+			"location": "Plano, TX",
+			"start_date": "2015-11",
+			"end_date": "2016-06",
+			"highlights": [
+				"React-native with Angular 2 explorations for the mobile app",
+				"Adding features to, and maintaining the PHP based solution + migration from PHP 5 to 7"
+			]
+		},
+		{
+			"company": "Missouri S&T",
+			"role": "Graduate Teaching Assistant",
+			"location": "Rolla, MO",
+			"start_date": "2014-01",
+			"end_date": "2015-05",
+			"highlights": [
+				"Lab coordinator for Digital Signal Processing and Analog Signals labs"
+			]
+		},
+		{
+			"company": "GXS (Cachy Graphics)",
+			"role": "Contractor - Frontend Developer",
+			"location": "Bangalore, KA, India",
+			"start_date": "2013-07",
+			"end_date": "2014-04",
+			"highlights": [
+				"Founded startup Cachy Graphics, delivered software to Nestle",
+				"Designed and delivered an application for warehouse distributors for Nestle using Cordova"
+			]
+		},
+		{
+			"company": "EzSwype Business Solutions",
+			"role": "Software Engineer - Frontend",
+			"location": "Bangalore, KA, India",
+			"start_date": "2012-09",
+			"end_date": "2013-06",
+			"highlights": [
+				"Provided guidance and set up initial development for website and cordova based mobile app",
+				"Set up initial architecture and infrastructure"
+			]
+		}
+	],
+	"education": [
+		{
+			"degree": "Master of Science in Electrical and Computer Engineering",
+			"institution": "Missouri University of Science and Technology",
+			"location": "Rolla, MO",
+			"year": "2015"
+		},
+		{
+			"degree": "Bachelor of Engineering in Electronics and Communications",
+			"institution": "Visvesvaraya Technological University",
+			"location": "Bangalore, KA, India",
+			"year": "2012"
+		}
+	],
+	"skills": {
+		"Frontend Architecture & DX (Principal Focus)": [
+			"React (Redux, MobX, Hooks)",
+			"TypeScript/ES6+",
+			"Micro-Frontends (Module Federation, 1DS/1FE platform)",
+			"Monorepo (NX, custom CI/CD for multi-MFE publishes)",
+			"Webpack 5 (custom configs, learning session leadership)",
+			"Yarn Berry/PnP (learning session leadership)",
+			"Storybook-style MFE Mocking (1DS platform)",
+			"Component Variants (29 from 16 high-traffic MFEs for reuse)",
+			"Performance Optimization (infrastructure design)"
+		],
+		"Developer Tooling & Reuse": [
+			"Azure DevOps CI/CD (monorepo enablement for Maestro)",
+			"OData→TS Generator (co-authored reusable component)",
+			"MS Graph JS SDK (strict types, co-authored reusable component)",
+			"useReducerAsync Framework (co-authored reusable component)",
+			"Reusable npm Packages (~20 total; 3-4 maintained, A11y/UI kits)",
+			"Maestro Developer Tooling Optimization",
+			"Open-Source Tooling (1FE platform release)"
+		],
+		"Infrastructure & Fullstack Enablers": [
+			"Docker, Git",
+			"C#/OData/Entity Framework/CosmosDB (Analytics team onboarding)",
+			"PHP 7+ (type declarations, 64-bit migration)",
+			"React Native (mobile app migration)"
+		],
+		"Legacy/Historical (8+ Year Gap)": [
+			"Angular (1→17 migrations)",
+			"RequireJS Dependency Generator (pre-Webpack tooling)"
+		]
+	}
+}
