@@ -8,6 +8,10 @@
 \usepackage[none]{hyphenat}
 \usepackage{colortbl}
 \usepackage{arydshln}
+\usepackage[a-3b]{pdfx} % ISO 19005-3 compliance (PDF/A-3)
+
+\pdfobjcompresslevel=0 % Maximize parser compatibility
+\embedfile[mimetype=application/json, desc=Resume Source Data]{career_profile.json} % Embed JSON safely
 
 %====================
 % File:         resume.tex

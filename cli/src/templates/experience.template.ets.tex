@@ -5,15 +5,15 @@
 
 \subsection{{<?= entry.role ?> \hfill <?= dateRange ?>}}
 \subtext{<?= entry.company ?> \hfill <?= entry.location ?>}
-\vspace*{3pt}
+\vspace*{1pt}
 <? if (entry.description) { ?>
 <?= entry.description ?>
-\vspace*{3pt}
+\vspace*{1pt}
 <? } ?>
 \begin{zitemize}
 <? entry.highlights.forEach(highlight => { ?>
 \item <?= highlight ?>
 <? }) ?>
 \end{zitemize}
-\vspace*{6pt}
+\vspace*{3pt}
 <? }) ?>

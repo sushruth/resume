@@ -6,7 +6,7 @@
 % Gap:   1.5em (approx 2-3 characters wide)
 % Col 2: 68% width
 \begin{tabular}{ @{} >{\bfseries\raggedright\arraybackslash}p{0.28\linewidth} @{\hspace{1.5em}} >{\small\raggedright\arraybackslash}p{0.68\linewidth} @{} }
-    \toprule
+		\cdashline{1-2}
     <?
     skills.forEach((skill, index) => {
     ?>
@@ -14,5 +14,5 @@
 
         <? if (index < skills.length - 1) { ?> \cdashline{1-2} <? } ?>
     <? }) ?>
-    \bottomrule
+    \cdashline{1-2}
 \end{tabular}

@@ -8,6 +8,23 @@
 		"github": "sushruth",
 		"title": "Senior Software Engineer"
 	},
+	"key_differentiators": {
+		"summary": "Three reasons to hire me as a Principal/Lead Engineer",
+		"points": [
+			{
+				"header": "Force Multiplier at Scale",
+				"detail": "I don't just write code; I build the 'paved roads' that allow engineering organizations to run fast. I have successfully scaled developer experience and infrastructure for 440+ engineers, proving I can operate at a scope far beyond individual contribution."
+			},
+			{
+				"header": "Strategic Modernization Expert",
+				"detail": "I specialize in de-risking complex migrations. I turn terrifying legacy overhauls (AngularJS to React) into safe, iterative strategies using Micro-Frontends and Module Federation, ensuring business continuity while upgrading the tech stack."
+			},
+			{
+				"header": "ROI-Focused Architecture",
+				"detail": "My architectural decisions are driven by business metrics. By optimizing build pipelines (Webpack 5) and local dev loops, I have directly reduced operational costs and increased feature velocity for enterprise-grade products like DocuSign and Microsoft Teams."
+			}
+		]
+	},
 	"summary": "Senior Software Engineer with 12+ years of experience leading frontend architecture at scale. Specialized in Frontend Platform Engineering, Developer Experience, and performance-sensitive web systems. Known for modernizing large legacy codebases into maintainable monorepo and micro-frontend platforms, defining engineering standards across organizations, and enabling hundreds of engineers to ship reliably.",
 	"experience": [
 		{
