@@ -1,0 +1,73 @@
+\documentclass[letter,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{tabularx}
+\usepackage{array}
+
+%====================
+% File:         resume.tex
+% Modifying author:       https://github.com/gobborg 
+% Last Updated: Dec 26, 2021
+% Notes:        I just made it prettier and better suited to
+%               my needs.
+%====================
+
+%====================
+% File:         resume.tex
+% Original author:       https://github.com/TimmyChan 
+%               https://www.linkedin.com/in/timmy-l-chan/
+% Last Updated: Nov 19, 2021
+% Notes:        All formatting is done in TLCresume.sty
+%               No need to touch that file. 
+%               All actual content is in the sections/ folder.
+%====================
+
+\usepackage{TLCresume}
+
+%====================
+% CONTACT INFORMATION
+%====================
+\author{Sushruth Sastry} % Name Here
+\def\phone{573 200 5345}
+\def\city{Monroe, WA}
+\def\email{sushruth.sastry@gmail.com}
+\def\LinkedIn{sushruth-sastry} % linkedin.com/in/______
+\def\github{sushruth} % github username
+\def\role{Senior Software Engineer} % JOB TITLE
+
+\begin{document}
+\import{sections/}{_header}
+
+\import{sections/}{objective}
+\vspace*{7pt}
+
+\section{Proficiency}
+\vspace*{3pt}
+\import{sections/}{skills}
+\vspace*{7pt}
+
+% \section{Project Summary}
+% \vspace*{3pt}
+% \import{sections/}{projectsummary}
+% \vspace*{7pt}
+
+\section{Experience}
+\import{sections/}{experience}
+\vspace*{7pt}
+
+\section{Education}
+\import{sections/}{education}
+\vspace*{7pt}
+
+% \section{Certifications}
+% \import{sections/}{certifications}
+% \vspace*{7pt}
+
+\section{Publications}
+\import{sections/}{publications}
+\vspace*{7pt}
+
+% \section{Hobbies}
+% \import{sections/}{hobbies}
+
+\end{document}
