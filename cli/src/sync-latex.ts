@@ -1,9 +1,6 @@
 import {
-	convertHeaderToLaTeX,
-	convertExperienceToLaTeX,
-	convertEducationToLaTeX,
-	convertSkillsToLaTeX,
-	convertObjectiveToLaTeX,
+	compileTemplate,
+	compileArrayEntriesToLaTeX,
 } from "./utils/converters";
 import {
 	readCareerProfile,
@@ -30,12 +27,16 @@ const main = async () => {
 		educationLaTeX,
 		skillsLaTeX,
 		objectiveLaTeX,
+		publicationsLaTeX,
 	] = await Promise.all([
-		convertHeaderToLaTeX(careerProfile.personal_info),
-		convertExperienceToLaTeX(careerProfile.experience),
-		convertEducationToLaTeX(careerProfile.education),
-		convertSkillsToLaTeX(careerProfile.skills),
-		convertObjectiveToLaTeX(careerProfile.summary),
+		compileTemplate("header", careerProfile.personal_info),
+		compileArrayEntriesToLaTeX("experience", careerProfile.experience),
+		compileArrayEntriesToLaTeX("education", careerProfile.education),
+		compileTemplate("skills", { skills: careerProfile.skills }),
+		compileTemplate("objective", { summary: careerProfile.summary }),
+		compileTemplate("publications", {
+			publications: careerProfile.publications,
+		}),
 	]);
 
 	// 4. Write to files
@@ -45,6 +46,7 @@ const main = async () => {
 		educationLaTeX,
 		skillsLaTeX,
 		objectiveLaTeX,
+		publicationsLaTeX,
 	);
 
 	console.log("LaTeX sync completed successfully!");
