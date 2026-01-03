@@ -1,44 +1,28 @@
-\subsubsection{Frontend Architecture & DX (Principal Focus)}
-\begin{zitemize}
-\item React (Redux, MobX, Hooks)
-\item TypeScript/ES6+
-\item Micro-Frontends (Module Federation, 1DS/1FE platform)
-\item Monorepo (NX, custom CI/CD for multi-MFE publishes)
-\item Webpack 5 (custom configs, learning session leadership)
-\item Yarn Berry/PnP (learning session leadership)
-\item Storybook-style MFE Mocking (1DS platform)
-\item Component Variants (29 from 16 high-traffic MFEs for reuse)
-\item Performance Optimization (infrastructure design)
-\end{zitemize}
-\vspace*{3pt}
-      
+\renewcommand{\arraystretch}{1.5}
+\arrayrulecolor{black!30}
 
-\subsubsection{Developer Tooling & Reuse}
-\begin{zitemize}
-\item Azure DevOps CI/CD (monorepo enablement for Maestro)
-\item OData→TS Generator (co-authored reusable component)
-\item MS Graph JS SDK (strict types, co-authored reusable component)
-\item useReducerAsync Framework (co-authored reusable component)
-\item Reusable npm Packages (~20 total; 3-4 maintained, A11y/UI kits)
-\item Maestro Developer Tooling Optimization
-\item Open-Source Tooling (1FE platform release)
-\end{zitemize}
-\vspace*{3pt}
-      
+% Table Setup:
+% Col 1: 28% width
+% Gap:   1.5em (approx 2-3 characters wide)
+% Col 2: 68% width
+\begin{tabular}{ @{} >{\bfseries\raggedright\arraybackslash}p{0.28\linewidth} @{\hspace{1.5em}} >{\small\raggedright\arraybackslash}p{0.68\linewidth} @{} }
+    \toprule
+    
+        Architecture \& Infrastructure & Federated Runtime Orchestration (Module Federation), Distributed Build Systems (NX, Remote Caching), CI/CD Pipeline Governance (Azure DevOps), Edge Delivery \& Caching Strategy (Cloudflare/Akamai), Micro-Frontend State Isolation, Design System Architecture \\
 
-\subsubsection{Infrastructure & Fullstack Enablers}
-\begin{zitemize}
-\item Docker, Git
-\item C#/OData/Entity Framework/CosmosDB (Analytics team onboarding)
-\item PHP 7+ (type declarations, 64-bit migration)
-\item React Native (mobile app migration)
-\end{zitemize}
-\vspace*{3pt}
-      
+         \midrule 
+    
+        Frontend Engineering Core & TypeScript Architecture (Strict Types, Generics), React Internals \& Concurrency (Hooks, Suspense), State Management Strategy (Redux, MobX), Web Performance Engineering (Core Web Vitals, RUM), Package Management Strategy (Yarn Berry/PnP), Browser Internals \& Rendering Optimization \\
 
-\subsubsection{Legacy/Historical (8+ Year Gap)}
-\begin{zitemize}
-\item Angular (1→17 migrations)
-\item RequireJS Dependency Generator (pre-Webpack tooling)
-\end{zitemize}
-\vspace*{3pt}
+         \midrule 
+    
+        Backend \& Data Layer & BFF Pattern \& Node.js Middleware, API Schema Design (OData, REST), C\# / .NET Core Integration, Cloud Infrastructure (Azure), Data Observability \& Analytics \\
+
+         \midrule 
+    
+        Platform \& Modernization & Developer Experience (DX) Platform Engineering, Legacy Modernization Strategy (Angular → React), Cross-Platform Mobile (React Native), Accessibility Standards (WCAG/A11y), Automated Dependency Management \\
+
+        
+    
+    \bottomrule
+\end{tabular}
