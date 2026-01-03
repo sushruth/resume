@@ -1,6 +1,5 @@
 <? import type { ExperienceEntry } from '../../sync.types'; ?>
 
-<? entries.forEach(entry => { ?>
 <? const dateRange = `${entry.start_date} - ${entry.end_date}`; ?>
 
 \subsection{{<?= entry.role ?> \hfill <?= dateRange ?>}}
@@ -16,4 +15,3 @@
 <? }) ?>
 \end{zitemize}
 \vspace*{3pt}
-<? }) ?>

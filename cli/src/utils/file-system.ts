@@ -3,6 +3,7 @@ import { join, dirname, resolve } from "path";
 import { CLI_CONFIG } from "../config";
 import type { CareerProfile } from "../sync.types";
 import { sanitizeObjectForLaTeX } from "./converters";
+import { LaTeXSection } from "../sync-latex";
 
 /**
  * Ensures the output directory for LaTeX sections exists
@@ -62,29 +63,30 @@ export const validateTemplatePath = (templateName: string) => {
 };
 
 export const writeLaTeXSections = (
-	headerContent: string,
-	experienceContent: string,
-	educationContent: string,
-	skillsContent: string,
-	objectiveContent: string,
-	publicationsContent: string,
+	sections: Record<LaTeXSection, string>,
 ): void => {
-	writeFile(join(CLI_CONFIG.LATEX_SECTIONS_PATH, "_header.tex"), headerContent);
+	writeFile(
+		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "_header.tex"),
+		sections[LaTeXSection.HEADER],
+	);
 	writeFile(
 		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "experience.tex"),
-		experienceContent,
+		sections[LaTeXSection.EXPERIENCE],
 	);
 	writeFile(
 		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "education.tex"),
-		educationContent,
+		sections[LaTeXSection.EDUCATION],
 	);
-	writeFile(join(CLI_CONFIG.LATEX_SECTIONS_PATH, "skills.tex"), skillsContent);
+	writeFile(
+		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "skills.tex"),
+		sections[LaTeXSection.SKILLS],
+	);
 	writeFile(
 		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "objective.tex"),
-		objectiveContent,
+		sections[LaTeXSection.OBJECTIVE],
 	);
 	writeFile(
 		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "publications.tex"),
-		publicationsContent,
+		sections[LaTeXSection.PUBLICATIONS],
 	);
 };
