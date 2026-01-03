@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
-import { join, dirname } from "path";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import { join, dirname, resolve } from "path";
 import { CLI_CONFIG } from "../config";
 import type { CareerProfile } from "../sync.types";
 
@@ -20,7 +20,9 @@ export const readCareerProfile = (): CareerProfile => {
 		const rawData = readFileSync(CLI_CONFIG.CAREER_PROFILE_PATH, "utf8");
 		return JSON.parse(rawData) as CareerProfile;
 	} catch (error) {
-		console.error(`Failed to read career profile: ${(error as Error).message}`);
+		console.error(
+			`[E002] Failed to read career profile: ${(error as Error).message}`,
+		);
 		process.exit(1);
 	}
 };
@@ -34,19 +36,36 @@ const writeFile = (path: string, content: string): void => {
 		writeFileSync(path, content.trim(), "utf8");
 		console.log(`Updated LaTeX file: ${path}`);
 	} catch (error) {
-		console.error(`Failed to write file ${path}: ${(error as Error).message}`);
+		console.error(
+			`[E003] Failed to write file ${path}: ${(error as Error).message}`,
+		);
 	}
 };
 
 /**
  * Orchestrates writing all generated LaTeX content to their respective files
  */
+export const validateTemplatePath = (templateName: string) => {
+	const templatePath = resolve(
+		__dirname,
+		"../templates",
+		`${templateName}.template.ets.tex`,
+	);
+	if (!existsSync(templatePath)) {
+		throw new Error(
+			`[E004] Template ${templateName}.template.ets.tex not found at ${templatePath} (validation failed)`,
+		);
+	}
+	return templatePath;
+};
+
 export const writeLaTeXSections = (
 	headerContent: string,
 	experienceContent: string,
 	educationContent: string,
 	skillsContent: string,
 	objectiveContent: string,
+	publicationsContent: string,
 ): void => {
 	writeFile(join(CLI_CONFIG.LATEX_SECTIONS_PATH, "_header.tex"), headerContent);
 	writeFile(
@@ -61,5 +80,9 @@ export const writeLaTeXSections = (
 	writeFile(
 		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "objective.tex"),
 		objectiveContent,
+	);
+	writeFile(
+		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "publications.tex"),
+		publicationsContent,
 	);
 };

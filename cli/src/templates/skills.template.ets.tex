@@ -1,0 +1,9 @@
+<? for (const [category, skillsList] of Object.entries(skills)) { ?>
+\subsubsection{<?= category ?>}
+\begin{zitemize}
+<? skillsList.forEach(skill => { ?>
+\item <?= skill ?>
+<? }) ?>
+\end{zitemize}
+\vspace*{3pt}
+<? } ?>
