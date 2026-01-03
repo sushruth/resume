@@ -18,6 +18,6 @@
 		"types": ["bun-types", "node", "commander"],
 		"typeRoots": ["./node_modules/@types", "./node_modules"],
 	},
-	"include": ["index.ts", "./src/**/*.ts", "../career_profile.json"],
+	"include": ["index.ts", "./src/**/*.ts", "../careerProfile.json"],
 	"exclude": ["./node_modules", "./dist"],
 }
