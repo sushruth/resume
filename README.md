@@ -1,59 +1,30 @@
 # Sushruth Sastry 
-_Senior/Lead Frontend Engineer, gearing Toward Principal_
+_Senior/Lead Frontend Engineer, Gearing Toward Principal_
 
-This repository is more than the source for my resume—it's a living artifact demonstrating the engineering principles I apply daily: **automation, architectural rigor, and data-driven impact.**
-
-The PDF you're likely here to see is the "production build" of this ecosystem. You can always find the latest version on the [**Releases**](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
+This repository contains the source for my resume in a structured, automated format. (No Word documents here.) The latest PDF is available on the [**Releases**](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
 
 ---
 
-### The Philosophy: Resume-as-Code
+### Architecture
 
-This project treats a professional narrative not as a static document, but as a system to be engineered. By separating structured data (`careerProfile.json`) from presentation (`LaTeX`), the entire process is automated, version-controlled, and scalable. This is the same philosophy I apply to build robust, enterprise-wide development platforms.
+The resume is managed as structured data (`careerProfile.json`) rather than static documents. A CLI tool generates LaTeX sections from this single source of truth, which are compiled into the final PDF. This approach enables version control, automation, and consistency.
 
-### The Engine: How It Works
+### Components
 
-The repository is intentionally architected to demonstrate a clean separation of concerns, mirroring the large-scale systems I've designed.
-
-| Component | Technology | Purpose |
+| Layer | Technology | Role |
 | :--- | :--- | :--- |
-| **Data Layer** | `careerProfile.json` | **Single Source of Truth.** All career history, skills, and metrics are managed as structured data. |
-| **Logic Layer** | **Bun + TypeScript CLI** (`/cli`) | **Automation Engine.** Parses the JSON data and generates modular LaTeX files for each section. |
-| **Presentation Layer** | **LaTeX** (`resume.tex`, `/sections`) | **Typesetting & Assembly.** Compiles the generated sections into a polished, ATS-friendly PDF. |
-| **Templating** | `jslatex` | **Dynamic Content.** Enables programmatic generation of LaTeX from the data layer. |
+| **Data** | `careerProfile.json` | Single source of truth. |
+| **Generation** | **Bun + TypeScript CLI** (`/cli`) | Transforms JSON → LaTeX. |
+| **Output** | **LaTeX** (`resume.tex`, `/sections`) | Renders to PDF. |
+| **Templating** | `jslatex` | Programmatic LaTeX generation. |
 
-### Core Principles in Practice
+### Workflow
 
-This repository is a direct reflection of my approach to engineering leadership.
-
-1.  **Automation & Developer Experience**  
-    The existence of the CLI is a testament to my belief in automating toil. The same impulse that led me to build CI/CD pipelines for **400+ developers** at DocuSign is at play here: if a process can be made more efficient and less error-prone through code, it should be.
-
-2.  **Architectural Rigor**  
-    The project's clean separation of data, logic, and presentation is a microcosm of a scalable software architecture. It demonstrates a commitment to maintainability and clear boundaries, whether designing an enterprise micro-frontend ecosystem or a personal project.
-
-3.  **Impact as a First-Class Citizen**  
-    By modeling my career as structured data, I treat professional achievements as a measurable, queryable dataset. This reflects the data-driven approach I take to leadership—defining success by the **onboarding time saved**, the **duplication reduced**, and the **developer velocity gained**.
-
-### How to Update the Resume
-
-This project is designed for a straightforward, data-centric workflow. To update the resume, simply follow these steps:
-
-1.  **Edit the Single Source of Truth:**  
-    Open `careerProfile.json`. This file contains all your career data—experience, skills, contact information, etc. Make any changes directly in this file.
-
-2.  **Synchronize Your Data:**  
-    Run the sync command from the `/cli` directory. The engine will read your updated JSON and regenerate the LaTeX section files.
-    ```bash
-    cd cli
-    bun run sync
-    ```
-
-3.  **Compile the PDF:**  
-    Open the root `resume.tex` file in a LaTeX editor (like VS Code with the LaTeX Workshop extension) and compile it to generate the updated `resume.pdf`.
-
-4.  **Create a New Release (Optional):**  
-    The CI/CD workflow will automatically create a new release with the updated PDF every time you push to the `main` branch.
+1. **Update data:** Edit `careerProfile.json` with new career information.
+2. **Generate:** Run `bun run sync` from the `/cli` directory to regenerate LaTeX sections.
+3. **Compile:** Compile `resume.tex` to PDF using a LaTeX editor. (The pain is worth it.)
+4. **Release:** Push to `main` to trigger automatic PDF release via CI/CD.
+5. **Profit!**
 
 ---
 
