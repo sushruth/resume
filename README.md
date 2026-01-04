@@ -22,11 +22,13 @@ The resume is managed as structured data (`careerProfile.json`) rather than stat
 
 1. **Update data:** Edit `careerProfile.json` with new career information.
 2. **Generate:** Run `bun run sync` from the `/cli` directory to regenerate LaTeX sections.
-3. **Compile:** Compile `resume.tex` to PDF using a LaTeX editor. (The pain is worth it.)
+3. **Compile:** Compile `resume.tex` to PDF using a LaTeX editor. (Character-building, in the best way.)
 4. **Release:** Push to `main` to trigger automatic PDF release via CI/CD.
-5. **Profit!**
+5. **Ship:** Then let CI do the heavy lifting.
 
 ---
 
 **Sushruth Sastry**  
 [linkedin.com/in/sushruth-sastry](https://linkedin.com/in/sushruth-sastry) | [github.com/sushruth](https://github.com/sushruth)
+
+*On AI:* I use AI tools daily, but I have not done AI work I would put on a principal-level resume. [More context.](AI_AND_RESUME.md)
