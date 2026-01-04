@@ -75,8 +75,9 @@ Releases are automatically listed on the repo's [Releases](https://github.com/Su
 
 #### Podman build fails
 - Verify `Dockerfile` syntax: `podman build -t test .`
-- Check Alpine package availability: `texlive-full` is the correct package name
+- Check Alpine package availability: Uses `texlive`, `texlive-luatex`, `texmf-dist-latexextra`, `texmf-dist-fontsextra`
 - Review Podman version compatibility (GitHub runners use latest)
+- If disk space errors occur, the minimal TeX Live packages should prevent this (replaces ~5GB `texlive-full`)
 
 #### Workflow doesn't trigger
 - Verify your push includes changes to `cli/**`, `resume/**`, workflow, or Dockerfile
