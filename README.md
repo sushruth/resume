@@ -34,14 +34,25 @@ This repository is a direct reflection of my approach to engineering leadership.
 3.  **Impact as a First-Class Citizen**  
     By modeling my career as structured data, I treat professional achievements as a measurable, queryable dataset. This reflects the data-driven approach I take to leadership—defining success by the **onboarding time saved**, the **duplication reduced**, and the **developer velocity gained**.
 
-### Running the Build
+### How to Update the Resume
 
-To generate the PDF from the source of truth yourself:
+This project is designed for a straightforward, data-centric workflow. To update the resume, simply follow these steps:
 
-1.  **Prerequisites:** Ensure [Bun](https://bun.sh/) and a LaTeX distribution (e.g., TeX Live) are installed.
-2.  **Install Dependencies:** `cd cli && bun install`
-3.  **Sync Data:** `bun run sync`
-4.  **Compile PDF:** Compile `resume.tex` using `pdflatex`.
+1.  **Edit the Single Source of Truth:**  
+    Open `career_profile.json`. This file contains all your career data—experience, skills, contact information, etc. Make any changes directly in this file.
+
+2.  **Synchronize Your Data:**  
+    Run the sync command from the `/cli` directory. The engine will read your updated JSON and regenerate the LaTeX section files.
+    ```bash
+    cd cli
+    bun run sync
+    ```
+
+3.  **Compile the PDF:**  
+    Open the root `resume.tex` file in a LaTeX editor (like VS Code with the LaTeX Workshop extension) and compile it to generate the updated `resume.pdf`.
+
+4.  **Create a New Release (Optional):**  
+    The CI/CD workflow will automatically create a new release with the updated PDF every time you push to the `main` branch.
 
 ---
 

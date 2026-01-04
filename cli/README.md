@@ -1,35 +1,43 @@
-# cli
+# Resume Sync CLI
 
-This CLI utility reads data from `career_profile.json` and generates corresponding LaTeX files for the resume sections.
+This CLI is the automation engine for the [Resume-as-Code](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation.
 
-## Installation
+---
 
-To install dependencies:
+### Core Functionality
 
-```bash
-bun install
-```
+The CLI orchestrates a four-step process to sync data to the presentation layer:
 
-## Usage
+1.  **Data Ingestion:** Reads and parses the `career_profile.json` file from the repository root.
+2.  **LaTeX Sanitization:** Recursively traverses the data object and sanitizes all string values to escape special LaTeX characters (e.g., `%`, `&`, `_`). This prevents compilation errors and ensures content is rendered correctly.
+3.  **Templating:** Uses `jslatex` to dynamically render `.tex` files. For each section of the resume, it combines the corresponding data with a template from the `src/templates` directory.
+4.  **File Output:** Writes the generated LaTeX content for each section to the top-level `/sections` directory, making them ready for inclusion in the main `resume.tex` file.
 
-To sync the JSON data to LaTeX files:
+### Usage
 
-```bash
-bun run index.ts sync
-```
+The CLI is designed to be run from its directory.
 
-## Data Schema
+1.  **Prerequisites:** Ensure [Bun](https://bun.sh/) is installed.
+2.  **Install Dependencies:**
+    ```bash
+    bun install
+    ```
+3.  **Run the Sync Process:**
+    ```bash
+    bun run sync
+    ```
+    This command executes the `index.ts sync` script, which runs the end-to-end data synchronization process.
 
-The `career_profile.json` file has the following structure:
+### Data Schema
 
--   `personal_info`: An object containing personal details like name, email, phone, etc.
--   `summary`: A string containing the professional summary/objective.
--   `experience`: An array of experience objects, each detailing a job position.
--   `education`: An array of education objects.
--   `publications`: An array of publication objects.
--   `skills`: An array of skill category objects. This was refactored from a key-value map to a more robust structure. Each object in the array should have the following properties:
-    -   `category` (string): The name of the skill category (e.g., "Architecture & Infrastructure").
-    -   `items` (string[]): A list of skills within that category.
+The CLI expects `career_profile.json` to adhere to a specific structure. Below is an overview of the primary keys.
+
+-   **`personal_info`**: An object containing contact details (name, email, phone, etc.).
+-   **`summary`**: A string containing the top-level professional summary.
+-   **`experience`**: An array of objects, each detailing a professional role.
+-   **`education`**: An array of objects detailing academic history.
+-   **`publications`**: An array of objects for any published works or articles.
+-   **`skills`**: An array of skill category objects. Each object has a `category` (string) and an `items` (string[]) list.
 
     **Example `skills` structure:**
     ```json
@@ -53,4 +61,4 @@ The `career_profile.json` file has the following structure:
 
 ---
 
-This project was created using `bun init` in bun v1.3.4. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+This project was created using `bun init`. [Bun](https://bun.com) is a fast, all-in-one JavaScript runtime.
