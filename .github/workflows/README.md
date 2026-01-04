@@ -26,10 +26,11 @@ This prevents multiple builds from running simultaneously and ensures only the l
 1. **Checkout code** - Clone the repository
 2. **Set up Bun** - Install the Bun JavaScript runtime
 3. **Install dependencies** - Install CLI dependencies
-4. **Sync LaTeX files** - Run `bun run sync` to generate LaTeX sections from `careerProfile.json`
+4. **Sync LaTeX and HTML files** - Run `bun run sync` to generate LaTeX sections and HTML resume from `careerProfile.json`
 5. **Compile LaTeX document** - Use `xu-cheng/latex-action` with TeX Live `small` scheme and required packages
 6. **Create release** - Use GitHub CLI to create a new GitHub release with version `v{run_number}`
 7. **Upload release asset** - Use GitHub CLI to attach the generated PDF to the release
+8. **Deploy to GitHub Pages** - Deploy the HTML resume to GitHub Pages for web hosting
 
 ### Build Times
 
@@ -45,14 +46,17 @@ Each workflow run creates a GitHub Release with:
 - **Name**: `Resume v{run_number}`
 - **Asset**: `Sushruth_Sastry_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
 
+Additionally, the HTML resume is deployed to GitHub Pages at `https://sushruth.github.io/resume/`.
+
 Releases are automatically listed on the repo's [Releases](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
 
 ### Troubleshooting
 
-#### PDF not generated
+#### PDF or HTML not generated
 - Check that all required files exist in `resume/` folder
 - Run `bun run sync` locally from `cli/` directory to validate CLI
-- Check workflow logs for LaTeX compilation errors
+- Check workflow logs for LaTeX compilation or HTML generation errors
+- Verify HTML templates in `cli/src/templates/` are valid
 
 #### LaTeX package install fails
 - Confirm `extra_packages` includes all required packages from `resume.tex` and `TLCresume.sty`
@@ -72,17 +76,20 @@ Releases are automatically listed on the repo's [Releases](https://github.com/Su
 To test the build locally using TeX Live:
 
 ```bash
-# Sync LaTeX files
+# Sync LaTeX and HTML files
 cd cli
 bun run sync
 cd ..
 
-# Compile resume
+# Check HTML output
+open resume/index.html
+
+# Compile PDF
 cd resume
 latexmk -pdf -interaction=nonstopmode resume.tex
 cd ..
 
 # Check output
-ls -lh resume.pdf
+ls -lh resume/resume.pdf
 ```
 If you prefer `pdflatex`, run it twice to resolve references.
