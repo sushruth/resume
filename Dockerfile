@@ -11,6 +11,7 @@ RUN apk add --no-cache \
 	texlive \
 	texlive-luatex \
 	texmf-dist-latexextra \
-	texmf-dist-fontsextra
+	texmf-dist-fontsextra \
+	texmf-dist-langcjk
 
 WORKDIR /workspace
