@@ -1,4 +1,4 @@
-# Sushruth Sastry // Principal-Level Frontend Engineer
+# Sushruth Sastry // Senior Frontend Engineer, Building Toward Principal
 
 This repository is more than the source for my resume—it's a living artifact demonstrating the engineering principles I apply daily: **automation, architectural rigor, and data-driven impact.**
 
