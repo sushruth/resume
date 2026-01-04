@@ -7,6 +7,8 @@ on:
     paths:
       - cli/**
       - resume/**
+      - .github/workflows/release.yml
+      - Dockerfile
 
 permissions:
   contents: write
