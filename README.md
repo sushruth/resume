@@ -1,50 +1,49 @@
-# Senior Software Engineer Resume Ecosystem (Principal-Level Impact)
+# Sushruth Sastry // Principal-Level Frontend Engineer
 
-This repository houses the source code, data, and automation engine for my professional resume. It is designed with a "Resume-as-Code" philosophy, separating career data from LaTeX presentation to ensure consistency, scalability, and technical rigor.
+This repository is more than the source for my resume—it's a living artifact demonstrating the engineering principles I apply daily: **automation, architectural rigor, and data-driven impact.**
 
-## 🎯 Strategic Focus
-This project demonstrates the transition of a professional narrative from **Senior Software Engineer** to **Principal/Lead Frontend Engineer** by highlighting high-leverage impact and architectural leadership. It showcases expertise in:
-- **Frontend Infrastructure & DX:** Architecting monorepos and CI/CD pipelines for 400+ developers.
-- **Micro-Frontend (MFE) Architecture:** Scaling enterprise web ecosystems using Module Federation and custom platform tooling.
-- **Developer Tooling:** Creating reusable component systems and automation that slash onboarding times from months to weeks.
-- **Open Source:** Leading the initiative to open-source core platform components (1FE).
-
-## 🛠 Tech Stack
-- **Source of Truth:** `career_profile.json` (Structured career data)
-- **Presentation:** LaTeX (Professional, ATS-optimized typesetting)
-- **Automation Engine:** Bun + TypeScript (Custom CLI for data synchronization)
-- **CLI Framework:** Commander.js
-- **Templating:** `jslatex` (Dynamic LaTeX generation)
-
-## 🏗 Architecture
-The project follows a clean separation of concerns:
-1.  **Data Layer (`career_profile.json`):** Contains all professional experience, metrics, and skills.
-2.  **Logic Layer (`/cli`):** A TypeScript-based sync engine that parses the JSON data and generates LaTeX section files.
-3.  **Presentation Layer (`/sections`):** Modular LaTeX files (`experience.tex`, `skills.tex`, etc.) that are compiled into the final PDF.
-
-## 🚀 Usage
-
-### Prerequisites
-- [Bun](https://bun.sh/) runtime
-- A LaTeX distribution (e.g., TeX Live, MiKTeX)
-
-### Syncing Data
-To update the LaTeX sections from the JSON source of truth:
-```bash
-cd cli
-bun install
-bun index.ts sync
-```
-
-### Compiling the Resume
-Compile `resume.tex` using your preferred LaTeX compiler (e.g., `pdflatex` or via VS Code LaTeX Workshop).
-
-## 📈 Impact Highlights
-- **DocuSign:** Engineered platform enhancements serving **442 developers** across **222 projects**.
-- **Microsoft:** Reduced developer onboarding time for the Teams Admin Center from **8 weeks to 1 week**.
-- **Scale:** Managed the delivery of **29 component variants** from **16 high-traffic MFEs**, significantly reducing cross-project duplication.
+The PDF you're likely here to see is the "production build" of this ecosystem. You can always find the latest version on the [**Releases**](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
 
 ---
+
+### The Philosophy: Resume-as-Code
+
+This project treats a professional narrative not as a static document, but as a system to be engineered. By separating structured data (`career_profile.json`) from presentation (`LaTeX`), the entire process is automated, version-controlled, and scalable. This is the same philosophy I apply to build robust, enterprise-wide development platforms.
+
+### The Engine: How It Works
+
+The repository is intentionally architected to demonstrate a clean separation of concerns, mirroring the large-scale systems I've designed.
+
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Data Layer** | `career_profile.json` | **Single Source of Truth.** All career history, skills, and metrics are managed as structured data. |
+| **Logic Layer** | **Bun + TypeScript CLI** (`/cli`) | **Automation Engine.** Parses the JSON data and generates modular LaTeX files for each section. |
+| **Presentation Layer** | **LaTeX** (`resume.tex`, `/sections`) | **Typesetting & Assembly.** Compiles the generated sections into a polished, ATS-friendly PDF. |
+| **Templating** | `jslatex` | **Dynamic Content.** Enables programmatic generation of LaTeX from the data layer. |
+
+### Core Principles in Practice
+
+This repository is a direct reflection of my approach to engineering leadership.
+
+1.  **Automation & Developer Experience**  
+    The existence of the CLI is a testament to my belief in automating toil. The same impulse that led me to build CI/CD pipelines for **400+ developers** at DocuSign is at play here: if a process can be made more efficient and less error-prone through code, it should be.
+
+2.  **Architectural Rigor**  
+    The project's clean separation of data, logic, and presentation is a microcosm of a scalable software architecture. It demonstrates a commitment to maintainability and clear boundaries, whether designing an enterprise micro-frontend ecosystem or a personal project.
+
+3.  **Impact as a First-Class Citizen**  
+    By modeling my career as structured data, I treat professional achievements as a measurable, queryable dataset. This reflects the data-driven approach I take to leadership—defining success by the **onboarding time saved**, the **duplication reduced**, and the **developer velocity gained**.
+
+### Running the Build
+
+To generate the PDF from the source of truth yourself:
+
+1.  **Prerequisites:** Ensure [Bun](https://bun.sh/) and a LaTeX distribution (e.g., TeX Live) are installed.
+2.  **Install Dependencies:** `cd cli && bun install`
+3.  **Sync Data:** `bun run sync`
+4.  **Compile PDF:** Compile `resume.tex` using `pdflatex`.
+
+---
+
 **Sushruth Sastry**  
-*Senior Software Engineer*  
-[LinkedIn](https://linkedin.com/in/sushruth-sastry) | [GitHub](https://github.com/sushruth)
+[linkedin.com/in/sushruth-sastry](https://linkedin.com/in/sushruth-sastry) | [github.com/sushruth](https://github.com/sushruth)
