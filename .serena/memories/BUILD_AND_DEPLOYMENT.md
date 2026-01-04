@@ -30,57 +30,18 @@
    - Generates `resume/sections/*.tex` files
    - Fails if data validation error occurs
 
-3. **Podman Build with Caching** (30-180 sec)
-   - Uses GitHub Actions cache for `~/.local/share/containers`
-   - Builds with `podman build --layers --cache-ttl=168h`
-   - **Caching Strategy**:
-     - Cache key: Hash of Dockerfile contents
-     - If Dockerfile unchanged: Reuse all layers (30-60 sec)
-     - If Dockerfile changed: Rebuild from change point (2-3 min)
-     - Cache TTL: 7 days (168 hours)
-     - Storage: `~/.local/share/containers` (Podman's default)
-
-4. **LaTeX Compilation** (30-60 sec)
-   - Runs Podman container with volume mount
-   - Mount suffix `:Z` for SELinux compatibility
-   - Executes `pdflatex -interaction=nonstopmode`
+3. **LaTeX Compilation** (30-90 sec)
+   - Uses `xu-cheng/latex-action` with TeX Live `small` scheme
+   - Installs required packages via `extra_packages`
+   - Runs `latexmk` to compile `resume/resume.tex`
    - Outputs `resume.pdf` in workspace root
 
-5. **GitHub Release** (10 sec)
+4. **GitHub Release** (10 sec)
    - Creates release tag: `v{run_number}` (e.g., v42)
    - Release name: `Resume v{run_number}`
    - Uploads `resume.pdf` as asset
 
-**Total time**: 2-4 minutes (first run) → 1-2 minutes (cached runs)
-
-## Container Image
-
-**File**: `Dockerfile`
-
-### Base Image
-- **Alpine Linux** (minimal, lightweight)
-- **TeX Live packages** (minimal installation, ~500MB vs ~5GB for texlive-full):
-  - `texlive` - Base TeX Live distribution
-  - `texlive-luatex` - LuaTeX engine with dependencies
-  - `texmf-dist-latexextra` - Extra LaTeX packages (geometry, hyperref, titlesec, enumitem, xcolor, booktabs, tabularx, array, microtype, colortbl, arydshln, standalone, import, babel, etc.)
-  - `texmf-dist-fontsextra` - Additional fonts
-
-### Build Behavior
-- Uses volume mounts at runtime (no COPY commands)
-- Sets working directory to `/workspace`
-- No entrypoint (command specified at runtime)
-
-### Cache Strategy
-The workflow uses GitHub Actions cache + Podman's native layer caching:
-```
-Cache Key: podman-cache-{Dockerfile hash}
-├─ Same hash → Reuse entire cache (30-60 sec builds)
-└─ Different hash → Rebuild affected layers (2-3 min builds)
-
-Storage: ~/.local/share/containers (per-runner)
-Invalidation: Automatic when Dockerfile changes
-TTL: 7 days (via --cache-ttl=168h)
-```
+**Total time**: 1-2 minutes (typical)
 
 ## Local Development
 
@@ -99,17 +60,7 @@ Use the convenience script:
 bash scripts/build.sh
 ```
 
-Or manually:
-```bash
-# Build image
-podman build --layers -t latex-builder .
-
-# Compile resume
-podman run --rm -w /workspace/resume -v "$(pwd):/workspace:Z" latex-builder pdflatex -interaction=nonstopmode -output-directory=/workspace resume.tex
-
-# Check output
-ls -lh resume.pdf
-```
+This uses the legacy Dockerfile-based build (not used in CI).
 
 ### Manual Test (without Podman)
 ```bash
@@ -132,10 +83,7 @@ ls -lh resume.pdf
   - Check for LaTeX compilation errors
 
 ### Podman Build Fails
-- **Check Dockerfile syntax**: `podman build -t test .`
-- **Check Alpine package names**: Uses `texlive`, `texlive-luatex`, `texmf-dist-latexextra`, `texmf-dist-fontsextra`
-- **Check Podman installation**: Ensure Podman is available on runner (Ubuntu latest has it)
-- **Disk space errors**: Minimal TeX Live packages (~500MB) should prevent disk space issues
+The CI pipeline no longer uses Podman. If you build locally with Podman, verify `Dockerfile` syntax and Alpine package availability.
 
 ### Workflow Doesn't Trigger
 - **Check branch**: Only runs on `main`, not other branches
@@ -160,5 +108,4 @@ ls -lh resume.pdf
 
 ### Artifacts Retention
 - Released PDFs are permanent (stored in GitHub Releases)
-- Podman cache expires after 7 days without use (per GitHub Actions cache policy)
 - Build logs are retained per GitHub's default retention policy

@@ -91,7 +91,7 @@ These are imported in `resume/resume.tex` via LaTeX `\import{sections/}{filename
 ## Build Integration
 - Runs during GitHub Actions workflow before LaTeX compilation
 - Output (sections/) is gitignored (generated files)
-- CLI must succeed before Docker LaTeX compilation
+- CLI must succeed before LaTeX compilation via `xu-cheng/latex-action`
 
 ## Error Handling
 - Exit code 0 on success
