@@ -48,7 +48,7 @@
 			"location": "Bellevue, WA",
 			"start_date": "2019-11",
 			"end_date": "2023-02",
-			"description": "Senior individual contributor and technical lead within the Teams Admin Center, focused on frontend architecture and platform modernization.",
+			"description": "Senior individual contributor and technical lead within the Teams organization, focused on frontend architecture and platform modernization.",
 			"highlights": [
 				"Led early adoption of Webpack 5 Module Federation within Teams Admin Center, enabling independent feature deployment and reducing local dev loop time from several minutes to under a minute.",
 				"Owned frontend integration for the Visits analytics experience, coordinating data contracts between React MFEs and C#/CosmosDB backend services.",

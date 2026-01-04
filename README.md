@@ -8,7 +8,7 @@ The PDF you're likely here to see is the "production build" of this ecosystem. Y
 
 ### The Philosophy: Resume-as-Code
 
-This project treats a professional narrative not as a static document, but as a system to be engineered. By separating structured data (`career_profile.json`) from presentation (`LaTeX`), the entire process is automated, version-controlled, and scalable. This is the same philosophy I apply to build robust, enterprise-wide development platforms.
+This project treats a professional narrative not as a static document, but as a system to be engineered. By separating structured data (`careerProfile.json`) from presentation (`LaTeX`), the entire process is automated, version-controlled, and scalable. This is the same philosophy I apply to build robust, enterprise-wide development platforms.
 
 ### The Engine: How It Works
 
@@ -16,7 +16,7 @@ The repository is intentionally architected to demonstrate a clean separation of
 
 | Component | Technology | Purpose |
 | :--- | :--- | :--- |
-| **Data Layer** | `career_profile.json` | **Single Source of Truth.** All career history, skills, and metrics are managed as structured data. |
+| **Data Layer** | `careerProfile.json` | **Single Source of Truth.** All career history, skills, and metrics are managed as structured data. |
 | **Logic Layer** | **Bun + TypeScript CLI** (`/cli`) | **Automation Engine.** Parses the JSON data and generates modular LaTeX files for each section. |
 | **Presentation Layer** | **LaTeX** (`resume.tex`, `/sections`) | **Typesetting & Assembly.** Compiles the generated sections into a polished, ATS-friendly PDF. |
 | **Templating** | `jslatex` | **Dynamic Content.** Enables programmatic generation of LaTeX from the data layer. |
@@ -39,7 +39,7 @@ This repository is a direct reflection of my approach to engineering leadership.
 This project is designed for a straightforward, data-centric workflow. To update the resume, simply follow these steps:
 
 1.  **Edit the Single Source of Truth:**  
-    Open `career_profile.json`. This file contains all your career data—experience, skills, contact information, etc. Make any changes directly in this file.
+    Open `careerProfile.json`. This file contains all your career data—experience, skills, contact information, etc. Make any changes directly in this file.
 
 2.  **Synchronize Your Data:**  
     Run the sync command from the `/cli` directory. The engine will read your updated JSON and regenerate the LaTeX section files.
