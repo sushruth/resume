@@ -66,8 +66,7 @@ jobs:
         with:
           working_directory: resume
           root_file: resume.tex
-          scheme: small
-          extra_packages: ${{ env.LATEX_PACKAGES }}
+          pre_compile: tlmgr install ${{ env.LATEX_PACKAGES }}
 
       - name: Set current year and PDF name
         run: |
