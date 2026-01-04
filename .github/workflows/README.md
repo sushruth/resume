@@ -9,8 +9,18 @@ Automatically builds and releases your resume PDF whenever changes are pushed to
 Runs on push to `main` branch **only if** one of these paths change:
 - `cli/**` - CLI codebase changes
 - `resume/**` - Resume source files (data, LaTeX, styles)
+- `.github/workflows/release.yml` - Workflow changes
+- `Dockerfile` - Container image changes
 
 Does NOT trigger on changes to: docs, README, AGENTS.md, etc.
+
+### Concurrency Control
+
+Uses GitHub Actions concurrency groups to cancel in-progress builds when new commits are pushed:
+- **Group**: `{workflow}-{branch}` (e.g., `release.yml-main`)
+- **Cancel-in-progress**: `true`
+
+This prevents multiple builds from running simultaneously and ensures only the latest commit completes.
 
 ### Pipeline Steps
 
@@ -18,24 +28,23 @@ Does NOT trigger on changes to: docs, README, AGENTS.md, etc.
 2. **Set up Bun** - Install the Bun JavaScript runtime
 3. **Install dependencies** - Install CLI dependencies
 4. **Sync LaTeX files** - Run `bun run sync` to generate LaTeX sections from `careerProfile.json`
-5. **Set up Docker Buildx** - Enable advanced Docker build features
-6. **Build and cache LaTeX Docker image** - Build the lightweight Alpine-based Docker image with TeX Live
-7. **Move Docker cache** - Update the build cache for next run
-8. **Cache Docker layers** - Store Docker layers locally, keyed by Dockerfile hash
-9. **Compile LaTeX document** - Run Docker container to compile `resume.tex` → `resume.pdf`
-10. **Create release** - Tag a new GitHub release with version `v{run_number}`
-11. **Upload release asset** - Attach the generated PDF to the release
+5. **Cache Podman layers** - Restore cached container layers from previous builds
+6. **Build LaTeX image with Podman** - Build the lightweight Alpine-based container image with TeX Live
+7. **Compile LaTeX document** - Run Podman container to compile `resume.tex` → `resume.pdf`
+8. **Create release** - Tag a new GitHub release with version `v{run_number}`
+9. **Upload release asset** - Attach the generated PDF to the release
 
-### Docker Caching Strategy
+### Podman Build Strategy
 
-The workflow uses a local file-based Docker cache that:
-- **Persists indefinitely** unless the Dockerfile changes
-- **Automatically invalidates** when you modify the Dockerfile (via `hashFiles('Dockerfile')`)
-- **Rebuilds only changed layers** - Source file changes reuse the cached `texlive-full` layer
+The workflow uses Podman (rootless container runtime) instead of Docker:
+- **Layer caching**: `--layers` flag enables efficient layer reuse
+- **Cache TTL**: `--cache-ttl=168h` (7 days) keeps layers cached
+- **SELinux compatibility**: `:Z` volume mount suffix for proper labeling
+- **GitHub Actions cache**: Stores `~/.local/share/containers` directory
 
 #### Cache Key Logic
 ```
-Key: docker-cache-{Dockerfile hash}
+Key: podman-cache-{Dockerfile hash}
 ├─ Same Dockerfile → Reuse entire cache (30-60 sec builds)
 └─ Different Dockerfile → New key, rebuild from change point (2-3 min builds)
 ```
@@ -44,7 +53,7 @@ Key: docker-cache-{Dockerfile hash}
 
 | Scenario | Duration | Why |
 |----------|----------|-----|
-| First run | 2-3 min | Builds all Docker layers from scratch |
+| First run | 2-3 min | Builds all container layers from scratch |
 | Subsequent runs | 30-60 sec | Reuses cached `texlive-full` layer |
 | After Dockerfile change | 2-3 min | Rebuilds affected layers, caches earlier ones |
 
@@ -64,19 +73,23 @@ Releases are automatically listed on the repo's [Releases](https://github.com/Su
 - Run `bun run sync` locally from `cli/` directory to validate CLI
 - Check workflow logs for LaTeX compilation errors
 
-#### Docker build fails
-- Verify `Dockerfile` syntax: `docker build -t test .`
+#### Podman build fails
+- Verify `Dockerfile` syntax: `podman build -t test .`
 - Check Alpine package availability: `texlive-full` is the correct package name
-- Review `COPY` paths in Dockerfile match current file structure
+- Review Podman version compatibility (GitHub runners use latest)
 
 #### Workflow doesn't trigger
-- Verify your push includes changes to `cli/**` or `resume/**`
+- Verify your push includes changes to `cli/**`, `resume/**`, workflow, or Dockerfile
 - Documentation-only changes won't trigger the build
 - Check branch is `main` (not `develop` or other branches)
 
+#### Build cancelled unexpectedly
+- Check if another commit was pushed while the build was running
+- Concurrency control automatically cancels older builds in favor of newer ones
+
 ### Local Development
 
-To test the workflow locally:
+To test the workflow locally using Podman:
 
 ```bash
 # Sync LaTeX files
@@ -84,12 +97,17 @@ cd cli
 bun run sync
 cd ..
 
-# Build Docker image
-docker build -t latex-builder .
+# Build container image
+podman build --layers -t latex-builder .
 
 # Compile resume
-docker run --rm -v $(pwd):/workspace latex-builder:latest
+podman run --rm -w /workspace/resume -v "$(pwd):/workspace:Z" latex-builder pdflatex -interaction=nonstopmode -output-directory=/workspace resume.tex
 
 # Check output
 ls -lh resume.pdf
+```
+
+Alternatively, use the convenience script:
+```bash
+bash scripts/build.sh
 ```
