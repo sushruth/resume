@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+env:
+  IMAGE_NAME: latex-builder
+  IMAGE_TAG: latest
+
 jobs:
   build_and_release:
     runs-on: ubuntu-latest
@@ -31,32 +35,23 @@ jobs:
         run: bun run sync
         working-directory: ./cli
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build and cache LaTeX Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          tags: latex-builder:latest
-          load: true
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
-
-      - name: Move Docker cache
-        run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
-
-      - name: Cache Docker layers
+      - name: Cache Podman layers
         uses: actions/cache@v4
         with:
-          path: /tmp/.buildx-cache
-          key: docker-cache-${{ hashFiles('Dockerfile') }}
-          restore-keys: docker-cache-
+          path: ~/.local/share/containers
+          key: podman-cache-${{ hashFiles('Dockerfile') }}
+          restore-keys: podman-cache-
+
+      - name: Build LaTeX image with Podman
+        run: podman build --layers --cache-ttl=168h -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
 
       - name: Compile LaTeX document
-        run: docker run --rm -v ${{ github.workspace }}:/workspace latex-builder:latest
+        run: |
+          podman run --rm \
+            -w /workspace/resume \
+            -v ${{ github.workspace }}:/workspace:Z \
+            ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
+            pdflatex -interaction=nonstopmode -output-directory=/workspace resume.tex
 
       - name: Create release
         id: create_release
