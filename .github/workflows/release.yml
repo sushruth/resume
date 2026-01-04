@@ -59,22 +59,11 @@ jobs:
           extra_packages: ${{ env.LATEX_PACKAGES }}
 
       - name: Create release
-        id: create_release
-        uses: actions/create-release@v1
+        run: gh release create v${{ github.run_number }} --title "Resume v${{ github.run_number }}" --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ github.run_number }}
-          release_name: Resume v${{ github.run_number }}
-          draft: false
-          prerelease: false
 
       - name: Upload release asset
-        uses: actions/upload-release-asset@v1
+        run: gh release upload v${{ github.run_number }} ./resume/resume.pdf --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./resume.pdf
-          asset_name: sushruth-sastry-resume.pdf
-          asset_content_type: application/pdf
