@@ -17,26 +17,17 @@ jobs:
 
       - name: Install dependencies
         run: bun install
+        working-directory: ./cli
 
       - name: Sync LaTeX files
         run: bun run sync
+        working-directory: ./cli
 
-      - name: Cache LaTeX packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.texlive
-          key: ${{ runner.os }}-texlive-${{ hashFiles('**/*.tex') }}
-          restore-keys: |
-            ${{ runner.os }}-texlive-
-
-      - name: Sync LaTeX files
-        run: bun cli/index.ts sync
+      - name: Build LaTeX Docker image
+        run: docker build -t latex-builder .
 
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: resume.tex
-          compiler: pdflatex
+        run: docker run --rm -v ${{ github.workspace }}:/workspace latex-builder
 
       - name: Create Release
         id: create_release
