@@ -1,12 +1,8 @@
 FROM alpine:latest
 
-# Install only necessary LaTeX packages
+# Install TeX Live and necessary dependencies
 RUN apk add --no-cache \
-    texlive-latex \
-    texlive-latex-extra \
-    texlive-xetex \
-    texlive-fonts-recommended \
-    texlive-fonts-extra
+    texlive-full
 
 WORKDIR /workspace
 
