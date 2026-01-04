@@ -1,5 +1,6 @@
 import { compileJsLatexFile } from "jslatex";
 import { validateTemplatePath } from "./file-system";
+import { TemplateFileNames } from "../file-names";
 import type {
 	ExperienceEntry,
 	EducationEntry,
@@ -53,7 +54,7 @@ export const sanitizeObjectForLaTeX = (obj: any): any => {
  * Reusable template compiler for single data objects
  */
 export const compileTemplate = async (
-	templateName: string,
+	templateName: TemplateFileNames,
 	data: Record<string, unknown>,
 ): Promise<string> => {
 	const templatePath = validateTemplatePath(templateName);
@@ -68,7 +69,7 @@ export const compileTemplate = async (
  * Reusable template compiler for array entries (maps each entry to template)
  */
 export const compileArrayEntriesToLaTeX = async <T>(
-	templateName: string,
+	templateName: TemplateFileNames,
 	entries: T[],
 ): Promise<string> => {
 	const results = await Promise.all(

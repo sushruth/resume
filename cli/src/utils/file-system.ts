@@ -4,6 +4,7 @@ import { CLI_CONFIG } from "../config";
 import type { CareerProfile } from "../sync.types";
 import { sanitizeObjectForLaTeX } from "./converters";
 import { LaTeXSection } from "../sync-latex";
+import { OutputFileNames, TemplateFileNames } from "../file-names";
 
 /**
  * Ensures the output directory for LaTeX sections exists
@@ -46,17 +47,15 @@ const writeFile = (path: string, content: string): void => {
 };
 
 /**
- * Orchestrates writing all generated LaTeX content to their respective files
+ * Validates that a template file exists
  */
-export const validateTemplatePath = (templateName: string) => {
-	const templatePath = resolve(
-		__dirname,
-		"../templates",
-		`${templateName}.template.ets.tex`,
-	);
+export const validateTemplatePath = (
+	templateFileName: TemplateFileNames,
+): string => {
+	const templatePath = resolve(__dirname, "../templates", templateFileName);
 	if (!existsSync(templatePath)) {
 		throw new Error(
-			`[E004] Template ${templateName}.template.ets.tex not found at ${templatePath} (validation failed)`,
+			`[E004] Template ${templateFileName} not found at ${templatePath} (validation failed)`,
 		);
 	}
 	return templatePath;
@@ -65,28 +64,19 @@ export const validateTemplatePath = (templateName: string) => {
 export const writeLaTeXSections = (
 	sections: Record<LaTeXSection, string>,
 ): void => {
-	writeFile(
-		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "_header.tex"),
-		sections[LaTeXSection.HEADER],
-	);
-	writeFile(
-		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "experience.tex"),
-		sections[LaTeXSection.EXPERIENCE],
-	);
-	writeFile(
-		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "education.tex"),
-		sections[LaTeXSection.EDUCATION],
-	);
-	writeFile(
-		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "skills.tex"),
-		sections[LaTeXSection.SKILLS],
-	);
-	writeFile(
-		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "objective.tex"),
-		sections[LaTeXSection.OBJECTIVE],
-	);
-	writeFile(
-		join(CLI_CONFIG.LATEX_SECTIONS_PATH, "publications.tex"),
-		sections[LaTeXSection.PUBLICATIONS],
-	);
+	const fileMap: Record<LaTeXSection, OutputFileNames> = {
+		[LaTeXSection.HEADER]: OutputFileNames.HEADER,
+		[LaTeXSection.EXPERIENCE]: OutputFileNames.EXPERIENCE,
+		[LaTeXSection.EDUCATION]: OutputFileNames.EDUCATION,
+		[LaTeXSection.SKILLS]: OutputFileNames.SKILLS,
+		[LaTeXSection.OBJECTIVE]: OutputFileNames.OBJECTIVE,
+		[LaTeXSection.PUBLICATIONS]: OutputFileNames.PUBLICATIONS,
+	};
+
+	Object.entries(fileMap).forEach(([section, fileName]) => {
+		writeFile(
+			join(CLI_CONFIG.LATEX_SECTIONS_PATH, fileName),
+			sections[section as LaTeXSection],
+		);
+	});
 };
