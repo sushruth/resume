@@ -75,6 +75,8 @@ All filenames are strictly typed using enums in `cli/src/file-names.ts`:
 
 This provides compile-time type safety for all file operations.
 
+**Benefit**: TypeScript catches filename typos at compile time, not runtime. If a filename changes, you must update the enum, and all references are automatically type-checked.
+
 ## Output
 Generated files in `resume/sections/`:
 - `_header.tex`
