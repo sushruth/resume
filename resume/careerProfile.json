@@ -22,6 +22,10 @@
 			{
 				"header": "ROI-Focused Architecture",
 				"detail": "My architectural decisions are driven by business metrics. By optimizing build pipelines (Webpack 5) and local dev loops, I have directly reduced operational costs and increased feature velocity for enterprise-grade products like DocuSign and Microsoft Teams."
+			},
+			{
+				"header": "AI-Pragmatic Engineering",
+				"detail": "I use AI tools for velocity, but I only list AI work when it reflects principal-level ownership—strategy, reliability, and long-term impact. I focus on the work AI cannot do: production reliability, organizational judgment, and long-term maintainability."
 			}
 		]
 	},
@@ -35,8 +39,9 @@
 			"end_date": "Present",
 			"description": "Senior engineer operating at platform and architectural scope for the Maestro frontend. Technical owner for Developer Experience and frontend infrastructure initiatives impacting 440+ engineers across multiple product teams.",
 			"highlights": [
+				"Delivered product features for Maestro's orchestration engine, including workflow step implementations and an internal design tooling utility that maps Figma colors to DocuSign design system tokens.",
+				"Led development of the 1FE open-source micro-frontend framework (github.com/docusign/1fe), an external release of DocuSign's internal platform enabling configuration-driven frontend development.",
 				"Designed and led adoption of a monorepo-based CI/CD model using Azure DevOps, enabling atomic releases and coordinated multi-package changes across teams.",
-				"Core contributor to the internal 1DS Micro-Frontend Platform, influencing architecture, tooling, and operational standards used across the organization.",
 				"Built an isolated local runtime environment for Micro-Frontends (Storybook-style), enabling independent development and eliminating brittle cross-team mocks.",
 				"Defined a shared component variant strategy consumed by 16 production applications, reducing UI divergence and duplicated implementation effort.",
 				"Drove convergence on frontend architectural standards through design reviews and platform tooling, reducing long-term maintenance cost."
@@ -51,7 +56,7 @@
 			"description": "Senior individual contributor and technical lead within the Teams organization, focused on frontend architecture and platform modernization.",
 			"highlights": [
 				"Led early adoption of Webpack 5 Module Federation within Teams Admin Center, enabling independent feature deployment and reducing local dev loop time from several minutes to under a minute.",
-				"Owned frontend integration for the Visits analytics experience, coordinating data contracts between React MFEs and C#/CosmosDB backend services.",
+				"Owned frontend integration for the Visits analytics dashboard, displaying Teams usage metrics for healthcare organizations using connected EHR platforms like Epic.",
 				"Modernized build pipelines across Teams Admin Center products, migrating legacy systems to Webpack 5 and Yarn PnP to improve build reliability and performance.",
 				"Authored and maintained shared TypeScript libraries for MS Graph API consumption, establishing type-safety and versioning patterns adopted by adjacent teams.",
 				"Designed frontend resilience strategies for high-scale Frontline Worker scenarios, implementing graceful degradation for intermittent connectivity."
@@ -161,9 +166,9 @@
 			"category": "Backend & Integration",
 			"items": [
 				"Backend-for-Frontend (BFF) Patterns",
-				"API Contract Design (REST, OData)",
+				"API Contract Design (REST, OData, type generation and automation, Swagger)",
 				"C# / .NET Service Integration",
-				"Azure (App Service, Functions, DevOps)"
+				"Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)"
 			]
 		},
 		{
