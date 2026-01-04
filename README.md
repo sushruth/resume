@@ -5,6 +5,8 @@ This repository contains the source for my resume in a structured, automated for
 
 ---
 
+[![Create Resume PDF and Release](https://github.com/sushruth/Sushruth-Sastry---Resume-2025/actions/workflows/release.yml/badge.svg)](https://github.com/sushruth/Sushruth-Sastry---Resume-2025/actions/workflows/release.yml)
+
 ### Architecture
 
 The resume is managed as structured data (`careerProfile.json`) rather than static documents. A CLI tool generates LaTeX sections from this single source of truth, which are compiled into the final PDF. This approach enables version control, automation, and consistency.

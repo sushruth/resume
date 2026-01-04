@@ -40,8 +40,6 @@ Sushruth-Sastry---Resume-2025/
 ├── .github/workflows/
 │   ├── release.yml                 # CI/CD: Sync → Compile LaTeX → Release
 │   └── README.md                   # CI/CD documentation and troubleshooting
-│
-├── Dockerfile                      # Legacy/local container build (not used in CI)
 ├── .gitignore                      # Ignores: resume/sections/, *.pdf, *.log, etc.
 ├── README.md                       # Project overview and philosophy
 ├── AGENTS.md                       # Instructions for AI agents (you are here)
