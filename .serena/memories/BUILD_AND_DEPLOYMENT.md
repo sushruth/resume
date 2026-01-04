@@ -10,7 +10,6 @@
   - `cli/**` (CLI code changes)
   - `resume/**` (Resume source changes)
   - `.github/workflows/release.yml` (Workflow changes)
-  - `Dockerfile` (Container image changes)
 - Ignores: README, AGENTS.md, standalone docs, etc.
 
 ### Concurrency Control
@@ -54,15 +53,7 @@ cd ..
 
 Output: Generates `resume/sections/*.tex` files
 
-### Build and Run with Podman Locally
-Use the convenience script:
-```bash
-bash scripts/build.sh
-```
-
-This uses the legacy Dockerfile-based build (not used in CI).
-
-### Manual Test (without Podman)
+### Manual Test
 ```bash
 # Requires pdflatex installed locally
 cd resume
@@ -82,12 +73,11 @@ ls -lh resume.pdf
 - **Check 3**: Workflow logs on GitHub
   - Check for LaTeX compilation errors
 
-### Podman Build Fails
-The CI pipeline no longer uses Podman. If you build locally with Podman, verify `Dockerfile` syntax and Alpine package availability.
+
 
 ### Workflow Doesn't Trigger
 - **Check branch**: Only runs on `main`, not other branches
-- **Check paths**: Changes must touch `cli/**`, `resume/**`, workflow, or Dockerfile
+- **Check paths**: Changes must touch `cli/**`, `resume/**`, or workflow
 - **Check permissions**: Workflow needs `contents: write` permission (already set)
 
 ### Build Cancelled Unexpectedly
@@ -100,7 +90,7 @@ The CI pipeline no longer uses Podman. If you build locally with Podman, verify 
 ### Release Naming
 - **Tag**: `v{github.run_number}` (incrementing, not semver)
 - **Name**: `Resume v{github.run_number}`
-- **Asset**: `sushruth-sastry-resume.pdf`
+- **Asset**: `Sushruth_Sastry_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
 
 ### Finding Releases
 - GitHub Releases tab: https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases

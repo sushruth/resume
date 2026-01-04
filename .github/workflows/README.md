@@ -10,7 +10,6 @@ Runs on push to `main` branch **only if** one of these paths change:
 - `cli/**` - CLI codebase changes
 - `resume/**` - Resume source files (data, LaTeX, styles)
 - `.github/workflows/release.yml` - Workflow changes
-- `Dockerfile` - Container image changes
 
 Does NOT trigger on changes to: docs, README, AGENTS.md, etc.
 
@@ -44,7 +43,7 @@ This prevents multiple builds from running simultaneously and ensures only the l
 Each workflow run creates a GitHub Release with:
 - **Tag**: `v{run_number}` (e.g., `v42`)
 - **Name**: `Resume v{run_number}`
-- **Asset**: `sushruth-sastry-resume.pdf`
+- **Asset**: `Sushruth_Sastry_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
 
 Releases are automatically listed on the repo's [Releases](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
 
@@ -60,7 +59,7 @@ Releases are automatically listed on the repo's [Releases](https://github.com/Su
 - Check TeX Live package names (tlmgr uses lowercase names like `pdfx`, `arydshln`)
 
 #### Workflow doesn't trigger
-- Verify your push includes changes to `cli/**`, `resume/**`, workflow, or Dockerfile
+- Verify your push includes changes to `cli/**`, `resume/**`, or workflow
 - Documentation-only changes won't trigger the build
 - Check branch is `main` (not `develop` or other branches)
 
