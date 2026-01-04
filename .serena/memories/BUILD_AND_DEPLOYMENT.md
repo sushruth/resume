@@ -9,7 +9,14 @@
 - Only if changes include:
   - `cli/**` (CLI code changes)
   - `resume/**` (Resume source changes)
-- Ignores: README, AGENTS.md, docs, etc.
+  - `.github/workflows/release.yml` (Workflow changes)
+  - `Dockerfile` (Container image changes)
+- Ignores: README, AGENTS.md, standalone docs, etc.
+
+### Concurrency Control
+- **Group**: `{workflow}-{branch}` (scoped per branch)
+- **Cancel-in-progress**: Enabled
+- **Behavior**: New commits cancel older running builds
 
 ### Pipeline Steps
 
@@ -23,19 +30,20 @@
    - Generates `resume/sections/*.tex` files
    - Fails if data validation error occurs
 
-3. **Docker Build with Caching** (30-180 sec)
-   - Uses `docker/setup-buildx-action` for advanced features
-   - Builds `Dockerfile` with Alpine + texlive-full
+3. **Podman Build with Caching** (30-180 sec)
+   - Uses GitHub Actions cache for `~/.local/share/containers`
+   - Builds with `podman build --layers --cache-ttl=168h`
    - **Caching Strategy**:
      - Cache key: Hash of Dockerfile contents
      - If Dockerfile unchanged: Reuse all layers (30-60 sec)
      - If Dockerfile changed: Rebuild from change point (2-3 min)
-     - Cache stored locally in `/tmp/.buildx-cache`
-     - Never expires unless Dockerfile changes
+     - Cache TTL: 7 days (168 hours)
+     - Storage: `~/.local/share/containers` (Podman's default)
 
 4. **LaTeX Compilation** (30-60 sec)
-   - Runs Docker container
-   - Executes `pdflatex` twice (for cross-references)
+   - Runs Podman container with volume mount
+   - Mount suffix `:Z` for SELinux compatibility
+   - Executes `pdflatex -interaction=nonstopmode`
    - Outputs `resume.pdf` in workspace root
 
 5. **GitHub Release** (10 sec)
@@ -45,7 +53,7 @@
 
 **Total time**: 2-4 minutes (first run) → 1-2 minutes (cached runs)
 
-## Docker Image
+## Container Image
 
 **File**: `Dockerfile`
 
@@ -54,20 +62,20 @@
 - **texlive-full** package (TeX Live distribution)
 
 ### Build Behavior
-- Copies source files from `resume/` folder
-- Copies `careerProfile.json` for embedding in PDF
+- Uses volume mounts at runtime (no COPY commands)
 - Sets working directory to `/workspace`
-- Entrypoint: `pdflatex -interaction=nonstopmode -output-directory=. resume.tex`
+- No entrypoint (command specified at runtime)
 
 ### Cache Strategy
-The workflow uses a file-based Docker buildx cache:
+The workflow uses GitHub Actions cache + Podman's native layer caching:
 ```
-Cache Key: docker-cache-{Dockerfile hash}
+Cache Key: podman-cache-{Dockerfile hash}
 ├─ Same hash → Reuse entire cache (30-60 sec builds)
 └─ Different hash → Rebuild affected layers (2-3 min builds)
 
-Storage: /tmp/.buildx-cache (per-runner, survives workflow runs)
+Storage: ~/.local/share/containers (per-runner)
 Invalidation: Automatic when Dockerfile changes
+TTL: 7 days (via --cache-ttl=168h)
 ```
 
 ## Local Development
@@ -81,19 +89,25 @@ cd ..
 
 Output: Generates `resume/sections/*.tex` files
 
-### Build and Run Docker Locally
+### Build and Run with Podman Locally
+Use the convenience script:
+```bash
+bash scripts/build.sh
+```
+
+Or manually:
 ```bash
 # Build image
-docker build -t latex-builder .
+podman build --layers -t latex-builder .
 
 # Compile resume
-docker run --rm -v $(pwd):/workspace latex-builder:latest
+podman run --rm -w /workspace/resume -v "$(pwd):/workspace:Z" latex-builder pdflatex -interaction=nonstopmode -output-directory=/workspace resume.tex
 
 # Check output
 ls -lh resume.pdf
 ```
 
-### Manual Test (without Docker)
+### Manual Test (without Podman)
 ```bash
 # Requires pdflatex installed locally
 cd resume
@@ -113,15 +127,20 @@ ls -lh resume.pdf
 - **Check 3**: Workflow logs on GitHub
   - Check for LaTeX compilation errors
 
-### Docker Build Fails
-- **Check Dockerfile syntax**: `docker build -t test .`
+### Podman Build Fails
+- **Check Dockerfile syntax**: `podman build -t test .`
 - **Check Alpine package name**: `texlive-full` is correct (not `texlive-latex` or similar)
-- **Check COPY paths**: Must match current file structure (resume/ folder)
+- **Check Podman installation**: Ensure Podman is available on runner (Ubuntu latest has it)
 
 ### Workflow Doesn't Trigger
 - **Check branch**: Only runs on `main`, not other branches
-- **Check paths**: Changes must touch `cli/**` or `resume/**`
+- **Check paths**: Changes must touch `cli/**`, `resume/**`, workflow, or Dockerfile
 - **Check permissions**: Workflow needs `contents: write` permission (already set)
+
+### Build Cancelled Unexpectedly
+- **Concurrency control**: New commits automatically cancel older in-progress builds
+- **Check workflow runs**: Only the latest commit should complete
+- **Expected behavior**: This prevents wasting resources on outdated commits
 
 ## Release Management
 
@@ -136,5 +155,5 @@ ls -lh resume.pdf
 
 ### Artifacts Retention
 - Released PDFs are permanent (stored in GitHub Releases)
-- Docker cache is ephemeral (per-runner, ~7 days without use)
+- Podman cache expires after 7 days without use (per GitHub Actions cache policy)
 - Build logs are retained per GitHub's default retention policy
