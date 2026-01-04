@@ -1,5 +1,5 @@
 import { main as syncLaTeXMain } from "./src/sync-latex";
-import { program } from "commander";
+import { program } from "@commander-js/extra-typings";
 import { exit } from "process";
 
 /**
