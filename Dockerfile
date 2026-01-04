@@ -6,11 +6,11 @@ RUN apk add --no-cache \
 
 WORKDIR /workspace
 
-# Copy resume files
-COPY resume.tex ./
-COPY resume.xmpdata ./
-COPY TLCresume.sty ./
-COPY sections/ ./sections/
-COPY careerProfile.json ./
+# Copy resume source files from resume/ folder
+COPY resume/resume.tex ./
+COPY resume/resume.xmpdata ./
+COPY resume/TLCresume.sty ./
+COPY resume/sections/ ./sections/
+COPY resume/careerProfile.json ./
 
 ENTRYPOINT ["pdflatex", "-interaction=nonstopmode", "-output-directory=.", "resume.tex"]
