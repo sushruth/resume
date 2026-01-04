@@ -7,6 +7,7 @@ import {
 	writeLaTeXSections,
 	ensureSectionsDirectory,
 } from "./utils/file-system";
+import { TemplateFileNames } from "./file-names";
 
 /**
  * Enum for LaTeX section names
@@ -34,25 +35,25 @@ const main = async () => {
 
 	// 3. Convert data to LaTeX strings
 	const sectionPromises: Promise<[LaTeXSection, string]>[] = [
-		compileTemplate(LaTeXSection.HEADER, careerProfile.personal_info).then(
+		compileTemplate(TemplateFileNames.HEADER, careerProfile.personal_info).then(
 			(content) => [LaTeXSection.HEADER, content],
 		),
 		compileArrayEntriesToLaTeX(
-			LaTeXSection.EXPERIENCE,
+			TemplateFileNames.EXPERIENCE,
 			careerProfile.experience,
 		).then((content) => [LaTeXSection.EXPERIENCE, content]),
 		compileArrayEntriesToLaTeX(
-			LaTeXSection.EDUCATION,
+			TemplateFileNames.EDUCATION,
 			careerProfile.education,
 		).then((content) => [LaTeXSection.EDUCATION, content]),
-		compileTemplate(LaTeXSection.SKILLS, {
+		compileTemplate(TemplateFileNames.SKILLS, {
 			skills: careerProfile.skills,
 		}).then((content) => [LaTeXSection.SKILLS, content]),
-		compileTemplate(LaTeXSection.OBJECTIVE, {
+		compileTemplate(TemplateFileNames.OBJECTIVE, {
 			summary: careerProfile.summary,
 		}).then((content) => [LaTeXSection.OBJECTIVE, content]),
 		compileArrayEntriesToLaTeX(
-			LaTeXSection.PUBLICATIONS,
+			TemplateFileNames.PUBLICATIONS,
 			careerProfile.publications,
 		).then((content) => [LaTeXSection.PUBLICATIONS, content]),
 	];
