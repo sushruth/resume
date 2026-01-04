@@ -21,7 +21,7 @@ export const enum LaTeXSection {
 }
 
 /**
- * Main CLI entry point for syncing career_profile.json to LaTeX sections
+ * Main CLI entry point for syncing careerProfile.json to LaTeX sections
  */
 const main = async () => {
 	console.log("Syncing career profile to LaTeX files...");

@@ -15,7 +15,7 @@ export const ensureSectionsDirectory = (): void => {
 };
 
 /**
- * Reads and parses the career_profile.json file
+ * Reads and parses the careerProfile.json file
  */
 export const readCareerProfile = (): CareerProfile => {
 	try {

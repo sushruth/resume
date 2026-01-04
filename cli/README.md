@@ -8,7 +8,7 @@ This CLI is the automation engine for the [Resume-as-Code](https://github.com/Su
 
 The CLI orchestrates a four-step process to sync data to the presentation layer:
 
-1.  **Data Ingestion:** Reads and parses the `career_profile.json` file from the repository root.
+1.  **Data Ingestion:** Reads and parses the `careerProfile.json` file from the repository root.
 2.  **LaTeX Sanitization:** Recursively traverses the data object and sanitizes all string values to escape special LaTeX characters (e.g., `%`, `&`, `_`). This prevents compilation errors and ensures content is rendered correctly.
 3.  **Templating:** Uses `jslatex` to dynamically render `.tex` files. For each section of the resume, it combines the corresponding data with a template from the `src/templates` directory.
 4.  **File Output:** Writes the generated LaTeX content for each section to the top-level `/sections` directory, making them ready for inclusion in the main `resume.tex` file.
@@ -30,7 +30,7 @@ The CLI is designed to be run from its directory.
 
 ### Data Schema
 
-The CLI expects `career_profile.json` to adhere to a specific structure. Below is an overview of the primary keys.
+The CLI expects `careerProfile.json` to adhere to a specific structure. Below is an overview of the primary keys.
 
 -   **`personal_info`**: An object containing contact details (name, email, phone, etc.).
 -   **`summary`**: A string containing the top-level professional summary.
