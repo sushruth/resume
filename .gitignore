@@ -1,0 +1,17 @@
+# Generated LaTeX sections
+resume/sections/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.pdf
+*.fls
+*.fdb_latexmk
+
+# macOS
+.DS_Store
+
+# Node/Bun
+node_modules/
+.bun
