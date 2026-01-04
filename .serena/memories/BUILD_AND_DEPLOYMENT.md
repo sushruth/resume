@@ -37,9 +37,9 @@
    - Outputs `resume.pdf` in workspace root
 
 4. **GitHub Release** (10 sec)
-   - Creates release tag: `v{run_number}` (e.g., v42)
+   - Runs `gh release create` to create release tag: `v{run_number}` (e.g., v42)
    - Release name: `Resume v{run_number}`
-   - Uploads `resume.pdf` as asset
+   - Runs `gh release upload` to upload `resume.pdf` as asset
 
 **Total time**: 1-2 minutes (typical)
 

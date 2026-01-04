@@ -29,8 +29,8 @@ This prevents multiple builds from running simultaneously and ensures only the l
 3. **Install dependencies** - Install CLI dependencies
 4. **Sync LaTeX files** - Run `bun run sync` to generate LaTeX sections from `careerProfile.json`
 5. **Compile LaTeX document** - Use `xu-cheng/latex-action` with TeX Live `small` scheme and required packages
-6. **Create release** - Tag a new GitHub release with version `v{run_number}`
-7. **Upload release asset** - Attach the generated PDF to the release
+6. **Create release** - Use GitHub CLI to create a new GitHub release with version `v{run_number}`
+7. **Upload release asset** - Use GitHub CLI to attach the generated PDF to the release
 
 ### Build Times
 
