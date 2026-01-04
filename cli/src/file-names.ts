@@ -14,6 +14,7 @@ export enum OutputFileNames {
 	SKILLS = "skills.tex",
 	OBJECTIVE = "objective.tex",
 	PUBLICATIONS = "publications.tex",
+	HTML_INDEX = "index.html",
 }
 
 export enum TemplateFileNames {
@@ -23,6 +24,12 @@ export enum TemplateFileNames {
 	SKILLS = "skills.template.ets.tex",
 	OBJECTIVE = "objective.template.ets.tex",
 	PUBLICATIONS = "publications.template.ets.tex",
+	HEADER_HTML = "header.template.ets.html",
+	EXPERIENCE_HTML = "experience.template.ets.html",
+	EDUCATION_HTML = "education.template.ets.html",
+	SKILLS_HTML = "skills.template.ets.html",
+	OBJECTIVE_HTML = "objective.template.ets.html",
+	PUBLICATIONS_HTML = "publications.template.ets.html",
 }
 
 /**

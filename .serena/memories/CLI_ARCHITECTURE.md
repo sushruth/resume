@@ -1,7 +1,7 @@
 # Resume LaTeX Sync CLI Architecture
 
 ## Overview
-Bun/TypeScript CLI that syncs `careerProfile.json` (single source of truth) to LaTeX section files. Enables automated resume generation from structured data.
+Bun/TypeScript CLI that syncs `careerProfile.json` (single source of truth) to LaTeX section files and HTML index file. Enables automated resume generation from structured data in both PDF (via LaTeX) and web formats.
 
 ## Entry Point
 - **File**: `cli/index.ts`
@@ -40,7 +40,9 @@ Bun/TypeScript CLI that syncs `careerProfile.json` (single source of truth) to L
 - Formats dates, lists, and other data structures
 
 ### 5. Templates (`cli/src/templates/`)
-Uses jslatex for dynamic LaTeX generation:
+Uses jslatex for dynamic generation (LaTeX and HTML):
+
+LaTeX Templates:
 - `header.template.ets.tex` - Contact info, title
 - `objective.template.ets.tex` - Professional summary
 - `experience.template.ets.tex` - Work history
@@ -48,18 +50,42 @@ Uses jslatex for dynamic LaTeX generation:
 - `skills.template.ets.tex` - Skills by category
 - `publications.template.ets.tex` - Academic publications
 
+HTML Templates:
+- `header.template.ets.html` - Contact info, title (flex layout)
+- `objective.template.ets.html` - Professional summary
+- `experience.template.ets.html` - Work history (with lists)
+- `education.template.ets.html` - Degrees
+- `skills.template.ets.html` - Skills table
+- `publications.template.ets.html` - Academic publications
+
 ## Data Flow
 
+LaTeX Path:
 ```
 careerProfile.json
        ↓
   [sync-latex.ts]
        ↓
-  [converters.ts] ← Transforms data
+  [converters.ts] ← Sanitizes for LaTeX
        ↓
   [templates/*.ets.tex] ← Uses jslatex
        ↓
-  resume/sections/*.tex
+   resume/sections/*.tex
+       ↓
+  [LaTeX compilation] → resume.pdf
+```
+
+HTML Path:
+```
+careerProfile.json
+       ↓
+  [sync-latex.ts]
+       ↓
+  [converters.ts] ← No sanitization
+       ↓
+  [templates/*.ets.html] ← Uses jslatex
+       ↓
+  [generateFullHTML] → resume/index.html
 ```
 
 ## Template System
@@ -70,8 +96,8 @@ careerProfile.json
 ## File Names
 All filenames are strictly typed using enums in `cli/src/file-names.ts`:
 - `InputFileNames` - Input files (e.g., careerProfile.json)
-- `OutputFileNames` - Generated LaTeX section files (e.g., experience.tex)
-- `TemplateFileNames` - Template files (e.g., experience.template.ets.tex)
+- `OutputFileNames` - Generated LaTeX section files and HTML (e.g., experience.tex, index.html)
+- `TemplateFileNames` - Template files (e.g., experience.template.ets.tex, header.template.ets.html)
 
 This provides compile-time type safety for all file operations.
 
@@ -87,6 +113,8 @@ Generated files in `resume/sections/`:
 - `publications.tex`
 
 These are imported in `resume/resume.tex` via LaTeX `\import{sections/}{filename}`
+
+Additionally generates `resume/index.html` - complete HTML resume for web hosting.
 
 ## Build Integration
 - Runs during GitHub Actions workflow before LaTeX compilation

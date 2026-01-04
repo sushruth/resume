@@ -1,17 +1,22 @@
 # Resume Sync CLI
 
-This CLI is the automation engine for the [Resume-as-Code](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation.
+This CLI is the automation engine for the [Resume-as-Code](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation and a complete HTML resume for web hosting.
 
 ---
 
 ### Core Functionality
 
-The CLI orchestrates a four-step process to sync data to the presentation layer:
+The CLI orchestrates data synchronization to both LaTeX (PDF) and HTML (web) presentation layers:
 
 1.  **Data Ingestion:** Reads and parses the `careerProfile.json` file from the repository root.
-2.  **LaTeX Sanitization:** Recursively traverses the data object and sanitizes all string values to escape special LaTeX characters (e.g., `%`, `&`, `_`). This prevents compilation errors and ensures content is rendered correctly.
-3.  **Templating:** Uses `jslatex` to dynamically render `.tex` files. For each section of the resume, it combines the corresponding data with a template from the `src/templates` directory.
-4.  **File Output:** Writes the generated LaTeX content for each section to the top-level `/sections` directory, making them ready for inclusion in the main `resume.tex` file.
+2.  **LaTeX Path:**
+    - Sanitizes data for LaTeX compatibility (escapes special characters).
+    - Uses `jslatex` to render `.ets.tex` templates into LaTeX section files.
+    - Outputs to `resume/sections/` for PDF compilation.
+3.  **HTML Path:**
+    - Uses unsanitized data for HTML.
+    - Uses `jslatex` to render `.ets.html` templates into HTML sections.
+    - Combines into complete `resume/index.html` for web hosting.
 
 ### Usage
 

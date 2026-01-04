@@ -1,4 +1,6 @@
 import { compileJsLatexFile } from "jslatex";
+import ejs from 'ejs';
+import { readFileSync } from 'fs';
 import { validateTemplatePath } from "./file-system";
 import { TemplateFileNames } from "../file-names";
 import type {
@@ -51,18 +53,39 @@ export const sanitizeObjectForLaTeX = (obj: any): any => {
 };
 
 /**
- * Reusable template compiler for single data objects
+ * Reusable template compiler for single data objects (LaTeX with sanitization)
  */
 export const compileTemplate = async (
 	templateName: TemplateFileNames,
 	data: Record<string, unknown>,
 ): Promise<string> => {
 	const templatePath = validateTemplatePath(templateName);
+	const sanitizedData = sanitizeObjectForLaTeX(data);
 	return await compileJsLatexFile({
 		filePath: templatePath,
-		etsOptions: { data },
+		etsOptions: { data: sanitizedData },
 		projectBaseUrl: import.meta.url,
 	});
+};
+
+/**
+ * Reusable template compiler for HTML (no sanitization)
+ */
+export const compileTemplateHTML = async (
+	templateName: TemplateFileNames,
+	data: Record<string, unknown>,
+): string => {
+	const templatePath = validateTemplatePath(templateName);
+	const templateContent = readFileSync(templatePath, 'utf8');
+	console.log(`Compiling ${templateName}`, data);
+	try {
+		const result = ejs.render(templateContent, data);
+		console.log('result preview:', result.substring(0, 100));
+		return result;
+	} catch (e) {
+		console.log('error:', e);
+		return `Error: ${(e as Error).message}`;
+	}
 };
 
 /**
@@ -77,5 +100,18 @@ export const compileArrayEntriesToLaTeX = async <T>(
 			return await compileTemplate(templateName, { entry });
 		}),
 	);
+	return results.join("\n");
+};
+
+/**
+ * Reusable template compiler for array entries (HTML)
+ */
+export const compileArrayEntriesToHTML = <T>(
+	templateName: TemplateFileNames,
+	entries: T[],
+): string => {
+	const results = entries.map((entry) => {
+		return compileTemplateHTML(templateName, { entry });
+	});
 	return results.join("\n");
 };

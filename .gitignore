@@ -1,5 +1,6 @@
-# Generated LaTeX sections
+# Generated LaTeX sections and HTML resume
 resume/sections/
+resume/index.html
 
 # LaTeX build artifacts
 *.aux

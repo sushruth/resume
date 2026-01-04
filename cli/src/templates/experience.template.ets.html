@@ -1,0 +1,7 @@
+<% const dateRange = entry.start_date + ' - ' + entry.end_date; % >
+<h2 style="display: flex; justify-content: space-between;"><%= entry.role % > <span><%= dateRange % ></span></h2>
+<div style="font-size: 0.9em; color: #666;"><%= entry.company % > <span style="float: right;"><%= entry.location % ></span></div>
+<% if (entry.description) { % >
+<p><%= entry.description % ></p>
+<% } % >
+<p><%= entry.highlights.join(', ') %></p>
