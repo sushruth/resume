@@ -59,7 +59,11 @@
 
 ### Base Image
 - **Alpine Linux** (minimal, lightweight)
-- **texlive-full** package (TeX Live distribution)
+- **TeX Live packages** (minimal installation, ~500MB vs ~5GB for texlive-full):
+  - `texlive` - Base TeX Live distribution
+  - `texlive-luatex` - LuaTeX engine with dependencies
+  - `texmf-dist-latexextra` - Extra LaTeX packages (geometry, hyperref, titlesec, enumitem, xcolor, booktabs, tabularx, array, microtype, colortbl, arydshln, standalone, import, babel, etc.)
+  - `texmf-dist-fontsextra` - Additional fonts
 
 ### Build Behavior
 - Uses volume mounts at runtime (no COPY commands)
@@ -129,8 +133,9 @@ ls -lh resume.pdf
 
 ### Podman Build Fails
 - **Check Dockerfile syntax**: `podman build -t test .`
-- **Check Alpine package name**: `texlive-full` is correct (not `texlive-latex` or similar)
+- **Check Alpine package names**: Uses `texlive`, `texlive-luatex`, `texmf-dist-latexextra`, `texmf-dist-fontsextra`
 - **Check Podman installation**: Ensure Podman is available on runner (Ubuntu latest has it)
+- **Disk space errors**: Minimal TeX Live packages (~500MB) should prevent disk space issues
 
 ### Workflow Doesn't Trigger
 - **Check branch**: Only runs on `main`, not other branches
