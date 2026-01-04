@@ -29,11 +29,32 @@ jobs:
         run: bun run sync
         working-directory: ./cli
 
-      - name: Build LaTeX Docker image
-        run: docker build -t latex-builder .
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and cache LaTeX Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          tags: latex-builder:latest
+          load: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+
+      - name: Move Docker cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.buildx-cache
+          key: docker-cache-${{ hashFiles('Dockerfile') }}
+          restore-keys: docker-cache-
 
       - name: Compile LaTeX document
-        run: docker run --rm -v ${{ github.workspace }}:/workspace latex-builder
+        run: docker run --rm -v ${{ github.workspace }}:/workspace latex-builder:latest
 
       - name: Create release
         id: create_release
