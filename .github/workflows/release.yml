@@ -70,8 +70,9 @@ jobs:
 
       - name: Set current year and PDF name
         run: |
-          echo "YEAR=$(date +%Y)" >> $GITHUB_ENV
-          echo "PDF_NAME=Sushruth_Sastry_Resume_${YEAR}.pdf" >> $GITHUB_ENV
+          YEAR=$(date +%Y)
+          echo "YEAR=$YEAR" >> $GITHUB_ENV
+          echo "PDF_NAME=Sushruth_Sastry_Resume_$YEAR.pdf" >> $GITHUB_ENV
 
       - name: Rename PDF
         run: mv "resume/resume.pdf" "resume/${{ env.PDF_NAME }}"
