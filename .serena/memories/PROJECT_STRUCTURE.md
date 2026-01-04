@@ -38,10 +38,10 @@ Sushruth-Sastry---Resume-2025/
 │   └── package.json                # Dependencies
 │
 ├── .github/workflows/
-│   ├── release.yml                 # CI/CD: Sync → Build Docker → Compile → Release
+│   ├── release.yml                 # CI/CD: Sync → Compile LaTeX → Release
 │   └── README.md                   # CI/CD documentation and troubleshooting
 │
-├── Dockerfile                      # Alpine + texlive-full for LaTeX compilation
+├── Dockerfile                      # Legacy/local container build (not used in CI)
 ├── .gitignore                      # Ignores: resume/sections/, *.pdf, *.log, etc.
 ├── README.md                       # Project overview and philosophy
 ├── AGENTS.md                       # Instructions for AI agents (you are here)
@@ -67,7 +67,7 @@ resume/careerProfile.json
         ↓
     resume/sections/*.tex
         ↓
-    [Docker + pdflatex]
+    [latex-action + latexmk]
         ↓
     resume.pdf
 ```

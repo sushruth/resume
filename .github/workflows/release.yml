@@ -18,8 +18,19 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE_NAME: latex-builder
-  IMAGE_TAG: latest
+  LATEX_PACKAGES: >-
+    cjk
+    pdfx
+    embedfile
+    arydshln
+    standalone
+    import
+    moresize
+    anyfontsize
+    csquotes
+    enumitem
+    titlesec
+    blindtext
 
 jobs:
   build_and_release:
@@ -39,23 +50,13 @@ jobs:
         run: bun run sync
         working-directory: ./cli
 
-      - name: Cache Podman layers
-        uses: actions/cache@v4
-        with:
-          path: ~/.local/share/containers
-          key: podman-cache-${{ hashFiles('Dockerfile') }}
-          restore-keys: podman-cache-
-
-      - name: Build LaTeX image with Podman
-        run: podman build --layers --cache-ttl=168h -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
-
       - name: Compile LaTeX document
-        run: |
-          podman run --rm \
-            -w /workspace/resume \
-            -v ${{ github.workspace }}:/workspace:Z \
-            ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
-            pdflatex -interaction=nonstopmode -output-directory=/workspace resume.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: resume
+          root_file: resume.tex
+          scheme: small
+          extra_packages: ${{ env.LATEX_PACKAGES }}
 
       - name: Create release
         id: create_release
