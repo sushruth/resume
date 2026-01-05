@@ -10,7 +10,7 @@
     <?
     skills.forEach((skill, index) => {
     ?>
-        <?= skill.category ?> & <?= skill.items.join(', ') ?> \\
+        <?= skill.name || '' ?> & <?= (skill.keywords || []).join(', ') ?> \\
 
         <? if (index < skills.length - 1) { ?> \cdashline{1-2} <? } ?>
     <? }) ?>

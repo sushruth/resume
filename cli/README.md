@@ -15,7 +15,7 @@ The CLI orchestrates data synchronization to both LaTeX (PDF) and HTML (web) pre
     - Outputs to `resume/sections/` for PDF compilation.
 3.  **HTML Path:**
     - Uses unsanitized data for HTML.
-    - Uses `jslatex` to render `.ets.html` templates into HTML sections.
+    - Uses `ejs` to render `.ets.html` templates into HTML sections.
     - Combines into complete `resume/index.html` for web hosting.
 
 ### Usage
@@ -35,34 +35,82 @@ The CLI is designed to be run from its directory.
 
 ### Data Schema
 
-The CLI expects `careerProfile.json` to adhere to a specific structure. Below is an overview of the primary keys.
+The CLI expects `careerProfile.json` to adhere to the **[JSON Resume](https://jsonresume.org/)** standard schema. This is an open-source, community-driven standard for representing resume data in JSON format.
 
--   **`personal_info`**: An object containing contact details (name, email, phone, etc.).
--   **`summary`**: A string containing the top-level professional summary.
--   **`experience`**: An array of objects, each detailing a professional role.
--   **`education`**: An array of objects detailing academic history.
--   **`publications`**: An array of objects for any published works or articles.
--   **`skills`**: An array of skill category objects. Each object has a `category` (string) and an `items` (string[]) list.
+**Schema Reference:** https://jsonresume.org/schema/
 
-    **Example `skills` structure:**
-    ```json
-    "skills": [
-        {
-            "category": "Architecture & Infrastructure",
-            "items": [
-                "Micro-Frontends (Module Federation)",
-                "Monorepo Architecture (NX)"
-            ]
-        },
-        {
-            "category": "Frontend Core",
-            "items": [
-                "TypeScript (Advanced Patterns)",
-                "React (Hooks, Context, Suspense)"
-            ]
-        }
+#### Primary Sections
+
+-   **`basics`**: Personal information and contact details
+    -   `name`, `label`, `email`, `phone`, `url`, `summary`
+    -   `location`: Object with `city`, `region`, `countryCode`, etc.
+    -   `profiles`: Array of social profiles (LinkedIn, GitHub, etc.)
+-   **`work`**: Array of work experience entries
+    -   `name` (company), `position`, `location`, `startDate`, `endDate`
+    -   `summary`, `highlights` (array of accomplishments)
+-   **`education`**: Array of education entries
+    -   `institution`, `area` (field of study), `studyType` (degree)
+    -   `startDate`, `endDate`
+-   **`skills`**: Array of skill entries
+    -   `name` (skill category), `keywords` (array of skills)
+-   **`publications`**: Array of publication entries
+    -   `name`, `publisher`, `releaseDate`, `url`
+-   **`projects`**: Array of project entries (optional)
+-   **`awards`**: Array of awards (optional)
+-   **`certificates`**: Array of certificates (optional)
+-   **`languages`**: Array of language proficiencies (optional)
+-   **`interests`**: Array of interests (optional)
+-   **`references`**: Array of references (optional)
+
+#### Custom Extensions
+
+JSON Resume allows additional properties. This project includes:
+
+-   **`key_differentiators`**: Custom section for principal-level positioning
+    -   `summary`: Section header
+    -   `points`: Array of objects with `header` and `detail` fields
+
+**Example structure:**
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+  "basics": {
+    "name": "John Doe",
+    "label": "Senior Software Engineer",
+    "email": "john@example.com",
+    "location": {
+      "city": "Seattle",
+      "region": "WA",
+      "countryCode": "US"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "johndoe",
+        "url": "https://linkedin.com/in/johndoe"
+      }
     ]
-    ```
+  },
+  "work": [
+    {
+      "name": "Company Inc.",
+      "position": "Senior Engineer",
+      "startDate": "2020-01",
+      "endDate": "Present",
+      "highlights": [
+        "Led migration to microservices",
+        "Reduced build time by 60%"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Engineering",
+      "keywords": ["React", "TypeScript", "Webpack"]
+    }
+  ]
+}
+```
 
 ---
 

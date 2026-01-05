@@ -1,5 +1,5 @@
 <? import type { PublicationEntry } from '../../sync.types'; ?>
 
-\skills {\href{<?= entry.link ?>}{<?= entry.title ?>}}
-(<?= entry.conference ?>)
-\hfill {<?= entry.year ?>}
+\skills {\href{<?= entry.url || '' ?>}{<?= entry.name || '' ?>}}
+(<?= entry.publisher || '' ?>)
+\hfill {<?= entry.releaseDate || '' ?>}
