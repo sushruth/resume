@@ -9,8 +9,8 @@ import {
 	writeLaTeXSections,
 	ensureSectionsDirectory,
 } from "./utils/file-system";
-import { writeFileSync } from "fs";
-import { join } from "path";
+import { writeFileSync, readFileSync } from "fs";
+import { join, resolve } from "path";
 import { TemplateFileNames, OutputFileNames } from "./file-names";
 
 /**
@@ -112,8 +112,6 @@ const main = async () => {
 		),
 	};
 
-	console.log("HTML sections:", htmlSectionsMap);
-
 	// Generate full HTML
 	const fullHTML = generateFullHTML(htmlSectionsMap);
 
@@ -127,41 +125,22 @@ const main = async () => {
  * Generates the full HTML document from sections
  */
 const generateFullHTML = (sections: Record<HTMLSection, string>): string => {
-	return `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <style>
-        body {
-            font-family: 'Times New Roman', serif;
-            line-height: 1.6;
-            margin: 2em;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        h1 { font-size: 2em; }
-        h2 { font-size: 1.5em; margin-top: 1em; }
-        ul { margin: 0.5em 0; }
-        table { width: 100%; }
-        a { color: #007acc; }
-    </style>
-</head>
-<body>
-    ${sections[HTMLSection.OBJECTIVE]}
-    ${sections[HTMLSection.HEADER]}
-    <h2>Experience</h2>
-    ${sections[HTMLSection.EXPERIENCE]}
-    <h2>Education</h2>
-    ${sections[HTMLSection.EDUCATION]}
-    <h2>Skills</h2>
-    ${sections[HTMLSection.SKILLS]}
-    <h2>Publications</h2>
-    ${sections[HTMLSection.PUBLICATIONS]}
-</body>
-</html>`;
+	// Read the HTML template file
+	const templatePath = resolve(process.cwd(), "../resume/resume.html.ejs");
+	const template = readFileSync(templatePath, "utf8");
+	
+	// Use EJS to render the template with sections
+	const ejs = require("ejs");
+	const html = ejs.render(template, {
+		header: sections[HTMLSection.HEADER],
+		objective: sections[HTMLSection.OBJECTIVE],
+		skills: sections[HTMLSection.SKILLS],
+		experience: sections[HTMLSection.EXPERIENCE],
+		education: sections[HTMLSection.EDUCATION],
+		publications: sections[HTMLSection.PUBLICATIONS],
+	});
+	
+	return html;
 };
 
 /**
@@ -174,7 +153,6 @@ const writeHTMLIndex = (content: string) => {
 		OutputFileNames.HTML_INDEX,
 	);
 	writeFileSync(outputPath, content.trim(), "utf8");
-	console.log(`Updated HTML file: ${outputPath}`);
 };
 
 export { main };

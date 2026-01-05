@@ -16,13 +16,13 @@ export const ensureSectionsDirectory = (): void => {
 };
 
 /**
- * Reads and parses the careerProfile.json file
+ * Reads and parses the careerProfile.json file (returns raw, unsanitized data)
  */
 export const readCareerProfile = (): CareerProfile => {
 	try {
 		const rawData = readFileSync(CLI_CONFIG.CAREER_PROFILE_PATH, "utf8");
 		const parsedData = JSON.parse(rawData) as CareerProfile;
-		return sanitizeObjectForLaTeX(parsedData);
+		return parsedData;
 	} catch (error) {
 		console.error(
 			`[E002] Failed to read career profile: ${(error as Error).message}`,
