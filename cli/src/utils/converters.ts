@@ -77,10 +77,8 @@ export const compileTemplateHTML = (
 ): string => {
 	const templatePath = validateTemplatePath(templateName);
 	const templateContent = readFileSync(templatePath, "utf8");
-	console.log(`Compiling ${templateName}`, data);
 	try {
 		const result = ejs.render(templateContent, data);
-		console.log("result preview:", result.substring(0, 100));
 		return result;
 	} catch (e) {
 		console.log("error:", e);
