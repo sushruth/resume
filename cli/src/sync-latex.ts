@@ -47,30 +47,30 @@ const main = async () => {
 	ensureSectionsDirectory();
 
 	// 2. Load data
-	const careerProfile = readCareerProfile();
+	const resume = readCareerProfile();
 
 	// 3. Convert data to LaTeX strings
 	const sectionPromises: Promise<[LaTeXSection, string]>[] = [
-		compileTemplate(TemplateFileNames.HEADER, careerProfile.personal_info).then(
+		compileTemplate(TemplateFileNames.HEADER, resume.basics || {}).then(
 			(content) => [LaTeXSection.HEADER, content],
 		),
 		compileArrayEntriesToLaTeX(
 			TemplateFileNames.EXPERIENCE,
-			careerProfile.experience,
+			resume.work || [],
 		).then((content) => [LaTeXSection.EXPERIENCE, content]),
 		compileArrayEntriesToLaTeX(
 			TemplateFileNames.EDUCATION,
-			careerProfile.education,
+			resume.education || [],
 		).then((content) => [LaTeXSection.EDUCATION, content]),
 		compileTemplate(TemplateFileNames.SKILLS, {
-			skills: careerProfile.skills,
+			skills: resume.skills || [],
 		}).then((content) => [LaTeXSection.SKILLS, content]),
 		compileTemplate(TemplateFileNames.OBJECTIVE, {
-			summary: careerProfile.summary,
+			summary: resume.basics?.summary || "",
 		}).then((content) => [LaTeXSection.OBJECTIVE, content]),
 		compileArrayEntriesToLaTeX(
 			TemplateFileNames.PUBLICATIONS,
-			careerProfile.publications,
+			resume.publications || [],
 		).then((content) => [LaTeXSection.PUBLICATIONS, content]),
 	];
 
@@ -85,28 +85,34 @@ const main = async () => {
 
 	// 5. Generate HTML
 	const htmlSectionsMap: Record<HTMLSection, string> = {
-		[HTMLSection.HEADER]: compileTemplateHTML(TemplateFileNames.HEADER_HTML, careerProfile.personal_info),
+		[HTMLSection.HEADER]: compileTemplateHTML(
+			TemplateFileNames.HEADER_HTML,
+			resume.basics || {},
+		),
 		[HTMLSection.EXPERIENCE]: compileArrayEntriesToHTML(
 			TemplateFileNames.EXPERIENCE_HTML,
-			careerProfile.experience,
+			resume.work || [],
 		),
 		[HTMLSection.EDUCATION]: compileArrayEntriesToHTML(
 			TemplateFileNames.EDUCATION_HTML,
-			careerProfile.education,
+			resume.education || [],
 		),
 		[HTMLSection.SKILLS]: compileTemplateHTML(TemplateFileNames.SKILLS_HTML, {
-			skills: careerProfile.skills,
+			skills: resume.skills || [],
 		}),
-		[HTMLSection.OBJECTIVE]: compileTemplateHTML(TemplateFileNames.OBJECTIVE_HTML, {
-			summary: careerProfile.summary,
-		}),
+		[HTMLSection.OBJECTIVE]: compileTemplateHTML(
+			TemplateFileNames.OBJECTIVE_HTML,
+			{
+				summary: resume.basics?.summary || "",
+			},
+		),
 		[HTMLSection.PUBLICATIONS]: compileArrayEntriesToHTML(
 			TemplateFileNames.PUBLICATIONS_HTML,
-			careerProfile.publications,
+			resume.publications || [],
 		),
 	};
 
-	console.log('HTML sections:', htmlSectionsMap);
+	console.log("HTML sections:", htmlSectionsMap);
 
 	// Generate full HTML
 	const fullHTML = generateFullHTML(htmlSectionsMap);
@@ -162,7 +168,11 @@ const generateFullHTML = (sections: Record<HTMLSection, string>): string => {
  * Writes the HTML index file
  */
 const writeHTMLIndex = (content: string) => {
-	const outputPath = join(process.cwd(), "../resume", OutputFileNames.HTML_INDEX);
+	const outputPath = join(
+		process.cwd(),
+		"../resume",
+		OutputFileNames.HTML_INDEX,
+	);
 	writeFileSync(outputPath, content.trim(), "utf8");
 	console.log(`Updated HTML file: ${outputPath}`);
 };

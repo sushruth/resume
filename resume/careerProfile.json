@@ -1,13 +1,199 @@
 {
-	"personal_info": {
+	"$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
+	"basics": {
 		"name": "Sushruth Sastry",
+		"label": "Senior Software Engineer",
 		"email": "sushruth.sastry@gmail.com",
-		"phone": "573 200 5345",
-		"location": "Monroe, WA",
-		"linkedin": "sushruth-sastry",
-		"github": "sushruth",
-		"title": "Senior Software Engineer"
+		"phone": "5732005345",
+		"url": "https://github.com/sushruth",
+		"summary": "Senior Software Engineer with 12+ years of experience leading frontend architecture at scale. Specialized in Frontend Platform Engineering, Developer Experience, and performance-sensitive web systems. Known for modernizing large legacy codebases into maintainable monorepo and micro-frontend platforms, defining engineering standards across organizations, and enabling hundreds of engineers to ship reliably.",
+		"location": {
+			"address": "13378 188th Ave SE",
+			"postalCode": "98272",
+			"city": "Monroe",
+			"region": "WA",
+			"countryCode": "US"
+		},
+		"profiles": [
+			{
+				"network": "LinkedIn",
+				"username": "sushruth-sastry",
+				"url": "https://linkedin.com/in/sushruth-sastry"
+			},
+			{
+				"network": "GitHub",
+				"username": "sushruth",
+				"url": "https://github.com/sushruth"
+			}
+		]
 	},
+	"work": [
+		{
+			"name": "DocuSign, Inc.",
+			"position": "Senior Software Engineer",
+			"location": "Seattle, WA",
+			"startDate": "2023-03",
+			"endDate": "Present",
+			"summary": "Senior engineer operating at platform and architectural scope for the Maestro frontend. Technical owner for Developer Experience and frontend infrastructure initiatives impacting 440+ engineers across multiple product teams.",
+			"highlights": [
+				"Delivered product features for Maestro's orchestration engine, including workflow step implementations and an internal design tooling utility that maps Figma colors to DocuSign design system tokens.",
+				"Led development of the 1FE open-source micro-frontend framework (github.com/docusign/1fe), an external release of DocuSign's internal platform enabling configuration-driven frontend development.",
+				"Designed and led adoption of a monorepo-based CI/CD model using Azure DevOps, enabling atomic releases and coordinated multi-package changes across teams.",
+				"Built an isolated local runtime environment for Micro-Frontends (Storybook-style), enabling independent development and eliminating brittle cross-team mocks.",
+				"Defined a shared component variant strategy consumed by 16 production applications, reducing UI divergence and duplicated implementation effort.",
+				"Drove convergence on frontend architectural standards through design reviews and platform tooling, reducing long-term maintenance cost."
+			]
+		},
+		{
+			"name": "Microsoft Corporation",
+			"position": "Software Development Engineer II",
+			"location": "Bellevue, WA",
+			"startDate": "2019-11",
+			"endDate": "2023-02",
+			"summary": "Senior individual contributor and technical lead within the Teams organization, focused on frontend architecture and platform modernization.",
+			"highlights": [
+				"Led early adoption of Webpack 5 Module Federation within Teams Admin Center, enabling independent feature deployment and reducing local dev loop time from several minutes to under a minute.",
+				"Owned frontend integration for the Visits analytics dashboard, displaying Teams usage metrics for healthcare organizations using connected EHR platforms like Epic.",
+				"Modernized build pipelines across Teams Admin Center products, migrating legacy systems to Webpack 5 and Yarn PnP to improve build reliability and performance.",
+				"Authored and maintained shared TypeScript libraries for MS Graph API consumption, establishing type-safety and versioning patterns adopted by adjacent teams.",
+				"Designed frontend resilience strategies for high-scale Frontline Worker scenarios, implementing graceful degradation for intermittent connectivity."
+			]
+		},
+		{
+			"name": "Microsoft Corporation",
+			"position": "Software Development Engineer I",
+			"location": "Bellevue, WA",
+			"startDate": "2018-09",
+			"endDate": "2019-11",
+			"highlights": [
+				"Designed and implemented the Setup Wizard framework for Teams Admin Center, which became the standard onboarding pattern for subsequent features.",
+				"Delivered the frontend for the EPIC–Teams healthcare integration, enabling clinical staff to join Teams meetings directly from EPIC workflows.",
+				"Created the team's first shared component and tooling libraries, including an OData-to-TypeScript generator and typed Microsoft Graph wrappers."
+			]
+		},
+		{
+			"name": "CVS Health",
+			"position": "UI Developer (Contract)",
+			"location": "Florham Park, NJ",
+			"startDate": "2016-08",
+			"endDate": "2018-07",
+			"highlights": [
+				"Led the migration of the CareGiver platform from AngularJS to Angular 2+, establishing a sustainable foundation for future development.",
+				"Developed a custom RequireJS dependency configuration generator to reduce manual errors in a pre-Webpack environment."
+			]
+		},
+		{
+			"name": "Heartland Payment Systems",
+			"position": "Full Stack Developer (Contract)",
+			"location": "Plano, TX",
+			"startDate": "2015-11",
+			"endDate": "2016-06",
+			"highlights": [
+				"Evaluated and prototyped mobile application architectures, comparing React Native with Angular-based hybrid approaches.",
+				"Executed backend modernization from PHP 5 to PHP 7, improving runtime performance and security posture."
+			]
+		},
+		{
+			"name": "Missouri S&T",
+			"position": "Graduate Teaching Assistant",
+			"location": "Rolla, MO",
+			"startDate": "2014-01",
+			"endDate": "2015-05",
+			"highlights": [
+				"Supported instruction and laboratory operations for Digital Signal Processing and Analog Signals courses."
+			]
+		},
+		{
+			"name": "Cachy Graphics / GXS",
+			"position": "Founder & Lead Developer",
+			"location": "Bangalore, India",
+			"startDate": "2013-07",
+			"endDate": "2014-04",
+			"highlights": [
+				"Founded and led a small services startup, delivering a warehouse distribution system for Nestlé using Cordova-based mobile technology."
+			]
+		},
+		{
+			"name": "EzSwype Business Solutions",
+			"position": "Software Engineer",
+			"location": "Bangalore, India",
+			"startDate": "2012-09",
+			"endDate": "2013-06",
+			"highlights": [
+				"Established the initial frontend architecture for the company's payment platform, including build tooling and UI foundations."
+			]
+		}
+	],
+	"education": [
+		{
+			"institution": "Missouri University of Science and Technology",
+			"area": "Electrical and Computer Engineering",
+			"studyType": "M.S.",
+			"startDate": "2013",
+			"endDate": "2015"
+		},
+		{
+			"institution": "Visvesvaraya Technological University",
+			"area": "Electronics and Communications",
+			"studyType": "B.E.",
+			"startDate": "2008",
+			"endDate": "2012"
+		}
+	],
+	"skills": [
+		{
+			"name": "Architecture & Platform Engineering",
+			"keywords": [
+				"Micro-Frontend Architecture (Module Federation)",
+				"Monorepo Strategy & Distributed Builds (Nx, Remote Caching)",
+				"CI/CD System Design & Governance (Azure DevOps)",
+				"Frontend Platform Standardization",
+				"Design System Architecture & Versioning"
+			]
+		},
+		{
+			"name": "Frontend Engineering",
+			"keywords": [
+				"TypeScript System Design (Strict Typing, Generics, Conditional Types)",
+				"React (Hooks, Context, Suspense, Error Boundaries)",
+				"State Management (Redux Toolkit, MobX, Zustand)",
+				"Web Performance Engineering (Core Web Vitals, Bundle Analysis)",
+				"Package Management (Yarn Berry / PnP, npm workspaces)"
+			]
+		},
+		{
+			"name": "Backend & Integration",
+			"keywords": [
+				"Backend-for-Frontend (BFF) Patterns",
+				"API Contract Design (REST, OData, type generation and automation, Swagger)",
+				"C# / .NET Service Integration",
+				"Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)"
+			]
+		},
+		{
+			"name": "Modernization & Developer Experience",
+			"keywords": [
+				"Developer Experience (DX) Platform Engineering",
+				"Legacy Frontend Modernization (AngularJS to React)",
+				"Accessibility Engineering (WCAG 2.1)",
+				"Automated Dependency Management (Renovate, Dependabot)"
+			]
+		}
+	],
+	"publications": [
+		{
+			"name": "A Modular Scheme to Detect and Combat Sinusoidal Variation in Fading Channels",
+			"publisher": "International Telemetering Conference",
+			"releaseDate": "2015",
+			"url": "https://scholarsmine.mst.edu/ele_comeng_facwork/index.50.html"
+		},
+		{
+			"name": "\"i\" — A novel algorithm for optical character recognition (OCR)",
+			"publisher": "IEEE International Multi-Conference (iMac4s)",
+			"releaseDate": "2013",
+			"url": "https://ieeexplore.ieee.org/document/6526442/"
+		}
+	],
 	"key_differentiators": {
 		"summary": "Three reasons to hire me as a Principal/Lead Engineer",
 		"points": [
@@ -28,171 +214,5 @@
 				"detail": "I use AI tools for velocity, but I only list AI work when it reflects principal-level ownership—strategy, reliability, and long-term impact. I focus on the work AI cannot do: production reliability, organizational judgment, and long-term maintainability."
 			}
 		]
-	},
-	"summary": "Senior Software Engineer with 12+ years of experience leading frontend architecture at scale. Specialized in Frontend Platform Engineering, Developer Experience, and performance-sensitive web systems. Known for modernizing large legacy codebases into maintainable monorepo and micro-frontend platforms, defining engineering standards across organizations, and enabling hundreds of engineers to ship reliably.",
-	"experience": [
-		{
-			"company": "DocuSign, Inc.",
-			"role": "Senior Software Engineer",
-			"location": "Seattle, WA",
-			"start_date": "2023-03",
-			"end_date": "Present",
-			"description": "Senior engineer operating at platform and architectural scope for the Maestro frontend. Technical owner for Developer Experience and frontend infrastructure initiatives impacting 440+ engineers across multiple product teams.",
-			"highlights": [
-				"Delivered product features for Maestro's orchestration engine, including workflow step implementations and an internal design tooling utility that maps Figma colors to DocuSign design system tokens.",
-				"Led development of the 1FE open-source micro-frontend framework (github.com/docusign/1fe), an external release of DocuSign's internal platform enabling configuration-driven frontend development.",
-				"Designed and led adoption of a monorepo-based CI/CD model using Azure DevOps, enabling atomic releases and coordinated multi-package changes across teams.",
-				"Built an isolated local runtime environment for Micro-Frontends (Storybook-style), enabling independent development and eliminating brittle cross-team mocks.",
-				"Defined a shared component variant strategy consumed by 16 production applications, reducing UI divergence and duplicated implementation effort.",
-				"Drove convergence on frontend architectural standards through design reviews and platform tooling, reducing long-term maintenance cost."
-			]
-		},
-		{
-			"company": "Microsoft Corporation",
-			"role": "Software Development Engineer II",
-			"location": "Bellevue, WA",
-			"start_date": "2019-11",
-			"end_date": "2023-02",
-			"description": "Senior individual contributor and technical lead within the Teams organization, focused on frontend architecture and platform modernization.",
-			"highlights": [
-				"Led early adoption of Webpack 5 Module Federation within Teams Admin Center, enabling independent feature deployment and reducing local dev loop time from several minutes to under a minute.",
-				"Owned frontend integration for the Visits analytics dashboard, displaying Teams usage metrics for healthcare organizations using connected EHR platforms like Epic.",
-				"Modernized build pipelines across Teams Admin Center products, migrating legacy systems to Webpack 5 and Yarn PnP to improve build reliability and performance.",
-				"Authored and maintained shared TypeScript libraries for MS Graph API consumption, establishing type-safety and versioning patterns adopted by adjacent teams.",
-				"Designed frontend resilience strategies for high-scale Frontline Worker scenarios, implementing graceful degradation for intermittent connectivity."
-			]
-		},
-		{
-			"company": "Microsoft Corporation",
-			"role": "Software Development Engineer I",
-			"location": "Bellevue, WA",
-			"start_date": "2018-09",
-			"end_date": "2019-11",
-			"highlights": [
-				"Designed and implemented the Setup Wizard framework for Teams Admin Center, which became the standard onboarding pattern for subsequent features.",
-				"Delivered the frontend for the EPIC–Teams healthcare integration, enabling clinical staff to join Teams meetings directly from EPIC workflows.",
-				"Created the team's first shared component and tooling libraries, including an OData-to-TypeScript generator and typed Microsoft Graph wrappers."
-			]
-		},
-		{
-			"company": "CVS Health",
-			"role": "UI Developer (Contract)",
-			"location": "Florham Park, NJ",
-			"start_date": "2016-08",
-			"end_date": "2018-07",
-			"highlights": [
-				"Led the migration of the CareGiver platform from AngularJS to Angular 2+, establishing a sustainable foundation for future development.",
-				"Developed a custom RequireJS dependency configuration generator to reduce manual errors in a pre-Webpack environment."
-			]
-		},
-		{
-			"company": "Heartland Payment Systems",
-			"role": "Full Stack Developer (Contract)",
-			"location": "Plano, TX",
-			"start_date": "2015-11",
-			"end_date": "2016-06",
-			"highlights": [
-				"Evaluated and prototyped mobile application architectures, comparing React Native with Angular-based hybrid approaches.",
-				"Executed backend modernization from PHP 5 to PHP 7, improving runtime performance and security posture."
-			]
-		},
-		{
-			"company": "Missouri S&T",
-			"role": "Graduate Teaching Assistant",
-			"location": "Rolla, MO",
-			"start_date": "2014-01",
-			"end_date": "2015-05",
-			"highlights": [
-				"Supported instruction and laboratory operations for Digital Signal Processing and Analog Signals courses."
-			]
-		},
-		{
-			"company": "Cachy Graphics / GXS",
-			"role": "Founder & Lead Developer",
-			"location": "Bangalore, India",
-			"start_date": "2013-07",
-			"end_date": "2014-04",
-			"highlights": [
-				"Founded and led a small services startup, delivering a warehouse distribution system for Nestlé using Cordova-based mobile technology."
-			]
-		},
-		{
-			"company": "EzSwype Business Solutions",
-			"role": "Software Engineer",
-			"location": "Bangalore, India",
-			"start_date": "2012-09",
-			"end_date": "2013-06",
-			"highlights": [
-				"Established the initial frontend architecture for the company's payment platform, including build tooling and UI foundations."
-			]
-		}
-	],
-	"education": [
-		{
-			"degree": "M.S. in Electrical and Computer Engineering",
-			"institution": "Missouri University of Science and Technology",
-			"location": "Rolla, MO",
-			"year": "2015"
-		},
-		{
-			"degree": "B.E. in Electronics and Communications",
-			"institution": "Visvesvaraya Technological University",
-			"location": "Bangalore, India",
-			"year": "2012"
-		}
-	],
-	"skills": [
-		{
-			"category": "Architecture & Platform Engineering",
-			"items": [
-				"Micro-Frontend Architecture (Module Federation)",
-				"Monorepo Strategy & Distributed Builds (Nx, Remote Caching)",
-				"CI/CD System Design & Governance (Azure DevOps)",
-				"Frontend Platform Standardization",
-				"Design System Architecture & Versioning"
-			]
-		},
-		{
-			"category": "Frontend Engineering",
-			"items": [
-				"TypeScript System Design (Strict Typing, Generics, Conditional Types)",
-				"React (Hooks, Context, Suspense, Error Boundaries)",
-				"State Management (Redux Toolkit, MobX, Zustand)",
-				"Web Performance Engineering (Core Web Vitals, Bundle Analysis)",
-				"Package Management (Yarn Berry / PnP, npm workspaces)"
-			]
-		},
-		{
-			"category": "Backend & Integration",
-			"items": [
-				"Backend-for-Frontend (BFF) Patterns",
-				"API Contract Design (REST, OData, type generation and automation, Swagger)",
-				"C# / .NET Service Integration",
-				"Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)"
-			]
-		},
-		{
-			"category": "Modernization & Developer Experience",
-			"items": [
-				"Developer Experience (DX) Platform Engineering",
-				"Legacy Frontend Modernization (AngularJS to React)",
-				"Accessibility Engineering (WCAG 2.1)",
-				"Automated Dependency Management (Renovate, Dependabot)"
-			]
-		}
-	],
-	"publications": [
-		{
-			"title": "A Modular Scheme to Detect and Combat Sinusoidal Variation in Fading Channels",
-			"conference": "International Telemetering Conference",
-			"year": "2015",
-			"link": "https://scholarsmine.mst.edu/ele_comeng_facwork/index.50.html"
-		},
-		{
-			"title": "\"i\" — A novel algorithm for optical character recognition (OCR)",
-			"conference": "IEEE International Multi-Conference (iMac4s)",
-			"year": "2013",
-			"link": "https://ieeexplore.ieee.org/document/6526442/"
-		}
-	]
+	}
 }

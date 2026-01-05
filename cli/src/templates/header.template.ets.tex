@@ -1,18 +1,31 @@
+<?
+// Extract values from JSON Resume basics schema
+const locationStr = location?.city && location?.region
+  ? `${location.city}, ${location.region}`
+  : location?.city || location?.region || '';
+
+const githubUsername = profiles?.find(p => p.network === 'GitHub')?.username || '';
+const linkedinUsername = profiles?.find(p => p.network === 'LinkedIn')?.username || '';
+?>
 \begin{center}
 	\begin{minipage}[b]{.2\textwidth}
 	\raggedright
-	{\large <?= phone ?>} \\
-	{<?= location ?>} \\
-	\href{mailto:<?= email ?>}{<?= email ?>}
+	{\large <?= phone || '' ?>} \\
+	{<?= locationStr ?>} \\
+	\href{mailto:<?= email || '' ?>}{<?= email || '' ?>}
 	\end{minipage}%
 	\begin{minipage}[b]{.6\textwidth}
-	\centering {\huge <?= name ?>} \\
+	\centering {\huge <?= name || '' ?>} \\
     \vspace{.7em}
-    <?= title ?>
+    <?= label || '' ?>
 	\end{minipage}%
 	\begin{minipage}[b]{.2\textwidth}
 	\raggedleft
-	\href{https://github.com/<?= github ?>}{GitHub: <?= github ?>} \\
-	\href{https://www.linkedin.com/in/<?= linkedin ?>}{LinkedIn: <?= linkedin ?>}
+	<? if (githubUsername) { ?>
+	\href{https://github.com/<?= githubUsername ?>}{GitHub: <?= githubUsername ?>} \\
+	<? } ?>
+	<? if (linkedinUsername) { ?>
+	\href{https://www.linkedin.com/in/<?= linkedinUsername ?>}{LinkedIn: <?= linkedinUsername ?>}
+	<? } ?>
 	\end{minipage}
 \end{center}

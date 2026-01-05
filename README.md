@@ -9,16 +9,16 @@ This repository contains the source for my resume in a structured, automated for
 
 ### Architecture
 
-The resume is managed as structured data (`careerProfile.json`) rather than static documents. A CLI tool generates LaTeX sections from this single source of truth, which are compiled into the final PDF. This approach enables version control, automation, and consistency.
+The resume is managed as structured data following the **[JSON Resume](https://jsonresume.org/)** standard (`careerProfile.json`) rather than static documents. A CLI tool generates LaTeX sections and HTML from this single source of truth. The LaTeX is compiled into PDF, while HTML is served directly. This approach enables version control, automation, and consistency.
 
 ### Components
 
 | Layer | Technology | Role |
 | :--- | :--- | :--- |
-| **Data** | `careerProfile.json` | Single source of truth. |
-| **Generation** | **Bun + TypeScript CLI** (`/cli`) | Transforms JSON → LaTeX. |
-| **Output** | **LaTeX** (`resume.tex`, `/sections`) | Renders to PDF. |
-| **Templating** | `jslatex` | Programmatic LaTeX generation. |
+| **Data** | `careerProfile.json` (JSON Resume) | Single source of truth. |
+| **Generation** | **Bun + TypeScript CLI** (`/cli`) | Transforms JSON → LaTeX + HTML. |
+| **Output** | **LaTeX** (`resume.tex`, `/sections`) + **HTML** (`index.html`) | PDF + Web. |
+| **Templating** | `jslatex` (LaTeX) + `ejs` (HTML) | Programmatic generation. |
 
 ### Workflow
 

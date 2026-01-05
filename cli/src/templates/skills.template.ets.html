@@ -1,14 +1,14 @@
-<table style="width: 100%; border-collapse: collapse;">
-  <tbody>
-<%
-skills.forEach((skill, index) => {
-%>
-    <tr style="border-bottom: 1px solid #ccc;">
-      <td style="width: 28%; font-weight: bold; vertical-align: top;"><%= skill.category %></td>
-      <td style="width: 72%; vertical-align: top;"><%= skill.items.join(', ') %></td>
-    </tr>
-<%
-})
-%>
-  </tbody>
+<table style="width: 100%; border-collapse: collapse">
+	<tbody>
+		<% skills.forEach((skill, index) => { %>
+		<tr style="border-bottom: 1px solid #ccc">
+			<td style="width: 28%; font-weight: bold; vertical-align: top">
+				<%= skill.name || '' %>
+			</td>
+			<td style="width: 72%; vertical-align: top">
+				<%= (skill.keywords || []).join(', ') %>
+			</td>
+		</tr>
+		<% }) %>
+	</tbody>
 </table>
