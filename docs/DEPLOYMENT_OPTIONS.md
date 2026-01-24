@@ -18,7 +18,7 @@ The build process is handled by `infrastructure/build.sh`, which:
 2. **Project name**: `resume` (or your preferred name)
 3. **Root directory (path)**: `infrastructure`
 4. **Build command**: `bash build.sh`
-5. **Build output directory**: `.` (current directory)
+5. **Build output directory**: `public`
 
 ### Advanced Settings
 
@@ -29,8 +29,8 @@ The build process is handled by `infrastructure/build.sh`, which:
 ### Notes
 - The root directory is set to `infrastructure`, so the build runs from there
 - The build command is simply `bash build.sh` (not `bash infrastructure/build.sh`)
-- The HTML file is generated at `infrastructure/index.html` by the build script
-- Cloudflare Pages will serve from the `infrastructure` directory
+- The HTML file is generated in the `infrastructure/public/` directory by the build script
+- The `public` output directory avoids symlink issues from `node_modules`
 
 ---
 

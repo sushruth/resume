@@ -1,6 +1,7 @@
 # Generated LaTeX sections and HTML resume
 infrastructure/resume/sections/
 infrastructure/resume/index.html
+infrastructure/public/
 
 # LaTeX build artifacts
 *.aux
