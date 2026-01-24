@@ -126,7 +126,7 @@ const main = async () => {
  */
 const generateFullHTML = (sections: Record<HTMLSection, string>): string => {
 	// Read the HTML template file
-	const templatePath = resolve(process.cwd(), "../resume/resume.html.ejs");
+	const templatePath = resolve(process.cwd(), "../resume.html.ejs");
 	const template = readFileSync(templatePath, "utf8");
 	
 	// Use EJS to render the template with sections
@@ -149,7 +149,7 @@ const generateFullHTML = (sections: Record<HTMLSection, string>): string => {
 const writeHTMLIndex = (content: string) => {
 	const outputPath = join(
 		process.cwd(),
-		"../resume",
+		"..",
 		OutputFileNames.HTML_INDEX,
 	);
 	writeFileSync(outputPath, content.trim(), "utf8");
