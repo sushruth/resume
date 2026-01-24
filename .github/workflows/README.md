@@ -1,17 +1,18 @@
-# GitHub Actions Workflows
+# GitHub Actions Workflows - Resume Template
 
 ## Release Workflow (`release.yml`)
 
-Automatically builds and releases your resume PDF whenever changes are pushed to `main`.
+Automatically builds and releases your resume PDF whenever changes are pushed to `main`. This workflow works for any forked repository with no configuration needed.
 
 ### Trigger
 
 Runs on push to `main` branch **only if** one of these paths change:
-- `cli/**` - CLI codebase changes
-- `resume/**` - Resume source files (data, LaTeX, styles)
+- `infrastructure/cli/**` - CLI codebase changes
+- `infrastructure/resume/**` - Resume LaTeX files and styles
+- `user-content/**` - User resume data (careerProfile.json, metadata)
 - `.github/workflows/release.yml` - Workflow changes
 
-Does NOT trigger on changes to: docs, README, AGENTS.md, etc.
+Does NOT trigger on changes to: docs, root README.md, etc.
 
 ### Concurrency Control
 
@@ -26,11 +27,12 @@ This prevents multiple builds from running simultaneously and ensures only the l
 1. **Checkout code** - Clone the repository
 2. **Set up Bun** - Install the Bun JavaScript runtime
 3. **Install dependencies** - Install CLI dependencies
-4. **Sync LaTeX and HTML files** - Run `bun run sync` to generate LaTeX sections and HTML resume from `careerProfile.json`
-5. **Compile LaTeX document** - Use `xu-cheng/latex-action` with TeX Live `small` scheme and required packages
-6. **Create release** - Use GitHub CLI to create a new GitHub release with version `v{run_number}`
-7. **Upload release asset** - Use GitHub CLI to attach the generated PDF to the release
-8. **Deploy to GitHub Pages** - Deploy the HTML resume to GitHub Pages for web hosting
+4. **Sync LaTeX files** - Run `bun run sync` from `infrastructure/cli/` to generate LaTeX sections from `user-content/careerProfile.json`
+5. **Compile LaTeX document** - Use `xu-cheng/latex-action` with TeX Live packages to compile PDF
+6. **Set current year and PDF name** - Generate timestamped filename
+7. **Rename PDF** - Format PDF as `Your_Name_Resume_YYYY.pdf`
+8. **Create release** - Use GitHub CLI to create a new GitHub release with version `v{run_number}`
+9. **Upload release asset** - Use GitHub CLI to attach the generated PDF to the release
 
 ### Build Times
 
@@ -44,27 +46,27 @@ This prevents multiple builds from running simultaneously and ensures only the l
 Each workflow run creates a GitHub Release with:
 - **Tag**: `v{run_number}` (e.g., `v42`)
 - **Name**: `Resume v{run_number}`
-- **Asset**: `Sushruth_Sastry_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
+- **Asset**: `{Your_Name}_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
 
-Additionally, the HTML resume is deployed to GitHub Pages at `https://sushruth.github.io/resume/`.
+Releases are automatically listed on the repository's Releases page.
 
-Releases are automatically listed on the repo's [Releases](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
+Note: This template does not include GitHub Pages deployment. Users can enable it separately if desired.
 
 ### Troubleshooting
 
-#### PDF or HTML not generated
-- Check that all required files exist in `resume/` folder
-- Run `bun run sync` locally from `cli/` directory to validate CLI
-- Check workflow logs for LaTeX compilation or HTML generation errors
-- Verify HTML templates in `cli/src/templates/` are valid
+#### PDF not generated
+- Check that all required files exist in `user-content/` and `infrastructure/resume/` folders
+- Run `bun run sync` locally from `infrastructure/cli/` directory to validate CLI
+- Check workflow logs for LaTeX compilation errors
+- Verify templates in `infrastructure/cli/src/templates/` are valid
 
 #### LaTeX package install fails
-- Confirm `extra_packages` includes all required packages from `resume.tex` and `TLCresume.sty`
+- Confirm environment variable `LATEX_PACKAGES` includes all required packages from `infrastructure/resume.tex` and `infrastructure/resume/TLCresume.sty`
 - Check TeX Live package names (tlmgr uses lowercase names like `pdfx`, `arydshln`)
 
 #### Workflow doesn't trigger
-- Verify your push includes changes to `cli/**`, `resume/**`, or workflow
-- Documentation-only changes won't trigger the build
+- Verify your push includes changes to `infrastructure/cli/**`, `infrastructure/resume/**`, `user-content/**`, or workflow
+- Documentation-only changes (like docs/ folder) won't trigger build
 - Check branch is `main` (not `develop` or other branches)
 
 #### Build cancelled unexpectedly
@@ -76,20 +78,17 @@ Releases are automatically listed on the repo's [Releases](https://github.com/Su
 To test the build locally using TeX Live:
 
 ```bash
-# Sync LaTeX and HTML files
-cd cli
+# Sync LaTeX files
+cd infrastructure/cli
 bun run sync
-cd ..
-
-# Check HTML output
-open resume/index.html
+cd ../..
 
 # Compile PDF
-cd resume
+cd infrastructure/resume
 latexmk -pdf -interaction=nonstopmode resume.tex
-cd ..
+cd ../..
 
 # Check output
-ls -lh resume/resume.pdf
+ls -lh infrastructure/resume/resume.pdf
 ```
 If you prefer `pdflatex`, run it twice to resolve references.
