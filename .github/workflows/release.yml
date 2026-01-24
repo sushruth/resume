@@ -1,0 +1,89 @@
+name: Create Resume PDF and Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - infrastructure/cli/**
+      - infrastructure/resume/**
+      - user-content/**
+      - .github/workflows/release.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  LATEX_PACKAGES: >-
+    cjk
+    pdfx
+    embedfile
+    arydshln
+    standalone
+    import
+    moresize
+    anyfontsize
+    csquotes
+    enumitem
+    titlesec
+    blindtext
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compute data hash
+        run: echo "DATA_HASH=$(sha256sum user-content/careerProfile.json | cut -d' ' -f1)" >> $GITHUB_ENV
+
+      - name: Cache LaTeX sections
+        uses: actions/cache@v4
+        with:
+          path: infrastructure/resume/sections
+          key: latex-sections-${{ env.DATA_HASH }}
+          restore-keys: latex-sections-
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          cache: true
+
+      - name: Install dependencies
+        run: bun install
+        working-directory: ./infrastructure/cli
+
+      - name: Sync LaTeX files
+        run: bun run sync
+        working-directory: ./infrastructure/cli
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: infrastructure/resume
+          root_file: resume.tex
+          pre_compile: tlmgr install ${{ env.LATEX_PACKAGES }}
+
+      - name: Set current year and PDF name
+        run: |
+          YEAR=$(date +%Y)
+          echo "YEAR=$YEAR" >> $GITHUB_ENV
+          echo "PDF_NAME=Sushruth_Sastry_Resume_$YEAR.pdf" >> $GITHUB_ENV
+
+      - name: Rename PDF
+        run: mv "infrastructure/resume/resume.pdf" "infrastructure/resume/${{ env.PDF_NAME }}"
+
+      - name: Create release
+        run: gh release create v${{ github.run_number }} --title "Resume v${{ github.run_number }}" --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload release asset
+        run: gh release upload v${{ github.run_number }} "./infrastructure/resume/${{ env.PDF_NAME }}" --clobber
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

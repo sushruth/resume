@@ -1,0 +1,8 @@
+<?
+// JSON Resume schema: studyType (e.g., "M.S."), area (e.g., "Computer Science")
+const degree = entry.studyType && entry.area ? `${entry.studyType} in ${entry.area}` : entry.studyType || entry.area || '';
+const year = entry.endDate || entry.startDate || '';
+?>
+\subsection{{<?= degree ?> \hfill <?= year ?>}}
+\subtext{<?= entry.institution || '' ?>}
+\vspace*{3pt}

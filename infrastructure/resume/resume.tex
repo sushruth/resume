@@ -1,0 +1,75 @@
+\documentclass[letter,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{CJKutf8}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[none]{hyphenat}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage[a-3b]{pdfx} % Mandatory for embedding JSON validly
+\usepackage{embedfile}
+
+\pdfobjcompresslevel=0 % Maximize parser compatibility
+\embedfile[mimetype=application/json, desc=Resume Source Data]{careerProfile.json} % Embed JSON safely
+
+%====================
+% File:         resume.tex
+% Modifying author:       https://github.com/gobborg
+% Last Updated: Dec 26, 2021
+% Notes:        I just made it prettier and better suited to
+%               my needs.
+%====================
+
+%====================
+% File:         resume.tex
+% Original author:       https://github.com/TimmyChan
+%               https://www.linkedin.com/in/timmy-l-chan/
+% Last Updated: Nov 19, 2021
+% Notes:        All formatting is done in TLCresume.sty
+%               No need to touch that file.
+%               All actual content is in the sections/ folder.
+%====================
+
+\usepackage{TLCresume}
+
+% Contact information is now managed in careerProfile.json
+% and synced to sections/_header.tex via the CLI.
+
+\begin{document}
+\import{sections/}{_header}
+
+\import{sections/}{objective}
+\vspace*{3pt}
+
+\section{Proficiency}
+\vspace*{3pt}
+\import{sections/}{skills}
+\vspace*{3pt}
+
+% \section{Project Summary}
+% \vspace*{3pt}
+% \import{sections/}{projectsummary}
+% \vspace*{7pt}
+
+\section{Experience}
+\import{sections/}{experience}
+\vspace*{3pt}
+
+\section{Education}
+\import{sections/}{education}
+\vspace*{3pt}
+
+% \section{Certifications}
+% \import{sections/}{certifications}
+% \vspace*{7pt}
+
+\section{Publications}
+\import{sections/}{publications}
+\vspace*{3pt}
+
+% \section{Hobbies}
+% \import{sections/}{hobbies}
+
+\end{document}

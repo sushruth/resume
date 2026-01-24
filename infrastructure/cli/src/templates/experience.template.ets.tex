@@ -1,0 +1,17 @@
+<? import type { WorkEntry } from '../../sync.types'; ?>
+
+<? const dateRange = `${entry.startDate || ''} - ${entry.endDate || ''}`; ?>
+
+\subsection{{<?= entry.position || '' ?> \hfill <?= dateRange ?>}}
+\subtext{<?= entry.name || '' ?> \hfill <?= entry.location || '' ?>}
+\vspace*{1pt}
+<? if (entry.summary) { ?>
+<?= entry.summary ?>
+\vspace*{1pt}
+<? } ?>
+\begin{zitemize}
+<? (entry.highlights || []).forEach(highlight => { ?>
+\item <?= highlight ?>
+<? }) ?>
+\end{zitemize}
+\vspace*{3pt}
