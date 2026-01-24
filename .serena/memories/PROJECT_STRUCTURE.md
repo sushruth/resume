@@ -3,7 +3,7 @@
 ## Directory Layout
 
 ```
-Sushruth-Sastry---Resume-2025/
+resume/
 ├── resume/                          # Resume source files (all generated files gitignored)
 │   ├── careerProfile.json          # Single source of truth for all resume data
 │   ├── resume.tex                  # Main LaTeX document
@@ -50,10 +50,12 @@ Sushruth-Sastry---Resume-2025/
 ## Key Separation
 
 ### Source vs. Artifacts
+
 - **Source** (committed): `resume/careerProfile.json`, `resume.tex`, `resume.xmpdata`, `TLCresume.sty`, `/cli`
 - **Generated** (gitignored): `resume/sections/*.tex`, `resume.pdf`, Docker images, build caches
 
 ### Data Flow
+
 ```
 resume/careerProfile.json
         ↓
@@ -73,6 +75,7 @@ resume/careerProfile.json
 ## File Naming Convention
 
 All hardcoded filenames are strictly typed in `/cli/src/file-names.ts`:
+
 - `InputFileNames` enum - Input files
 - `OutputFileNames` enum - Generated .tex files
 - `TemplateFileNames` enum - Template files

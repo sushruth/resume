@@ -1,6 +1,6 @@
 # Resume Sync CLI
 
-This CLI is the automation engine for the [Resume-as-Code](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation and a complete HTML resume for web hosting.
+This CLI is the automation engine for the [Resume-as-Code](https://github.com/Sushruth-Sastry/resume) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation and a complete HTML resume for web hosting.
 
 ---
 
@@ -41,36 +41,37 @@ The CLI expects `careerProfile.json` to adhere to the **[JSON Resume](https://js
 
 #### Primary Sections
 
--   **`basics`**: Personal information and contact details
-    -   `name`, `label`, `email`, `phone`, `url`, `summary`
-    -   `location`: Object with `city`, `region`, `countryCode`, etc.
-    -   `profiles`: Array of social profiles (LinkedIn, GitHub, etc.)
--   **`work`**: Array of work experience entries
-    -   `name` (company), `position`, `location`, `startDate`, `endDate`
-    -   `summary`, `highlights` (array of accomplishments)
--   **`education`**: Array of education entries
-    -   `institution`, `area` (field of study), `studyType` (degree)
-    -   `startDate`, `endDate`
--   **`skills`**: Array of skill entries
-    -   `name` (skill category), `keywords` (array of skills)
--   **`publications`**: Array of publication entries
-    -   `name`, `publisher`, `releaseDate`, `url`
--   **`projects`**: Array of project entries (optional)
--   **`awards`**: Array of awards (optional)
--   **`certificates`**: Array of certificates (optional)
--   **`languages`**: Array of language proficiencies (optional)
--   **`interests`**: Array of interests (optional)
--   **`references`**: Array of references (optional)
+- **`basics`**: Personal information and contact details
+  - `name`, `label`, `email`, `phone`, `url`, `summary`
+  - `location`: Object with `city`, `region`, `countryCode`, etc.
+  - `profiles`: Array of social profiles (LinkedIn, GitHub, etc.)
+- **`work`**: Array of work experience entries
+  - `name` (company), `position`, `location`, `startDate`, `endDate`
+  - `summary`, `highlights` (array of accomplishments)
+- **`education`**: Array of education entries
+  - `institution`, `area` (field of study), `studyType` (degree)
+  - `startDate`, `endDate`
+- **`skills`**: Array of skill entries
+  - `name` (skill category), `keywords` (array of skills)
+- **`publications`**: Array of publication entries
+  - `name`, `publisher`, `releaseDate`, `url`
+- **`projects`**: Array of project entries (optional)
+- **`awards`**: Array of awards (optional)
+- **`certificates`**: Array of certificates (optional)
+- **`languages`**: Array of language proficiencies (optional)
+- **`interests`**: Array of interests (optional)
+- **`references`**: Array of references (optional)
 
 #### Custom Extensions
 
 JSON Resume allows additional properties. This project includes:
 
--   **`key_differentiators`**: Custom section for principal-level positioning
-    -   `summary`: Section header
-    -   `points`: Array of objects with `header` and `detail` fields
+- **`key_differentiators`**: Custom section for principal-level positioning
+  - `summary`: Section header
+  - `points`: Array of objects with `header` and `detail` fields
 
 **Example structure:**
+
 ```json
 {
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/master/schema.json",
