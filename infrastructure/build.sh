@@ -19,6 +19,6 @@ bun run sync
 
 # Create public directory and copy index.html
 mkdir -p "$SCRIPT_DIR/public"
-cp "$SCRIPT_DIR/resume/index.html" "$SCRIPT_DIR/public/index.html"
+cp "$SCRIPT_DIR/index.html" "$SCRIPT_DIR/public/index.html"
 
 echo "Build complete!"
