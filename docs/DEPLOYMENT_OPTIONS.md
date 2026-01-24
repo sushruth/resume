@@ -16,19 +16,20 @@ The build process is handled by `infrastructure/build.sh`, which:
 
 1. **Repository**: `sushruth/resume`
 2. **Project name**: `resume` (or your preferred name)
-3. **Build command**: (leave empty)
-4. **Deploy command**: `bash infrastructure/build.sh`
-5. **Path**: `infrastructure`
+3. **Root directory (path)**: `infrastructure`
+4. **Build command**: `bash build.sh`
+5. **Build output directory**: `.` (current directory)
 
 ### Advanced Settings
 
-**Non-production branch deploy command**: `bash infrastructure/build.sh`
+**Non-production branch deploy command**: `bash build.sh`
 
 **Builds for non-production branches**: ✓ Enabled (if you want preview deployments)
 
 ### Notes
-- The deploy command handles all building and file preparation
-- The HTML file is copied to `infrastructure/index.html` by the build script
+- The root directory is set to `infrastructure`, so the build runs from there
+- The build command is simply `bash build.sh` (not `bash infrastructure/build.sh`)
+- The HTML file is generated at `infrastructure/index.html` by the build script
 - Cloudflare Pages will serve from the `infrastructure` directory
 
 ---
