@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Install Bun if not present
 if ! command -v bun &> /dev/null; then
     echo "Installing Bun..."
@@ -10,12 +13,11 @@ if ! command -v bun &> /dev/null; then
 fi
 
 # Navigate to CLI directory and run sync
-cd cli
+cd "$SCRIPT_DIR/cli"
 bun install
 bun run sync
-cd ..
 
-# Copy index.html to root for Cloudflare Pages
-cp resume/index.html ./index.html
+# Copy index.html to infrastructure directory
+cp "$SCRIPT_DIR/resume/index.html" "$SCRIPT_DIR/index.html"
 
 echo "Build complete!"
