@@ -41,7 +41,7 @@ The build process is handled by `infrastructure/build.sh`, which:
 1. **Framework Preset**: Other
 2. **Root Directory**: `infrastructure`
 3. **Build Command**: `bash build.sh`
-4. **Output Directory**: `.` (current directory, since build.sh outputs index.html to infrastructure/)
+4. **Output Directory**: `public`
 5. **Install Command**: (leave default or empty - Bun will be installed by build.sh)
 
 ### Alternative: vercel.json
@@ -50,15 +50,16 @@ Create a `vercel.json` file at the repository root:
 
 ```json
 {
-  "buildCommand": "bash infrastructure/build.sh",
-  "outputDirectory": "infrastructure",
+  "buildCommand": "cd infrastructure && bash build.sh",
+  "outputDirectory": "infrastructure/public",
   "installCommand": "echo 'Dependencies installed by build.sh'"
 }
 ```
 
 ### Notes
-- Vercel will automatically detect the `index.html` in the output directory
-- The build script handles Bun installation, so no separate install step is needed
+- The build script creates a clean `public` directory with only the HTML file
+- This avoids symlink issues from `node_modules`
+- Vercel will serve the `index.html` from the `public` directory
 
 ---
 
@@ -68,7 +69,7 @@ Create a `vercel.json` file at the repository root:
 
 1. **Base directory**: `infrastructure`
 2. **Build command**: `bash build.sh`
-3. **Publish directory**: `.` (current directory)
+3. **Publish directory**: `public`
 
 ### Alternative: netlify.toml
 
@@ -78,14 +79,16 @@ Create a `netlify.toml` file at the repository root:
 [build]
   base = "infrastructure"
   command = "bash build.sh"
-  publish = "."
+  publish = "public"
 
 [build.environment]
   NODE_VERSION = "20"
 ```
 
 ### Notes
-- Netlify will serve the `index.html` from the publish directory
+- The build script creates a clean `public` directory with only the HTML file
+- This avoids symlink issues from `node_modules`
+- Netlify will serve the `index.html` from the `public` directory
 - The build script installs Bun automatically
 
 ---
@@ -95,8 +98,16 @@ Create a `netlify.toml` file at the repository root:
 ### Configuration
 
 1. **Type**: Static Site
-2. **Build Command**: `bash infrastructure/build.sh`
-3. **Publish directory**: `infrastructure`
+2. **Root Directory**: `infrastructure`
+3. **Build Command**: `bash build.sh`
+4. **Publish directory**: `public`
+
+### Alternative (if root directory not supported)
+
+If Render doesn't support setting a root directory:
+
+1. **Build Command**: `cd infrastructure && bash build.sh`
+2. **Publish directory**: `infrastructure/public`
 
 ### Environment Variables (Optional)
 
@@ -104,8 +115,9 @@ If needed, you can set:
 - `NODE_VERSION`: `20` (though the build script installs Bun independently)
 
 ### Notes
-- Render.com will serve files from the publish directory
-- The build process is straightforward since everything is handled by the build script
+- The build script creates a clean `public` directory with only the HTML file
+- This avoids symlink issues from `node_modules`
+- Render.com will serve the `index.html` from the publish directory
 
 ---
 
@@ -125,8 +137,16 @@ If the automatic Bun installation in `build.sh` fails, you may need to:
 If the deployment can't find `index.html`:
 
 1. Verify the build command runs successfully in logs
-2. Check that `infrastructure/index.html` exists after build
-3. Ensure the publish/output directory is set to `infrastructure`
+2. Check that `infrastructure/public/index.html` exists after build
+3. Ensure the publish/output directory is set to `public`
+
+### Symlink Errors
+
+If you see errors about "links to files that can't be accessed":
+
+1. This happens when `node_modules` is in the output directory
+2. The build script now outputs to a clean `public` directory to avoid this
+3. Make sure your output/publish directory is set to `public`, not `.` or `infrastructure`
 
 ### Preview Deployments
 
