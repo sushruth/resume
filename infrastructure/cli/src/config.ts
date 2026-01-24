@@ -10,5 +10,5 @@ export const CLI_CONFIG = {
 		__dirname,
 		`../../../user-content/${InputFileNames.CAREER_PROFILE}`,
 	),
-	LATEX_SECTIONS_PATH: join(__dirname, "../../resume/sections"),
+	LATEX_SECTIONS_PATH: join(__dirname, "../../sections"),
 } as const;

@@ -5,8 +5,12 @@ on:
     branches:
       - main
     paths:
-      - infrastructure/cli/**
-      - infrastructure/resume/**
+      - infrastructure/**
+      - user-content/**
+      - .github/workflows/release.yml
+  pull_request:
+    paths:
+      - infrastructure/**
       - user-content/**
       - .github/workflows/release.yml
 
@@ -45,7 +49,7 @@ jobs:
       - name: Cache LaTeX sections
         uses: actions/cache@v4
         with:
-          path: infrastructure/resume/sections
+          path: infrastructure/sections
           key: latex-sections-${{ env.DATA_HASH }}
           restore-keys: latex-sections-
 
@@ -65,25 +69,29 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          working_directory: infrastructure/resume
+          working_directory: infrastructure
           root_file: resume.tex
           pre_compile: tlmgr install ${{ env.LATEX_PACKAGES }}
 
       - name: Set current year and PDF name
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           YEAR=$(date +%Y)
           echo "YEAR=$YEAR" >> $GITHUB_ENV
           echo "PDF_NAME=Sushruth_Sastry_Resume_$YEAR.pdf" >> $GITHUB_ENV
 
       - name: Rename PDF
-        run: mv "infrastructure/resume/resume.pdf" "infrastructure/resume/${{ env.PDF_NAME }}"
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: mv "infrastructure/resume.pdf" "infrastructure/${{ env.PDF_NAME }}"
 
       - name: Create release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: gh release create v${{ github.run_number }} --title "Resume v${{ github.run_number }}" --generate-notes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload release asset
-        run: gh release upload v${{ github.run_number }} "./infrastructure/resume/${{ env.PDF_NAME }}" --clobber
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: gh release upload v${{ github.run_number }} "./infrastructure/${{ env.PDF_NAME }}" --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
