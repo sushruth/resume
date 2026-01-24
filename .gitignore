@@ -16,3 +16,4 @@ resume/index.html
 # Node/Bun
 node_modules/
 .bun
+.aider*
