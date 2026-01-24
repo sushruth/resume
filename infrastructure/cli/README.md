@@ -1,6 +1,6 @@
 # Resume Sync CLI
 
-This CLI is the automation engine for the [Resume-as-Code](https://github.com/Sushruth-Sastry/resume) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation and a complete HTML resume for web hosting.
+This CLI is the automation engine for the [Resume-as-Code](https://github.com/keepam/resume) project. It functions as the logic layer, reading structured career data from a central JSON file and generating the modular LaTeX files required for the final PDF compilation and a complete HTML resume for web hosting.
 
 ---
 

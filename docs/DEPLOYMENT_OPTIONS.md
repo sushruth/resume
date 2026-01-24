@@ -5,6 +5,7 @@ This guide covers deploying the HTML version of your resume to various static ho
 ## Build Process Overview
 
 The build process is handled by `infrastructure/build.sh`, which:
+
 1. Installs Bun if needed
 2. Navigates to `infrastructure/cli` and runs `bun install`
 3. Runs `bun run sync` to generate the HTML from `user-content/careerProfile.json`
@@ -14,7 +15,7 @@ The build process is handled by `infrastructure/build.sh`, which:
 
 ### Configuration
 
-1. **Repository**: `sushruth/resume`
+1. **Repository**: `keepam/resume`
 2. **Project name**: `resume` (or your preferred name)
 3. **Root directory (path)**: `infrastructure`
 4. **Build command**: `bash build.sh`
@@ -27,6 +28,7 @@ The build process is handled by `infrastructure/build.sh`, which:
 **Builds for non-production branches**: ✓ Enabled (if you want preview deployments)
 
 ### Notes
+
 - The root directory is set to `infrastructure`, so the build runs from there
 - The build command is simply `bash build.sh` (not `bash infrastructure/build.sh`)
 - The HTML file is generated in the `infrastructure/public/` directory by the build script
@@ -57,6 +59,7 @@ Create a `vercel.json` file at the repository root:
 ```
 
 ### Notes
+
 - The build script creates a clean `public` directory with only the HTML file
 - This avoids symlink issues from `node_modules`
 - Vercel will serve the `index.html` from the `public` directory
@@ -86,6 +89,7 @@ Create a `netlify.toml` file at the repository root:
 ```
 
 ### Notes
+
 - The build script creates a clean `public` directory with only the HTML file
 - This avoids symlink issues from `node_modules`
 - Netlify will serve the `index.html` from the `public` directory
@@ -112,9 +116,11 @@ If Render doesn't support setting a root directory:
 ### Environment Variables (Optional)
 
 If needed, you can set:
+
 - `NODE_VERSION`: `20` (though the build script installs Bun independently)
 
 ### Notes
+
 - The build script creates a clean `public` directory with only the HTML file
 - This avoids symlink issues from `node_modules`
 - Render.com will serve the `index.html` from the publish directory
@@ -151,6 +157,7 @@ If you see errors about "links to files that can't be accessed":
 ### Preview Deployments
 
 For preview deployments on pull requests or branches:
+
 - All platforms support this
 - Use the same build configuration
 - The HTML will be generated from the branch's `user-content/careerProfile.json`
@@ -164,6 +171,7 @@ For preview deployments on pull requests or branches:
 - **Most flexible**: Render.com (more control over build environment)
 
 All platforms offer:
+
 - Automatic deployments on Git push
 - HTTPS by default
 - Custom domain support

@@ -78,7 +78,7 @@ jobs:
         run: |
           YEAR=$(date +%Y)
           echo "YEAR=$YEAR" >> $GITHUB_ENV
-          echo "PDF_NAME=Sushruth_Sastry_Resume_$YEAR.pdf" >> $GITHUB_ENV
+          echo "PDF_NAME=Keerthana_Pamidimukkala_Resume_$YEAR.pdf" >> $GITHUB_ENV
 
       - name: Rename PDF
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

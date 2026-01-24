@@ -36,7 +36,7 @@ Here is a checklist for anyone creating a new repository from this template, bas
   - **Action:** Delete this if it doesn't apply to you, or rewrite it to explain your own stance on AI tools.
 
 **3. Fix Hardcoded Infrastructure References**
-Search the codebase for the original author's name or repo URL (e.g., `Sushruth-Sastry` or `keepam/resume`) and replace them with yours. Key files to check:
+Search the codebase for the original author's name or repo URL and replace them with yours. Key files to check:
 
 - `infrastructure/cli/README.md` (Updates the link in the CLI docs)
 - `infrastructure/resume/resume.html.ejs` (Updates the `<title>` tag for the HTML version)

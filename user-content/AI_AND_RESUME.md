@@ -1,6 +1,6 @@
 # Why No AI Work on My Resume
 
-**Author:** Sushruth Sastry  
+**Author:** Keerthana Pamidimukkala  
 **Date:** January 2025
 
 ---
@@ -15,4 +15,4 @@ When I have AI work that reflects principal-level ownership—strategy, reliabil
 
 ---
 
-*January 2025*
+_January 2025_

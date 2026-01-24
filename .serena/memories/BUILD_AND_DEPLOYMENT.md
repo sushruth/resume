@@ -96,11 +96,11 @@ ls -lh resume.pdf
 
 - **Tag**: `v{github.run_number}` (incrementing, not semver)
 - **Name**: `Resume v{github.run_number}`
-- **Asset**: `Sushruth_Sastry_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
+- **Asset**: `Keerthana_Pamidimukkala_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
 
 ### Finding Releases
 
-- GitHub Releases tab: https://github.com/Sushruth-Sastry/resume/releases
+- GitHub Releases tab: https://github.com/keepam/resume/releases
 - Direct link to latest: `/releases/latest`
 
 ### Artifacts Retention
