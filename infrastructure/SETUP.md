@@ -36,12 +36,27 @@ Here is a checklist for anyone creating a new repository from this template, bas
   - **Action:** Delete this if it doesn't apply to you, or rewrite it to explain your own stance on AI tools.
 
 **3. Fix Hardcoded Infrastructure References**
-Search the codebase for the original author's name or repo URL (e.g., `Sushruth-Sastry` or `keepam/resume`) and replace them with yours. Key files to check:
 
-- `infrastructure/cli/README.md` (Updates the link in the CLI docs)
-- `infrastructure/resume/resume.html.ejs` (Updates the `<title>` tag for the HTML version)
-- `docs/DEPLOYMENT_OPTIONS.md` (Updates deployment instructions)
-- `infrastructure/cli/resume/sections/_header.tex` (Often contains hardcoded LaTeX links if not fully dynamic)
+Most name references are now **automatically pulled from `careerProfile.json`** (PDF filename, HTML title, LaTeX header). You only need to manually update repository-specific references:
+
+**Automated (no changes needed):**
+
+- ✅ PDF filename - Automatically uses `name` from `careerProfile.json`
+- ✅ HTML title - Automatically uses `basics.name` from `careerProfile.json`
+- ✅ LaTeX header - Automatically uses data from `careerProfile.json`
+
+**Files to manually update:**
+
+- **`infrastructure/cli/README.md`** - Update repository URL in the description
+- **`docs/DEPLOYMENT_OPTIONS.md`** - Update repository references
+- **`.serena/memories/BUILD_AND_DEPLOYMENT.md`** - Update releases URL and PDF asset name
+- **`user-content/AI_AND_RESUME.md`** - Update the author name (or delete if not applicable)
+
+**Quick search command to find remaining hardcoded references:**
+
+```bash
+grep -ri "sushruth\|keepam/resume" . --exclude-dir=node_modules --exclude-dir=.git
+```
 
 **4. Generate the Artifacts**
 Before pushing, ensure the system works locally:
