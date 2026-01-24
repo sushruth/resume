@@ -17,7 +17,8 @@ cd "$SCRIPT_DIR/cli"
 bun install
 bun run sync
 
-# Copy index.html to infrastructure directory
-cp "$SCRIPT_DIR/resume/index.html" "$SCRIPT_DIR/index.html"
+# Create public directory and copy index.html
+mkdir -p "$SCRIPT_DIR/public"
+cp "$SCRIPT_DIR/resume/index.html" "$SCRIPT_DIR/public/index.html"
 
 echo "Build complete!"
