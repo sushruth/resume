@@ -13,99 +13,53 @@ Use this template to create your own professional resume in minutes!
    cd resume-template
    ```
 
-### 2. Customize Your Resume
+### 2. Personalizing the Resume Template
 
-Edit the files in the `user-content/` directory:
+Here is a checklist for anyone creating a new repository from this template, based on the steps we took to set up your profile.
 
-#### 📝 `user-content/careerProfile.json`
-This is the **single source of truth** for your resume data. Update it with your:
+**1. Update the Source of Truth**
 
-- Personal information (name, contact, etc.)
-- Work experience
-- Education details
-- Skills
-- Career objective
-- Publications (if any)
+- **File:** `user-content/careerProfile.json`
+- **Action:** Replace all data with your own. This follows the standard [JSON Resume](https://jsonresume.org/schema/) schema.
+- **Tip:** Do not worry about formatting yet; just get the raw data right.
 
-**Example structure:**
-```json
-{
-  "personal": {
-    "name": "Your Name",
-    "title": "Your Professional Title",
-    "contact": {
-      "email": "your.email@example.com",
-      "phone": "+1-555-0123",
-      "location": "Your City, State",
-      "github": "yourusername",
-      "linkedin": "yourlinkedin",
-      "website": "https://yourwebsite.com"
-    }
-  },
-  "experience": [
-    {
-      "title": "Senior Software Engineer",
-      "company": "Tech Company",
-      "duration": "2022 - Present",
-      "highlights": ["Led development of key features", "Improved performance by 40%"]
-    }
-  ],
-  "education": [
-    {
-      "degree": "Bachelor of Science in Computer Science",
-      "institution": "University Name",
-      "duration": "2018 - 2022",
-      "gpa": "3.8"
-    }
-  ],
-  "skills": {
-    "languages": ["JavaScript", "Python", "TypeScript"],
-    "frameworks": ["React", "Node.js", "Django"],
-    "tools": ["Git", "Docker", "AWS"]
-  },
-  "objective": "Experienced software engineer seeking to leverage technical expertise in a challenging role."
-}
-```
+**2. Personalize Documentation (The "User Content" Folder)**
 
-#### 📄 `user-content/resume.xmpdata`
-Update PDF metadata:
-```latex
-\Title{Your Name - Resume}
-\Author{Your Name}
-\Keywords{resume, software engineer, your-specialties}
-```
+- **File:** `user-content/README.md`
+  - **Action:** Rewrite the "Engineering Philosophy" and "Technical Arsenal" sections to match your industry (e.g., Software, Hardware, Data Science).
+  - **Action:** Update the links to your new repository URL and LinkedIn.
+- **File:** `user-content/AGENTS.md`
+  - **Action:** Update the **# IDENTITY & PURPOSE** and **# USER CONTEXT** sections. This ensures that if you use AI agents (like Gemini, Claude, or Cursor) to help you later, they know who you are and what tone to use.
+- **File:** `user-content/resume.xmpdata`
+  - **Action:** Update `\Title`, `\Author`, `\Subject`, and `\Keywords`. This ensures your generated PDF has professional metadata (great for ATS parsing).
+- **File:** `user-content/AI_AND_RESUME.md` (Optional)
+  - **Action:** Delete this if it doesn't apply to you, or rewrite it to explain your own stance on AI tools.
 
-#### 📖 `user-content/README.md`
-Update the project description to reflect your personal information and preferences.
+**3. Fix Hardcoded Infrastructure References**
+Search the codebase for the original author's name or repo URL (e.g., `Sushruth-Sastry` or `keepam/resume`) and replace them with yours. Key files to check:
 
-### 3. Generate Your Resume
+- `infrastructure/cli/README.md` (Updates the link in the CLI docs)
+- `infrastructure/resume/resume.html.ejs` (Updates the `<title>` tag for the HTML version)
+- `docs/DEPLOYMENT_OPTIONS.md` (Updates deployment instructions)
+- `infrastructure/cli/resume/sections/_header.tex` (Often contains hardcoded LaTeX links if not fully dynamic)
 
-#### Option A: Local Development
+**4. Generate the Artifacts**
+Before pushing, ensure the system works locally:
+
 ```bash
 cd infrastructure/cli
 bun install
 bun run sync
-cd ../..
-pdflatex infrastructure/resume/resume.tex
 ```
 
-#### Option B: Automatic (Recommended)
-1. Commit your changes:
-   ```bash
-   git add .
-   git commit -m "Update resume with my information"
-   git push
-   ```
-2. The automatic GitHub Actions will:
-   - Sync your data to LaTeX format
-   - Compile your PDF resume
-   - Create a GitHub release with your PDF
+- **Check:** Verify that `.tex` files in `infrastructure/cli/resume/sections/` have updated with your new data.
 
-### 4. Download Your Resume
+**5. Enable GitHub Actions**
 
-1. Go to your repository's "Releases" page
-2. Download the latest PDF resume
-3. The filename will be formatted as: `Your_Name_Resume_YYYY.pdf`
+- Push your changes to `main`.
+- Go to your repository **Settings > Actions > General**.
+- Ensure **Workflow permissions** are set to "Read and write permissions" (so the Action can create a Release).
+- The `release.yml` workflow will automatically compile your PDF and publish it to the **Releases** tab.
 
 ## 🔄 Making Updates
 
@@ -118,10 +72,12 @@ Whenever you want to update your resume:
 ## 🛠️ Advanced Customization
 
 ### Styling Changes
+
 - **Do NOT edit** `infrastructure/TLCresume.sty` unless you know LaTeX well
 - For style changes, consider creating a fork and modifying the styling
 
 ### Template Structure
+
 - **User Content** (`user-content/`): Your personal data
 - **Infrastructure** (`infrastructure/`): Build system, templates, CI/CD
 - **Documentation** (`docs/`): Project specs and guides
@@ -131,11 +87,13 @@ Whenever you want to update your resume:
 ### Common Issues
 
 **Build fails on GitHub Actions:**
+
 - Check that `careerProfile.json` has valid JSON syntax
 - Ensure all required fields are present
 - Look at the Actions tab for specific error messages
 
 **Local sync fails:**
+
 ```bash
 cd infrastructure/cli
 bun install  # Ensure dependencies are installed
@@ -143,6 +101,7 @@ bun run sync  # Check for specific error messages
 ```
 
 **PDF formatting issues:**
+
 - Check for special characters in your data that might break LaTeX
 - Review the error logs from the build process
 
@@ -164,6 +123,7 @@ bun run sync  # Check for specific error messages
 ## 🎯 Success Metrics
 
 A well-configured resume template should:
+
 - ✅ Generate PDF automatically when you push changes
 - ✅ Produce professional formatting without manual LaTeX editing
 - ✅ Update in under 5 minutes when you need to make changes

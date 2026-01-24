@@ -1,11 +1,12 @@
-# Sushruth Sastry 
+# Sushruth Sastry
+
 _Senior/Lead Frontend Engineer, Gearing Toward Principal_
 
-This repository contains the source for my resume in a structured, automated format. (No Word documents here.) The latest PDF is available on the [**Releases**](https://github.com/Sushruth-Sastry/Sushruth-Sastry---Resume-2025/releases) page.
+This repository contains the source for my resume in a structured, automated format. (No Word documents here.) The latest PDF is available on the [**Releases**](https://github.com/sushruth/resume/releases) page.
 
 ---
 
-[![Create Resume PDF and Release](https://github.com/sushruth/Sushruth-Sastry---Resume-2025/actions/workflows/release.yml/badge.svg)](https://github.com/sushruth/Sushruth-Sastry---Resume-2025/actions/workflows/release.yml)
+[![Create Resume PDF and Release](https://github.com/sushruth/resume/actions/workflows/release.yml/badge.svg)](https://github.com/sushruth/resume/actions/workflows/release.yml)
 
 ### Architecture
 
@@ -13,12 +14,12 @@ The resume is managed as structured data following the **[JSON Resume](https://j
 
 ### Components
 
-| Layer | Technology | Role |
-| :--- | :--- | :--- |
-| **Data** | `careerProfile.json` (JSON Resume) | Single source of truth. |
-| **Generation** | **Bun + TypeScript CLI** (`/cli`) | Transforms JSON → LaTeX + HTML. |
-| **Output** | **LaTeX** (`resume.tex`, `/sections`) + **HTML** (`index.html`) | PDF + Web. |
-| **Templating** | `jslatex` (LaTeX) + `ejs` (HTML) | Programmatic generation. |
+| Layer          | Technology                                                      | Role                            |
+| :------------- | :-------------------------------------------------------------- | :------------------------------ |
+| **Data**       | `careerProfile.json` (JSON Resume)                              | Single source of truth.         |
+| **Generation** | **Bun + TypeScript CLI** (`/cli`)                               | Transforms JSON → LaTeX + HTML. |
+| **Output**     | **LaTeX** (`resume.tex`, `/sections`) + **HTML** (`index.html`) | PDF + Web.                      |
+| **Templating** | `jslatex` (LaTeX) + `ejs` (HTML)                                | Programmatic generation.        |
 
 ### Workflow
 
@@ -33,8 +34,9 @@ The resume is managed as structured data following the **[JSON Resume](https://j
 **Sushruth Sastry**  
 [linkedin.com/in/sushruth-sastry](https://linkedin.com/in/sushruth-sastry) | [github.com/sushruth](https://github.com/sushruth)
 
-*On AI:* I use AI tools daily, but I have not done AI work I would put on a principal-level resume. [More context.](AI_AND_RESUME.md)
+_On AI:_ I use AI tools daily, but I have not done AI work I would put on a principal-level resume. [More context.](AI_AND_RESUME.md)
 
 ---
 
 **Want to use this repository as a template for your own resume?** See the [setup guide](infrastructure/SETUP.md).
+P.md).
