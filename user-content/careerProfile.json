@@ -6,7 +6,7 @@
     "email": "pamidimukkala.keerthana@gmail.com",
     "phone": "5732021630",
     "url": "https://resume.keerthana.io",
-    "summary": "Signal Integrity / Power Integrity engineer (simulation-led) with senior-scope ownership of SI/PI analysis, high-speed interface validation, and design-review readiness. I focus on outcome-driven execution: translating simulation + lab evidence into clear design decisions, improving measurement throughput, and building reusable processes (templates, test benches, documentation) that help teams move faster with fewer re-spins.",
+    "summary": "Signal & Power Integrity engineer (simulation-led) with senior-scope ownership of SI/PI analysis, high-speed interface validation, and design-review readiness. I focus on outcome-driven execution: translating simulation + lab evidence into clear design decisions, improving measurement throughput, and building reusable processes (templates, test benches, documentation) that help teams move faster with fewer re-spins.",
     "location": {
       "address": "13378 188th Ave SE",
       "postalCode": "98272",
@@ -31,7 +31,7 @@
       "endDate": "Present",
       "summary": "Lead simulation-driven SI/PI sign-off and close the loop with targeted lab correlation to drive layout/BOM decisions.",
       "highlights": [
-        "Lead SI/PI sign-off (channel health, AC impedance, DC integrity) with targeted lab correlation to drive layout/BOM decisions.",
+        "Own end-to-end SI/PI analysis across high-speed links and PDNs; translate AC/DC results into actionable design guidance that drives GO/readiness decisions.",
         "Drive cost reductions by validating component removal (e.g., eliminating CMCs on MIPI) through simulation-measurement correlation.",
         "Convert SI/PI findings into mitigation actions for DV/EV readiness; maintain clear risk/closure status.",
         "Improve lab throughput by tightening measurement workflows (calibration, fixture validation, traceability).",
@@ -48,7 +48,7 @@
       "highlights": [
         "Shaped Intel's simulation roadmap (iCAT → iPDS transition) to align vendor tooling with internal workflows.",
         "Led SI Design Lab ISO 9001 audits; established calibration/verification protocols for measurement traceability.",
-        "Owned PI/PDN analysis (AC/DC impedance, DC integrity) and translated results into GO/readiness guidance.",
+        "Unblocked cross-team reviews by clarifying impedance interpretation and analysis expectations, enabling faster decision-making.",
         "Reduced time-to-closure on compliance issues by documenting edge-case behaviors (UFS/LPDDR5x spec alignment).",
         "Standardized execution via simulation matrices and report templates; kept assumptions and risk transparent."
       ]
@@ -61,7 +61,6 @@
       "endDate": "2021-11",
       "summary": "Built correlation between measurement and models by generating/validating S-parameter inputs and applying de-embedding.",
       "highlights": [
-        "Built simulation-measurement correlation by generating/validating S-parameters and applying de-embedding.",
         "Executed TX/RX measurements for high-speed interfaces (PCIe/USB/MIPI/eMMC); correlated to compliance specs.",
         "Improved measurement quality through de-embedding and fixture/test-point validation.",
         "Delivered reliable validation with disciplined triage practices to accelerate root-cause convergence."
@@ -75,7 +74,6 @@
       "endDate": "2018-12",
       "summary": "Executed high-speed SI validation in a production lab setting, focusing on repeatable measurements and clear reporting.",
       "highlights": [
-        "Executed high-speed SI validation with repeatable measurements and fast debug turnaround.",
         "Supported compliance/interoperability testing; troubleshot test setups and software issues.",
         "Hands-on lab execution (rework/soldering) for rapid bring-up and failure analysis iteration."
       ]
@@ -88,7 +86,8 @@
       "endDate": "2017-08",
       "summary": "Supported EMC compliance design/validation across products, including radiated/conducted emissions testing.",
       "highlights": [
-        "Supported EMC compliance testing (radiated/conducted emissions, ESD susceptibility) and helped standardize HDMI 2.1 cable test methods.",
+        "Standardized HDMI 2.1 cable test methods by evaluating measurement approaches to quantify cable quality, improving test repeatability.",
+        "Supported EMC compliance testing (radiated/conducted emissions, ESD susceptibility) across multiple product lines.",
         "Built a MATLAB tool to aggregate EMC test results, speeding analysis and reporting workflows."
       ]
     },
