@@ -36,7 +36,8 @@ Here is a checklist for anyone creating a new repository from this template, bas
   - **Action:** Delete this if it doesn't apply to you, or rewrite it to explain your own stance on AI tools.
 
 **3. Fix Hardcoded Infrastructure References**
-Search the codebase for the original author's name or repo URL and replace them with yours. Key files to check:
+
+Most name references are now **automatically pulled from `careerProfile.json`** (PDF filename, HTML title, LaTeX header). You only need to manually update repository-specific references:
 
 **Automated (no changes needed):**
 
@@ -51,10 +52,10 @@ Search the codebase for the original author's name or repo URL and replace them 
 - **`.serena/memories/BUILD_AND_DEPLOYMENT.md`** - Update releases URL and PDF asset name
 - **`user-content/AI_AND_RESUME.md`** - Update the author name (or delete if not applicable)
 
-**Quick search command:**
+**Quick search command to find remaining hardcoded references:**
 
 ```bash
-grep -ri "original-author-name" . --exclude-dir=node_modules --exclude-dir=.git
+grep -ri "sushruth\|keepam/resume" . --exclude-dir=node_modules --exclude-dir=.git
 ```
 
 **4. Generate the Artifacts**
