@@ -96,7 +96,7 @@ ls -lh resume.pdf
 
 - **Tag**: `v{github.run_number}` (incrementing, not semver)
 - **Name**: `Resume v{github.run_number}`
-- **Asset**: `Keerthana_Pamidimukkala_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
+- **Asset**: `Sushruth_Sastry_Resume_{YEAR}.pdf` (where {YEAR} is the current year)
 
 ### Finding Releases
 
