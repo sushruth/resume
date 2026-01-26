@@ -29,13 +29,13 @@
       "location": "Redmond, WA",
       "startDate": "2024-12",
       "endDate": "Present",
-      "summary": "Lead simulation-driven SI/PI sign-off and close the loop with targeted lab correlation to drive layout/BOM decisions.",
+      "summary": "Led simulation-driven SI/PI sign-off and closed the loop with targeted lab correlation to drive layout/BOM decisions.",
       "highlights": [
-        "Own end-to-end SI/PI analysis across high-speed links and PDNs; translate AC/DC results into actionable design guidance that drives GO/readiness decisions.",
-        "Drive cost reductions by validating component removal (e.g., eliminating CMCs on MIPI) through simulation-measurement correlation.",
-        "Convert SI/PI findings into mitigation actions for DV/EV readiness; maintain clear risk/closure status.",
-        "Improve lab throughput by tightening measurement workflows (calibration, fixture validation, traceability).",
-        "Lead cross-team technical discussions: problem statement → evidence → decision → follow-up."
+        "Owned end-to-end SI/PI analysis for Surface Pro, Surface Laptop Go, and Xbox; translated AC/DC simulation results into GO/readiness decisions that unblocked DV/EV builds.",
+        "Drove cost reduction by validating MIPI CMC removal across Surface Pro and Surface Laptop camera interfaces through simulation-measurement correlation.",
+        "Conducted cross-product research across Intel and Qualcomm platforms (Surface Pro, Surface Laptop Go) and federated learnings to standardize PDN methodology and simulation practices across product teams.",
+        "Built lab automation (MATCH tool, VNA workflow scripts) and tightened calibration/fixture validation to increase measurement throughput.",
+        "Led vendor engagements with Intel, Qualcomm, Samsung, and Hynix to resolve UFS return-loss and LPDDR5x timing-budget ambiguities affecting Surface Laptop Go sign-off."
       ]
     },
     {
@@ -46,11 +46,11 @@
       "endDate": "2024-12",
       "summary": "Increased program confidence by owning PI/PDN analysis and translating results into clear design guidance for GO/readiness decisions.",
       "highlights": [
-        "Shaped Intel's simulation roadmap (iCAT → iPDS transition) to align vendor tooling with internal workflows.",
-        "Led SI Design Lab ISO 9001 audits; established calibration/verification protocols for measurement traceability.",
-        "Unblocked cross-team reviews by clarifying impedance interpretation and analysis expectations, enabling faster decision-making.",
-        "Reduced time-to-closure on compliance issues by documenting edge-case behaviors (UFS/LPDDR5x spec alignment).",
-        "Standardized execution via simulation matrices and report templates; kept assumptions and risk transparent."
+        "Shaped Intel's simulation roadmap (iCAT → iPDS transition) to align vendor tooling with internal Surface Laptop and Surface Pro workflows.",
+        "Led SI Design Lab ISO 9001 audits; established VNA/TDR calibration protocols and process documentation for measurement traceability.",
+        "Clarified cross-impedance vs. self-impedance interpretation for Surface Pro RF modem PDN reviews, unblocking Qualcomm sign-off.",
+        "Standardized SI execution via simulation matrices and report templates for Surface Laptop programs; kept risk and assumptions transparent for design reviews.",
+        "Drove Intel layout review feedback (LPDDR5x memory, HSIO) for Surface Laptop toward GO milestones."
       ]
     },
     {
@@ -61,9 +61,9 @@
       "endDate": "2021-11",
       "summary": "Built correlation between measurement and models by generating/validating S-parameter inputs and applying de-embedding.",
       "highlights": [
-        "Executed TX/RX measurements for high-speed interfaces (PCIe/USB/MIPI/eMMC); correlated to compliance specs.",
-        "Improved measurement quality through de-embedding and fixture/test-point validation.",
-        "Delivered reliable validation with disciplined triage practices to accelerate root-cause convergence."
+        "Executed TX/RX compliance measurements for PCIe, USB3, MIPI, and eMMC on Surface Book, Surface Pro, and Surface Duo programs.",
+        "Resolved USB3 Gen2 RX jitter tolerance discrepancies by coordinating BERT/CTLE analysis with Intel, Keysight, and GRL.",
+        "Performed PDN simulations (AC/DC impedance, DCR) for Surface Duo and Surface Pro X; correlated results to Qualcomm targets."
       ]
     },
     {
@@ -74,8 +74,8 @@
       "endDate": "2018-12",
       "summary": "Executed high-speed SI validation in a production lab setting, focusing on repeatable measurements and clear reporting.",
       "highlights": [
-        "Supported compliance/interoperability testing; troubleshot test setups and software issues.",
-        "Hands-on lab execution (rework/soldering) for rapid bring-up and failure analysis iteration."
+        "Supported compliance and interoperability testing for Surface devices; troubleshot test setups and software issues.",
+        "Performed hands-on lab execution (rework, soldering) for rapid bring-up and failure analysis iteration."
       ]
     },
     {
