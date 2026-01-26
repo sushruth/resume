@@ -18,3 +18,8 @@ infrastructure/public/
 node_modules/
 .bun
 .aider*
+
+# Private resume source data (kept locally, not in repo)
+user-content/Email_Project_Timeline_ROLE_IMPACT_RESUME_PACK_v1.json
+user-content/Resume_Bullets_Condensed_ByProgram_ByRange_v2.json
+user-content/Resume_ImpactFocused_FullProfessionalHistory_SimulationEmphasis_NO_CITATIONS.md
