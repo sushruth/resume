@@ -31,10 +31,10 @@
       "endDate": "Present",
       "summary": "Led simulation-driven SI/PI sign-off and closed the loop with targeted lab correlation to drive layout/BOM decisions.",
       "highlights": [
-        "Owned end-to-end SI/PI analysis for Surface Pro, Surface Laptop Go, and Xbox; translated AC/DC simulation results into GO/readiness decisions that unblocked DV/EV builds.",
+        "Owned end-to-end SI/PI analysis for Surface Pro, Surface Laptop Go, and Xbox; translated AC/DC simulation results into GO/readiness decisions that unblocked EV/DV builds.",
         "Drove cost reduction by validating MIPI CMC removal across Surface Pro and Surface Laptop camera interfaces through simulation-measurement correlation.",
         "Conducted cross-product research across Intel and Qualcomm platforms (Surface Pro, Surface Laptop Go) and federated learnings to standardize PDN methodology and simulation practices across product teams.",
-        "Built lab automation (MATCH tool, VNA workflow scripts) and tightened calibration/fixture validation to increase measurement throughput.",
+        "Tightened VNA/TDR calibration and fixture validation protocols to increase lab measurement throughput and improve data quality.",
         "Led vendor engagements with Intel, Qualcomm, Samsung, and Hynix to resolve UFS return-loss and LPDDR5x timing-budget ambiguities affecting Surface Laptop Go sign-off."
       ]
     },
