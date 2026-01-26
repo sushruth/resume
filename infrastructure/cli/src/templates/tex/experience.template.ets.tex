@@ -24,16 +24,18 @@
 \vspace*{3pt}
 
 <? } else { ?>
-<? /* Single entry - one company with one role (ungrouped) */ ?>
+<? /* Single entry - same structure as grouped, just one role */ ?>
 <? const entry = group; ?>
 <? const dateRange = `${entry.startDate || ''} - ${entry.endDate || ''}`; ?>
 
-\subsection{{<?= entry.position || '' ?> \hfill <?= dateRange ?>}}
-\subtext{<?= entry.name || '' ?> \hfill <?= entry.location || '' ?>}
-\vspace*{1pt}
+\subsection{{<?= entry.name || '' ?>}}
+\subtext{<?= entry.location || '' ?> \hfill <?= dateRange ?>}
+\vspace*{3pt}
+
+\textbf{<?= entry.position || '' ?>}
 <? if (entry.summary) { ?>
-<?= entry.summary ?>
 \vspace*{1pt}
+<?= entry.summary ?>
 <? } ?>
 \begin{zitemize}
 <? (entry.highlights || []).forEach(highlight => { ?>
