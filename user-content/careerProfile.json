@@ -209,6 +209,38 @@
       ]
     }
   ],
+  "publications": [
+    {
+      "name": "A Novel Area Efficient Approximate Stochastic Computing Approach for Edge Devices",
+      "publisher": "IEEE, 21st International SoC Design Conference (ISOCC)",
+      "releaseDate": "2024"
+    },
+    {
+      "name": "Modeling truncation-based approximation error in stochastic computing circuits",
+      "publisher": "IEEE, 20th International SoC Design Conference (ISOCC)",
+      "releaseDate": "2023"
+    },
+    {
+      "name": "Time-efficient approximate stochastic computing for medical imaging applications",
+      "publisher": "IEEE, 19th International SoC Design Conference (ISOCC)",
+      "releaseDate": "2022"
+    },
+    {
+      "name": "Generalized adaptive variable bit truncation method for approximate stochastic computing",
+      "publisher": "IEEE, International SoC Design Conference (ISOCC)",
+      "releaseDate": "2018"
+    },
+    {
+      "name": "An on-chip detector of transient stress events",
+      "publisher": "IEEE Transactions on Electromagnetic Compatibility, Vol. 60, No. 4",
+      "releaseDate": "2018"
+    },
+    {
+      "name": "On-chip sensors to measure level of transient events",
+      "publisher": "IEEE, 39th Electrical Overstress/Electrostatic Discharge Symposium (EOS/ESD)",
+      "releaseDate": "2017"
+    }
+  ],
   "key_differentiators": {
     "summary": "Core pillars of my senior-scope engineering approach:",
     "points": [
