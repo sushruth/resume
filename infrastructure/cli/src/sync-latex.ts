@@ -3,6 +3,8 @@ import {
   compileArrayEntriesToLaTeX,
   compileTemplateHTML,
   compileArrayEntriesToHTML,
+  compileGroupedWorkEntriesToLaTeX,
+  compileGroupedWorkEntriesToHTML,
 } from "./utils/converters";
 import {
   readCareerProfile,
@@ -54,7 +56,7 @@ const main = async () => {
     compileTemplate(TemplateFileNames.HEADER, resume.basics || {}).then(
       (content) => [LaTeXSection.HEADER, content],
     ),
-    compileArrayEntriesToLaTeX(
+    compileGroupedWorkEntriesToLaTeX(
       TemplateFileNames.EXPERIENCE,
       resume.work || [],
     ).then((content) => [LaTeXSection.EXPERIENCE, content]),
@@ -89,7 +91,7 @@ const main = async () => {
       TemplateFileNames.HEADER_HTML,
       resume.basics || {},
     ),
-    [HTMLSection.EXPERIENCE]: compileArrayEntriesToHTML(
+    [HTMLSection.EXPERIENCE]: compileGroupedWorkEntriesToHTML(
       TemplateFileNames.EXPERIENCE_HTML,
       resume.work || [],
     ),

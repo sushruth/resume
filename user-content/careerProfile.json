@@ -35,7 +35,9 @@
         "Drove cost reduction by validating MIPI CMC removal across Surface Pro and Surface Laptop camera interfaces through simulation-measurement correlation.",
         "Conducted cross-product research across Intel and Qualcomm platforms (Surface Pro, Surface Laptop Go) and federated learnings to standardize PDN methodology and simulation practices across product teams.",
         "Tightened VNA/TDR calibration and fixture validation protocols to increase lab measurement throughput and improve data quality.",
-        "Led vendor engagements with Intel, Qualcomm, Samsung, and Hynix to resolve UFS return-loss and LPDDR5x timing-budget ambiguities affecting Surface Laptop Go sign-off."
+        "Led vendor engagements with Intel, Qualcomm, Samsung, and Hynix to resolve UFS return-loss and LPDDR5x timing-budget ambiguities affecting Surface Laptop Go sign-off.",
+        "Instituted a new SI-focused SoC review series, aligning cross-functional teams on high-speed interface risks and stackup requirements prior to layout start.",
+        "Managed SI Design Lab FY25 budget planning, forecasting capital equipment and test collateral needs for next-gen interface validation (HDMI 2.1, PCIe Gen6)."
       ]
     },
     {
@@ -50,7 +52,9 @@
         "Led SI Design Lab ISO 9001 audits; established VNA/TDR calibration protocols and process documentation for measurement traceability.",
         "Clarified cross-impedance vs. self-impedance interpretation for Surface Pro RF modem PDN reviews, unblocking Qualcomm sign-off.",
         "Standardized SI execution via simulation matrices and report templates for Surface Laptop programs; kept risk and assumptions transparent for design reviews.",
-        "Drove Intel layout review feedback (LPDDR5x memory, HSIO) for Surface Laptop toward GO milestones."
+        "Drove Intel layout review feedback (LPDDR5x memory, HSIO) for Surface Laptop toward GO milestones.",
+        "Established and owned the SI compliance review workflow for MCRB (Change Control Boards), ensuring 100% electrical sign-off on post-release layout changes.",
+        "Partnered with Reliability Engineering to mitigate pad-cracking risks by optimizing AC capacitor placement, balancing mechanical constraints with PDN impedance targets."
       ]
     },
     {
@@ -63,12 +67,13 @@
       "highlights": [
         "Executed TX/RX compliance measurements for PCIe, USB3, MIPI, and eMMC on Surface Book, Surface Pro, and Surface Duo programs.",
         "Resolved USB3 Gen2 RX jitter tolerance discrepancies by coordinating BERT/CTLE analysis with Intel, Keysight, and GRL.",
-        "Performed PDN simulations (AC/DC impedance, DCR) for Surface Duo and Surface Pro X; correlated results to Qualcomm targets."
+        "Performed PDN simulations (AC/DC impedance, DCR) for Surface Duo and Surface Pro X; correlated results to Qualcomm targets.",
+        "Led daily SI bug triage and quality reporting for multiple concurrent programs, driving issues to closure to meet EV/DV exit criteria."
       ]
     },
     {
-      "name": "Microsoft (via Cascade Engineering Services)",
-      "position": "Signal Integrity Test Engineer (Contractor)",
+      "name": "Microsoft",
+      "position": "Signal Integrity Test Engineer (Contractor via Cascade Engineering Services)",
       "location": "Redmond, WA",
       "startDate": "2018-04",
       "endDate": "2018-12",
