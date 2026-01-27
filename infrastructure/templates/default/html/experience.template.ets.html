@@ -1,0 +1,95 @@
+<% /* Group can be either a single entry or a grouped employer with multiple
+roles */ %> <% if (group.roles) { %>
+<!-- Grouped employer - one company with multiple roles -->
+<div style="margin-bottom: 1.5em">
+    <h3
+        style="
+            margin: 0.5em 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.3em;
+        "
+    >
+        <%= group.name || '' %>
+        <span style="float: right; font-weight: normal; font-size: 0.9em"
+            ><%= group.dateRange || '' %></span
+        >
+    </h3>
+    <div style="font-size: 0.9em; color: #666; margin-bottom: 0.5em">
+        <%= group.location || '' %>
+    </div>
+
+    <% group.roles.forEach((role, index) => { %> <% const roleDateRange =
+    (role.startDate || '') + ' - ' + (role.endDate || ''); %>
+    <div
+        style="margin-bottom: 1em<%= index < group.roles.length - 1 ? '; border-bottom: 1px dashed #eee; padding-bottom: 0.8em' : '' %>"
+    >
+        <div
+            style="
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                margin-bottom: 0.3em;
+            "
+        >
+            <span><%= role.position || '' %></span>
+            <span style="font-weight: normal; font-style: italic"
+                ><%= roleDateRange %></span
+            >
+        </div>
+        <% if (role.summary) { %>
+        <p style="margin: 0.3em 0; font-size: 0.95em"><%= role.summary %></p>
+        <% } %> <% if (role.highlights && role.highlights.length > 0) { %>
+        <ul style="margin: 0.3em 0; padding-left: 1.5em">
+            <% role.highlights.forEach(highlight => { %>
+            <li><%= highlight %></li>
+            <% }); %>
+        </ul>
+        <% } %>
+    </div>
+    <% }); %>
+</div>
+
+<% } else { %>
+<!-- Single entry - same structure as grouped, just one role -->
+<% const entry = group; %> <% const dateRange = (entry.startDate || '') + ' - '
++ (entry.endDate || ''); %>
+<div style="margin-bottom: 1.5em">
+    <h3
+        style="
+            margin: 0.5em 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.3em;
+        "
+    >
+        <%= entry.name || '' %>
+        <span style="float: right; font-weight: normal; font-size: 0.9em"
+            ><%= dateRange %></span
+        >
+    </h3>
+    <div style="font-size: 0.9em; color: #666; margin-bottom: 0.5em">
+        <%= entry.location || '' %>
+    </div>
+
+    <div style="margin-bottom: 1em">
+        <div
+            style="
+                display: flex;
+                justify-content: space-between;
+                font-weight: bold;
+                margin-bottom: 0.3em;
+            "
+        >
+            <span><%= entry.position || '' %></span>
+        </div>
+        <% if (entry.summary) { %>
+        <p style="margin: 0.3em 0; font-size: 0.95em"><%= entry.summary %></p>
+        <% } %> <% if (entry.highlights && entry.highlights.length > 0) { %>
+        <ul style="margin: 0.3em 0; padding-left: 1.5em">
+            <% entry.highlights.forEach(highlight => { %>
+            <li><%= highlight %></li>
+            <% }); %>
+        </ul>
+        <% } %>
+    </div>
+</div>
+<% } %>
