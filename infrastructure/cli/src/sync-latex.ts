@@ -14,6 +14,7 @@ import {
 import { writeFileSync, readFileSync } from "fs";
 import { join, resolve } from "path";
 import { TemplateFileNames, OutputFileNames } from "./file-names";
+import { loadResumeConfig } from "./config-loader";
 
 /**
  * Enum for LaTeX section names
@@ -45,36 +46,71 @@ export const enum HTMLSection {
 const main = async () => {
   console.log("Syncing career profile to LaTeX files...");
 
-  // 1. Ensure environment is ready
+  // 1. Load config
+  const config = loadResumeConfig();
+  console.log(
+    config
+      ? "Using config from resume.config.json"
+      : "No config found, using legacy behavior",
+  );
+
+  // 2. Ensure environment is ready
   ensureSectionsDirectory();
 
-  // 2. Load data
+  // 3. Load data
   const resume = readCareerProfile();
 
-  // 3. Convert data to LaTeX strings
-  const sectionPromises: Promise<[LaTeXSection, string]>[] = [
-    compileTemplate(TemplateFileNames.HEADER, resume.basics || {}).then(
-      (content) => [LaTeXSection.HEADER, content],
-    ),
-    compileGroupedWorkEntriesToLaTeX(
-      TemplateFileNames.EXPERIENCE,
-      resume.work || [],
-    ).then((content) => [LaTeXSection.EXPERIENCE, content]),
-    compileArrayEntriesToLaTeX(
-      TemplateFileNames.EDUCATION,
-      resume.education || [],
-    ).then((content) => [LaTeXSection.EDUCATION, content]),
-    compileTemplate(TemplateFileNames.SKILLS, {
-      skills: resume.skills || [],
-    }).then((content) => [LaTeXSection.SKILLS, content]),
-    compileTemplate(TemplateFileNames.OBJECTIVE, {
-      summary: resume.basics?.summary || "",
-    }).then((content) => [LaTeXSection.OBJECTIVE, content]),
-    compileArrayEntriesToLaTeX(
-      TemplateFileNames.PUBLICATIONS,
-      resume.publications || [],
-    ).then((content) => [LaTeXSection.PUBLICATIONS, content]),
+  // 4. Determine section order
+  const defaultOrder = [
+    "header",
+    "objective",
+    "experience",
+    "education",
+    "skills",
+    "publications",
   ];
+  const sectionOrder = config
+    ? config.sections.order.map((s) => (s === "summary" ? "objective" : s))
+    : defaultOrder;
+
+  // 5. Define LaTeX compilers
+  const latexCompilers: Record<string, () => Promise<string>> = {
+    header: () =>
+      compileTemplate(TemplateFileNames.HEADER, resume.basics || {}),
+    objective: () =>
+      compileTemplate(TemplateFileNames.OBJECTIVE, {
+        summary: resume.basics?.summary || "",
+      }),
+    experience: () =>
+      compileGroupedWorkEntriesToLaTeX(
+        TemplateFileNames.EXPERIENCE,
+        resume.work || [],
+      ),
+    education: () =>
+      compileArrayEntriesToLaTeX(
+        TemplateFileNames.EDUCATION,
+        resume.education || [],
+      ),
+    skills: () =>
+      compileTemplate(TemplateFileNames.SKILLS, {
+        skills: resume.skills || [],
+      }),
+    publications: () =>
+      compileArrayEntriesToLaTeX(
+        TemplateFileNames.PUBLICATIONS,
+        resume.publications || [],
+      ),
+  };
+
+  // 6. Convert data to LaTeX strings
+  const sectionPromises = sectionOrder
+    .filter((section) => latexCompilers[section])
+    .map((section) =>
+      latexCompilers[section]().then((content) => [
+        section as LaTeXSection,
+        content,
+      ]),
+    );
 
   const sections = await Promise.all(sectionPromises);
   const latexSections = Object.fromEntries(sections) as Record<
@@ -82,42 +118,50 @@ const main = async () => {
     string
   >;
 
-  // 4. Write to files
+  // 7. Write LaTeX files
   writeLaTeXSections(latexSections);
 
-  // 5. Generate HTML
-  const htmlSectionsMap: Record<HTMLSection, string> = {
-    [HTMLSection.HEADER]: compileTemplateHTML(
-      TemplateFileNames.HEADER_HTML,
-      resume.basics || {},
-    ),
-    [HTMLSection.EXPERIENCE]: compileGroupedWorkEntriesToHTML(
-      TemplateFileNames.EXPERIENCE_HTML,
-      resume.work || [],
-    ),
-    [HTMLSection.EDUCATION]: compileArrayEntriesToHTML(
-      TemplateFileNames.EDUCATION_HTML,
-      resume.education || [],
-    ),
-    [HTMLSection.SKILLS]: compileTemplateHTML(TemplateFileNames.SKILLS_HTML, {
-      skills: resume.skills || [],
-    }),
-    [HTMLSection.OBJECTIVE]: compileTemplateHTML(
-      TemplateFileNames.OBJECTIVE_HTML,
-      {
+  // 8. Define HTML compilers
+  const htmlCompilers: Record<string, () => string> = {
+    header: () =>
+      compileTemplateHTML(TemplateFileNames.HEADER_HTML, resume.basics || {}),
+    objective: () =>
+      compileTemplateHTML(TemplateFileNames.OBJECTIVE_HTML, {
         summary: resume.basics?.summary || "",
-      },
-    ),
-    [HTMLSection.PUBLICATIONS]: compileArrayEntriesToHTML(
-      TemplateFileNames.PUBLICATIONS_HTML,
-      resume.publications || [],
-    ),
+      }),
+    experience: () =>
+      compileGroupedWorkEntriesToHTML(
+        TemplateFileNames.EXPERIENCE_HTML,
+        resume.work || [],
+      ),
+    education: () =>
+      compileArrayEntriesToHTML(
+        TemplateFileNames.EDUCATION_HTML,
+        resume.education || [],
+      ),
+    skills: () =>
+      compileTemplateHTML(TemplateFileNames.SKILLS_HTML, {
+        skills: resume.skills || [],
+      }),
+    publications: () =>
+      compileArrayEntriesToHTML(
+        TemplateFileNames.PUBLICATIONS_HTML,
+        resume.publications || [],
+      ),
   };
 
-  // Generate full HTML
+  // 9. Generate HTML sections
+  const htmlSectionsMap: Record<HTMLSection, string> = {};
+  for (const section of sectionOrder) {
+    if (htmlCompilers[section]) {
+      htmlSectionsMap[section as HTMLSection] = htmlCompilers[section]();
+    }
+  }
+
+  // 10. Generate full HTML
   const fullHTML = generateFullHTML(htmlSectionsMap, resume.basics || {});
 
-  // Write HTML file
+  // 11. Write HTML file
   writeHTMLIndex(fullHTML);
 
   console.log("LaTeX and HTML sync completed successfully!");
