@@ -15,6 +15,8 @@ import { writeFileSync, readFileSync } from "fs";
 import { join, resolve } from "path";
 import { TemplateFileNames, OutputFileNames } from "./file-names";
 import { loadResumeConfig } from "./config-loader";
+import { getTemplateMode } from "./env";
+import { ThemeLoaderImpl } from "./theme-loader";
 
 /**
  * Enum for LaTeX section names
@@ -44,6 +46,22 @@ export const enum HTMLSection {
  * Main CLI entry point for syncing careerProfile.json to LaTeX sections
  */
 const main = async () => {
+  const templateMode = getTemplateMode();
+  console.log(`Template mode: ${templateMode}`);
+  const loader = templateMode === "theme" ? new ThemeLoaderImpl() : null;
+  const getTemplatePath = (section: string, format: "tex" | "html"): string => {
+    if (templateMode === "legacy") {
+      const extension = format === "tex" ? "tex" : "html";
+      return join(
+        __dirname,
+        "templates",
+        format,
+        `${section}.template.ets.${extension}`,
+      );
+    } else {
+      return loader!.getTemplatePath(section, format);
+    }
+  };
   console.log("Syncing career profile to LaTeX files...");
 
   // 1. Load config
@@ -76,28 +94,28 @@ const main = async () => {
   // 5. Define LaTeX compilers
   const latexCompilers: Record<string, () => Promise<string>> = {
     header: () =>
-      compileTemplate(TemplateFileNames.HEADER, resume.basics || {}),
+      compileTemplate(getTemplatePath("header", "tex"), resume.basics || {}),
     objective: () =>
-      compileTemplate(TemplateFileNames.OBJECTIVE, {
+      compileTemplate(getTemplatePath("objective", "tex"), {
         summary: resume.basics?.summary || "",
       }),
     experience: () =>
       compileGroupedWorkEntriesToLaTeX(
-        TemplateFileNames.EXPERIENCE,
+        getTemplatePath("experience", "tex"),
         resume.work || [],
       ),
     education: () =>
       compileArrayEntriesToLaTeX(
-        TemplateFileNames.EDUCATION,
+        getTemplatePath("education", "tex"),
         resume.education || [],
       ),
     skills: () =>
-      compileTemplate(TemplateFileNames.SKILLS, {
+      compileTemplate(getTemplatePath("skills", "tex"), {
         skills: resume.skills || [],
       }),
     publications: () =>
       compileArrayEntriesToLaTeX(
-        TemplateFileNames.PUBLICATIONS,
+        getTemplatePath("publications", "tex"),
         resume.publications || [],
       ),
   };
@@ -124,28 +142,31 @@ const main = async () => {
   // 8. Define HTML compilers
   const htmlCompilers: Record<string, () => string> = {
     header: () =>
-      compileTemplateHTML(TemplateFileNames.HEADER_HTML, resume.basics || {}),
+      compileTemplateHTML(
+        getTemplatePath("header", "html"),
+        resume.basics || {},
+      ),
     objective: () =>
-      compileTemplateHTML(TemplateFileNames.OBJECTIVE_HTML, {
+      compileTemplateHTML(getTemplatePath("objective", "html"), {
         summary: resume.basics?.summary || "",
       }),
     experience: () =>
       compileGroupedWorkEntriesToHTML(
-        TemplateFileNames.EXPERIENCE_HTML,
+        getTemplatePath("experience", "html"),
         resume.work || [],
       ),
     education: () =>
       compileArrayEntriesToHTML(
-        TemplateFileNames.EDUCATION_HTML,
+        getTemplatePath("education", "html"),
         resume.education || [],
       ),
     skills: () =>
-      compileTemplateHTML(TemplateFileNames.SKILLS_HTML, {
+      compileTemplateHTML(getTemplatePath("skills", "html"), {
         skills: resume.skills || [],
       }),
     publications: () =>
       compileArrayEntriesToHTML(
-        TemplateFileNames.PUBLICATIONS_HTML,
+        getTemplatePath("publications", "html"),
         resume.publications || [],
       ),
   };

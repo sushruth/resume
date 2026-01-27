@@ -1,0 +1,36 @@
+<% const locationStr = location?.city && location?.region ? location.city + ', '
++ location.region : location?.city || location?.region || ''; const
+githubUsername = profiles?.find(p => p.network === 'GitHub')?.username || '';
+const linkedinUsername = profiles?.find(p => p.network === 'LinkedIn')?.username
+|| ''; %>
+<div
+	style="
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5em;
+	"
+>
+	<div style="flex: 0 0 20%; text-align: left; font-size: 0.95em">
+		<div style="font-size: 1.1em"><%= phone || '' %></div>
+		<div><%= locationStr %></div>
+		<a href="mailto:<%= email || '' %>"><%= email || '' %></a>
+	</div>
+	<div style="flex: 0 0 60%; text-align: center">
+		<h1 style="font-size: 2.2em; margin: 0; font-weight: normal">
+			<%= name || '' %>
+		</h1>
+		<div style="font-size: 1em"><%= label || '' %></div>
+	</div>
+	<div style="flex: 0 0 20%; text-align: right; font-size: 0.95em">
+		<% if (githubUsername) { %>
+		<a href="https://github.com/<%= githubUsername %>"
+			>GitHub: <%= githubUsername %></a
+		><br />
+		<% } %> <% if (linkedinUsername) { %>
+		<a href="https://www.linkedin.com/in/<%= linkedinUsername %>"
+			>LinkedIn: <%= linkedinUsername %></a
+		>
+		<% } %>
+	</div>
+</div>
