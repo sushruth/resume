@@ -13,6 +13,7 @@ on:
       - infrastructure/**
       - user-content/**
       - .github/workflows/release.yml
+  workflow_call:
 
 permissions:
   contents: write
@@ -42,6 +43,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Checkout CLI from original repo
+        uses: actions/checkout@v4
+        with:
+          repository: sushruth/resume
+          path: infrastructure
+          sparse-checkout: |
+            infrastructure/
 
       - name: Compute data hash
         run: echo "DATA_HASH=$(sha256sum user-content/careerProfile.json | cut -d' ' -f1)" >> $GITHUB_ENV

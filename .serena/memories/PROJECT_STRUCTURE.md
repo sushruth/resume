@@ -3,47 +3,50 @@
 ## Directory Layout
 
 ```
-resume/
-├── resume/                          # Resume source files (all generated files gitignored)
-│   ├── careerProfile.json          # Single source of truth for all resume data
-│   ├── resume.tex                  # Main LaTeX document
-│   ├── resume.xmpdata              # PDF metadata (title, keywords, etc.)
-│   ├── TLCresume.sty               # LaTeX style file
-│   └── sections/                   # Generated LaTeX sections (gitignored)
-│       ├── _header.tex
+/
+├── user-content/                   # User personal data and metadata
+│   ├── careerProfile.json         # Single source of truth for all resume data (JSON Resume schema)
+│   ├── README.md                  # User philosophy and technical arsenal
+│   ├── AGENTS.md                  # Instructions for AI agents
+│   ├── AI_AND_RESUME.md           # AI usage stance
+│   ├── resume.xmpdata             # PDF metadata (title, keywords, etc.)
+│   └── templates/                 # User-customizable templates (optional)
+│
+├── infrastructure/                # Build system and templates
+│   ├── cli/                       # Bun/TypeScript CLI for syncing data to LaTeX
+│   │   ├── index.ts               # Entry point
+│   │   ├── src/
+│   │   │   ├── config.ts          # File path configuration
+│   │   │   ├── file-names.ts      # Strictly typed filename enums
+│   │   │   ├── sync-latex.ts      # Main sync orchestration
+│   │   │   ├── sync.types.ts      # TypeScript types for careerProfile.json
+│   │   │   ├── templates/         # EmbeddedTS LaTeX templates
+│   │   │   │   ├── tex/           # LaTeX templates
+│   │   │   │   └── html/          # HTML templates
+│   │   │   └── utils/
+│   │   │       ├── converters.ts  # LaTeX escaping and template compilation
+│   │   │       └── file-system.ts # File I/O operations
+│   │   ├── bun.lock               # Bun lockfile
+│   │   └── package.json           # Dependencies
+│   ├── resume.tex                 # Main LaTeX document
+│   ├── TLCresume.sty              # LaTeX style file
+│   ├── SETUP.md                   # Simple setup instructions for template users
+│   └── sections/                  # Generated LaTeX sections (gitignored)
+│       ├── header.tex
 │       ├── experience.tex
 │       ├── education.tex
 │       ├── skills.tex
 │       ├── objective.tex
 │       └── publications.tex
 │
-├── cli/                            # Bun/TypeScript CLI for syncing data to LaTeX
-│   ├── index.ts                    # Entry point
-│   ├── src/
-│   │   ├── config.ts               # File path configuration
-│   │   ├── file-names.ts           # Strictly typed filename enums
-│   │   ├── sync-latex.ts           # Main sync orchestration
-│   │   ├── sync.types.ts           # TypeScript types for careerProfile.json
-│   │   ├── templates/              # EmbeddedTS LaTeX templates
-│   │   │   ├── header.template.ets.tex
-│   │   │   ├── experience.template.ets.tex
-│   │   │   ├── education.template.ets.tex
-│   │   │   ├── skills.template.ets.tex
-│   │   │   ├── objective.template.ets.tex
-│   │   │   └── publications.template.ets.tex
-│   │   └── utils/
-│   │       ├── converters.ts       # LaTeX escaping and template compilation
-│   │       └── file-system.ts      # File I/O operations
-│   ├── bun.lock                    # Bun lockfile
-│   └── package.json                # Dependencies
-│
 ├── .github/workflows/
-│   ├── release.yml                 # CI/CD: Sync → Compile LaTeX → Release
-│   └── README.md                   # CI/CD documentation and troubleshooting
-├── .gitignore                      # Ignores: resume/sections/, *.pdf, *.log, etc.
-├── README.md                       # Project overview and philosophy
-├── AGENTS.md                       # Instructions for AI agents (you are here)
-├── resume.pdf                      # Generated PDF (artifact, not committed)
+│   ├── release.yml                # CI/CD: Sync → Compile LaTeX → Release (reusable)
+│   └── README.md                  # CI/CD documentation and troubleshooting
+├── docs/                          # Project documentation
+├── .gitignore                     # Ignores: infrastructure/sections/, *.pdf, *.log, etc.
+├── README.md                      # Project overview and philosophy
+├── AGENTS.md                      # Instructions for AI agents (you are here)
+├── resume                         # Local build script
 └── (other files: .git, .serena, etc.)
 ```
 
@@ -51,13 +54,13 @@ resume/
 
 ### Source vs. Artifacts
 
-- **Source** (committed): `resume/careerProfile.json`, `resume.tex`, `resume.xmpdata`, `TLCresume.sty`, `/cli`
-- **Generated** (gitignored): `resume/sections/*.tex`, `resume.pdf`, Docker images, build caches
+- **Source** (committed): `user-content/careerProfile.json`, `infrastructure/resume.tex`, `infrastructure/TLCresume.sty`, `infrastructure/cli/`
+- **Generated** (gitignored): `infrastructure/sections/*.tex`, `infrastructure/resume.pdf`, Docker images, build caches
 
 ### Data Flow
 
 ```
-resume/careerProfile.json
+user-content/careerProfile.json
         ↓
     [CLI sync-latex.ts]
         ↓
@@ -65,16 +68,16 @@ resume/careerProfile.json
         ↓
     [templates/*.ets.tex - jslatex]
         ↓
-    resume/sections/*.tex
+    infrastructure/sections/*.tex
         ↓
     [latex-action + latexmk]
         ↓
-    resume.pdf
+    infrastructure/resume.pdf
 ```
 
 ## File Naming Convention
 
-All hardcoded filenames are strictly typed in `/cli/src/file-names.ts`:
+All hardcoded filenames are strictly typed in `infrastructure/cli/src/file-names.ts`:
 
 - `InputFileNames` enum - Input files
 - `OutputFileNames` enum - Generated .tex files

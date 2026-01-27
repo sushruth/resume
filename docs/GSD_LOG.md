@@ -149,52 +149,6 @@ cp infrastructure/templates/default/tex/header.template.ets.tex \
 
 ---
 
-## 🎯 PHASE 4: UNIFIED CLI
-
-**Status:** Not Started  
-**Risk:** Low (wrapper only)  
-**Files:** 1 file + documentation  
-**Duration:** 1-2 hours  
-**Dependencies:** None (can run in parallel)
-
-### Tasks:
-
-1. **Create `./resume` bash script** at repo root
-   - Simple wrapper for existing commands
-   - Add `init`, `build`, `doctor` commands
-2. **Add proper error handling**
-   - Check for required tools (Bun, LaTeX)
-   - Clear error messages
-3. **Update documentation**
-   - Add to `SETUP.md`
-   - Show usage examples
-4. **Test local execution**
-   - Verify works from repo root
-   - Test all commands
-
-### Validation:
-
-- [ ] `./resume build` generates resume successfully
-- [ ] `./resume doctor` reports missing tools accurately
-- [ ] Script exits cleanly on errors
-- [ ] Works on macOS/Linux (bash compatible)
-
-### Agent Workflow:
-
-```bash
-# 1. Create executable script
-touch resume && chmod +x resume
-
-# 2. Test incrementally
-./resume --help  # Should show usage
-./resume build   # Should generate PDF
-
-# 3. Update documentation
-# (Use mcp__acp__Edit for SETUP.md updates)
-```
-
----
-
 ## 🎯 PHASE 5: MIGRATION & CLEANUP
 
 **Status:** Not Started  
@@ -242,6 +196,47 @@ bun run sync
 
 # 4. Update CI/CD if needed
 # Check .github/workflows/release.yml
+```
+
+---
+
+## 🎯 PHASE 4: REUSABLE WORKFLOW OPTIMIZATION
+
+**Status:** Not Started  
+**Risk:** Low (workflow enhancement)  
+**Files:** 1-2 files  
+**Duration:** 1-2 hours  
+**Dependencies:** Phase 1-3 complete
+
+### Tasks:
+
+1. **Add sparse checkout to reusable workflow**
+   - Checkout original repo's `infrastructure/` directory
+   - Ensure CLI code is available for build
+2. **Update workflow paths**
+   - Adjust working directories and file references
+   - Test with minimal user repos
+3. **Document template usage**
+   - Update SETUP.md with minimal repo structure
+   - Provide example workflow file
+
+### Validation:
+
+- [ ] Reusable workflow builds resume from external repo
+- [ ] Minimal user repo (workflow + data) works
+- [ ] No regressions in original repo
+
+### Agent Workflow:
+
+```bash
+# 1. Modify .github/workflows/release.yml
+# Add sparse checkout step
+
+# 2. Test by calling workflow from dummy repo
+# (Create test repo with minimal files)
+
+# 3. Update documentation
+# (Modify infrastructure/SETUP.md)
 ```
 
 ---
@@ -330,9 +325,9 @@ bun run sync
 
 ### Phase 4 Complete When:
 
-- [ ] `./resume` script works from repo root
-- [ ] All commands execute successfully
-- [ ] Documentation updated
+- [ ] Reusable workflow works from external repos
+- [ ] Sparse checkout fetches CLI correctly
+- [ ] Template documentation updated
 
 ### Phase 5 Complete When:
 
@@ -341,6 +336,8 @@ bun run sync
 - [ ] No regressions in any workflow
 
 ---
+
+_Last Updated: 2026-01-26 | AI-Optimized for Serena Workflow | Version 2.0_
 
 ## ⚠️ RISK MITIGATION
 
