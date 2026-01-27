@@ -80,10 +80,9 @@ export const sanitizeObjectForLaTeX = (obj: any): any => {
  * Reusable template compiler for single data objects (LaTeX with sanitization)
  */
 export const compileTemplate = async (
-  templateName: TemplateFileNames,
+  templatePath: string,
   data: Record<string, unknown>,
 ): Promise<string> => {
-  const templatePath = validateTemplatePath(templateName);
   const sanitizedData = sanitizeObjectForLaTeX(data);
   return await compileJsLatexFile({
     filePath: templatePath,
@@ -96,10 +95,9 @@ export const compileTemplate = async (
  * Reusable template compiler for HTML (no sanitization)
  */
 export const compileTemplateHTML = (
-  templateName: TemplateFileNames,
+  templatePath: string,
   data: Record<string, unknown>,
 ): string => {
-  const templatePath = validateTemplatePath(templateName);
   const templateContent = readFileSync(templatePath, "utf8");
   try {
     const result = ejs.render(templateContent, data);
@@ -114,12 +112,12 @@ export const compileTemplateHTML = (
  * Reusable template compiler for array entries (maps each entry to template)
  */
 export const compileArrayEntriesToLaTeX = async <T>(
-  templateName: TemplateFileNames,
+  templatePath: string,
   entries: T[],
 ): Promise<string> => {
   const results = await Promise.all(
     entries.map(async (entry) => {
-      return await compileTemplate(templateName, { entry });
+      return await compileTemplate(templatePath, { entry });
     }),
   );
   return results.join("\n");
@@ -129,11 +127,11 @@ export const compileArrayEntriesToLaTeX = async <T>(
  * Reusable template compiler for array entries (HTML)
  */
 export const compileArrayEntriesToHTML = <T>(
-  templateName: TemplateFileNames,
+  templatePath: string,
   entries: T[],
 ): string => {
   const results = entries.map((entry) => {
-    return compileTemplateHTML(templateName, { entry });
+    return compileTemplateHTML(templatePath, { entry });
   });
   return results.join("\n");
 };
@@ -211,13 +209,13 @@ export const groupWorkEntriesByEmployer = (
  * Compiles grouped work entries to LaTeX
  */
 export const compileGroupedWorkEntriesToLaTeX = async (
-  templateName: TemplateFileNames,
+  templatePath: string,
   entries: WorkEntry[],
 ): Promise<string> => {
   const groupedEntries = groupWorkEntriesByEmployer(entries);
   const results = await Promise.all(
     groupedEntries.map(async (group) => {
-      return await compileTemplate(templateName, { group });
+      return await compileTemplate(templatePath, { group });
     }),
   );
   return results.join("\n");
@@ -227,12 +225,12 @@ export const compileGroupedWorkEntriesToLaTeX = async (
  * Compiles grouped work entries to HTML
  */
 export const compileGroupedWorkEntriesToHTML = (
-  templateName: TemplateFileNames,
+  templatePath: string,
   entries: WorkEntry[],
 ): string => {
   const groupedEntries = groupWorkEntriesByEmployer(entries);
   const results = groupedEntries.map((group) => {
-    return compileTemplateHTML(templateName, { group });
+    return compileTemplateHTML(templatePath, { group });
   });
   return results.join("\n");
 };
