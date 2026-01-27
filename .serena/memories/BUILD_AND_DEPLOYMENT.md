@@ -8,10 +8,12 @@
 
 - Push to `main` branch
 - Only if changes include:
-  - `cli/**` (CLI code changes)
-  - `resume/**` (Resume source changes)
+  - `infrastructure/cli/**` (CLI code changes)
+  - `infrastructure/resume/**` (Resume source changes)
+  - `user-content/**` (User data changes)
   - `.github/workflows/release.yml` (Workflow changes)
 - Ignores: README, AGENTS.md, standalone docs, etc.
+- Also triggered via `workflow_call` for reusable workflow usage.
 
 ### Concurrency Control
 
@@ -43,6 +45,18 @@
    - Runs `gh release upload` to upload `resume.pdf` as asset
 
 **Total time**: 1-2 minutes (typical)
+
+## Reusable Workflow
+
+The workflow supports `workflow_call` trigger, allowing it to be used as a reusable workflow in other repositories. This enables forked repositories to build resumes without duplicating the workflow code.
+
+To use as reusable:
+
+```yaml
+jobs:
+  build-resume:
+    uses: your-repo/.github/workflows/release.yml@main
+```
 
 ## Local Development
 

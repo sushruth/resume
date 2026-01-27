@@ -8,11 +8,11 @@ This CLI is the automation engine for the [Resume-as-Code](https://github.com/ke
 
 The CLI orchestrates data synchronization to both LaTeX (PDF) and HTML (web) presentation layers:
 
-1.  **Data Ingestion:** Reads and parses the `careerProfile.json` file from the repository root.
+1.  **Data Ingestion:** Reads and parses the `user-content/careerProfile.json` file.
 2.  **LaTeX Path:**
     - Sanitizes data for LaTeX compatibility (escapes special characters).
     - Uses `jslatex` to render `.ets.tex` templates into LaTeX section files.
-    - Outputs to `resume/sections/` for PDF compilation.
+    - Outputs to `infrastructure/sections/` for PDF compilation.
 3.  **HTML Path:**
     - Uses unsanitized data for HTML.
     - Uses `ejs` to render `.ets.html` templates into HTML sections.
