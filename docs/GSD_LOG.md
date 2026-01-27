@@ -246,6 +246,58 @@ bun run sync
 
 ---
 
+## 🎯 PHASE 6: STANDALONE CLI DISTRIBUTION
+
+**Status:** Not Started  
+**Risk:** Medium (new distribution method)  
+**Files:** 2-3 files + GitHub Release  
+**Duration:** 2-3 hours  
+**Dependencies:** All previous phases complete
+
+### Tasks:
+
+1. **Create CLI binaries**
+   - Add `bun build --compile` to package.json scripts
+   - Generate executables for macOS, Linux, Windows
+   - Test binaries work standalone
+2. **Publish to GitHub Releases**
+   - Update release workflow to build and attach binaries
+   - Version binaries with semantic versioning
+3. **Update ./resume script**
+   - Add auto-download logic for CLI binary
+   - Detect OS/architecture and download appropriate binary
+   - Cache binary locally to avoid re-downloads
+4. **Modify reusable workflow**
+   - Remove assumption of local `infrastructure/cli/`
+   - Use sparse checkout to fetch CLI from original repo
+   - Update paths and commands accordingly
+
+### Validation:
+
+- [ ] Binaries execute without Bun/Node installed
+- [ ] `./resume` works in empty directory with just script
+- [ ] Reusable workflow builds resume in minimal repo
+- [ ] No regressions in full repo setup
+
+### Agent Workflow:
+
+```bash
+# 1. Build binaries locally first
+cd infrastructure/cli
+bun run build-binary  # Add this script
+
+# 2. Test binary
+./dist/resume-cli --help
+
+# 3. Update release workflow
+# (Modify .github/workflows/release.yml)
+
+# 4. Update ./resume script
+# (Modify root resume script)
+```
+
+---
+
 ## 🚨 CRITICAL AI AGENT PROTOCOLS
 
 ### Before ANY Implementation:

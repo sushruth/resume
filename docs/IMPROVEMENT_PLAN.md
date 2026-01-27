@@ -76,6 +76,25 @@ _Note: Overleaf cannot run our automation (JSON -> LaTeX conversion), but it is 
 - **Result:** Generates a `resume-export.zip` containing the compiled LaTeX, logic, and style files.
 - **Usage:** You can upload this zip directly to Overleaf to see/edit your resume in their editor.
 
+## 6. Standalone CLI Distribution
+
+To enable the `./resume` binary to work in ANY repository without requiring users to clone or include infrastructure code, we will make the CLI self-contained and distributable.
+
+- **Goal:** Users can copy `./resume` script and use it in any repo with just their data files.
+- **Approach:**
+  - Publish CLI as GitHub Release binaries (macOS, Linux, Windows).
+  - Modify `./resume` to auto-download CLI if not present locally.
+  - Update reusable workflow to fetch CLI from original repo via sparse checkout.
+- **Template Usage:** Forked repos need only:
+  - `.github/workflows/release.yml` (calls reusable workflow)
+  - `user-content/careerProfile.json`
+  - Optional: `user-content/templates/`
+- **Implementation:**
+  - Add build step to create binaries using `bun build --compile`.
+  - Release binaries on GitHub Releases.
+  - Script detects OS/arch and downloads appropriate binary.
+  - Workflow uses `actions/checkout` with `sparse-checkout: infrastructure/` to fetch CLI.
+
 ---
 
 ## Execution Roadmap
@@ -83,4 +102,5 @@ _Note: Overleaf cannot run our automation (JSON -> LaTeX conversion), but it is 
 1.  **Refactor Templates:** Move templates out of `src` and implement the "User Override" lookup logic.
 2.  **Dynamic Logic:** Update `sync-latex.ts` to use a loop based on config/schema rather than hardcoded function calls.
 3.  **Create CLI:** Write the `./resume` bash wrapper.
-4.  **Dockerize:** Add container support.
+4.  **Standalone Distribution:** Publish CLI binaries and update script/workflow for auto-download.
+5.  **Dockerize:** Add container support.
