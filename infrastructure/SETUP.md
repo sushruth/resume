@@ -61,10 +61,8 @@ grep -ri "sushruth\|keepam/resume" . --exclude-dir=node_modules --exclude-dir=.g
 **4. Generate the Artifacts**
 Before pushing, ensure the system works locally:
 
-```bash
-cd infrastructure/cli
-bun install
-bun run sync
+./resume init
+./resume build
 ```
 
 - **Check:** Verify that `.tex` files in `infrastructure/cli/resume/sections/` have updated with your new data.
@@ -110,9 +108,8 @@ Whenever you want to update your resume:
 **Local sync fails:**
 
 ```bash
-cd infrastructure/cli
-bun install  # Ensure dependencies are installed
-bun run sync  # Check for specific error messages
+./resume init  # Ensure dependencies are installed
+./resume build  # Check for specific error messages
 ```
 
 **PDF formatting issues:**
