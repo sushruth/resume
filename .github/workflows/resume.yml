@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build resume with Pause
-        uses: usually-frustrated/pause@v1
+        uses: usually-frustrated/pause@main
         with:
           resume_file: "resume.json"
           templates: |
