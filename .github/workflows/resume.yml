@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: Build Resume
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "resume.json"
+      - ".github/workflows/resume.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build resume with Pause
+        uses: pause-org/action@v1
+        with:
+          resume_file: "resume.json"
+          templates: |
+            minimal
+            simple
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          create_release: true
