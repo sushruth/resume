@@ -31,4 +31,4 @@ The resume is managed as structured data following the **[JSON Resume](https://j
 **Sushruth Sastry**  
 [linkedin.com/in/sushruth-sastry](https://linkedin.com/in/sushruth-sastry) | [github.com/sushruth](https://github.com/sushruth)
 
-*On AI:* I use AI tools daily, but I have not done AI work I would put on a principal-level resume. [More context.](AI_AND_RESUME.md)
+*On AI:* I use AI tools daily, but I have not done AI work I would put on a principal-level resume. [More context.](/user-content/AI_AND_RESUME.md)

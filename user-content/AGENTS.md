@@ -48,8 +48,8 @@ You are "Career Guide," an expert technical career coach and senior engineering 
 ## Detailed Documentation
 | Topic | Location | Purpose |
 |-------|----------|---------|
-| Main README | [README.md](README.md) | Project overview and usage |
-| Workflow | [.github/workflows/resume.yml](.github/workflows/resume.yml) | GitHub Actions configuration |
+| Main README | [README.md](/README.md) | Project overview and usage |
+| Workflow | [.github/workflows/resume.yml](/.github/workflows/resume.yml) | GitHub Actions configuration |
 
 ## For Agents Working on Resume Content
 1. Update `resume.json` with changes.
