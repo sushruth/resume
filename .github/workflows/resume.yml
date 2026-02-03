@@ -22,7 +22,7 @@ jobs:
       - name: Build resume with Pause
         uses: usually-frustrated/pause@main
         with:
-          resume_file: "resume.json"
+          resume_file: ${{ github.workspace }}/resume.json
           templates: |
             simple
           github_token: ${{ secrets.GITHUB_TOKEN }}
