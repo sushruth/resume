@@ -11,6 +11,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -24,8 +26,8 @@ jobs:
         with:
           resume_file: ${{ github.workspace }}/resume.json
           templates: |
-            minimal
-            modern
-            simple
+            latex-minimal
+            html-simple
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create_release: true
+          deploy_github_pages: html-simple
