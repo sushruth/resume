@@ -24,6 +24,8 @@ jobs:
         with:
           resume_file: ${{ github.workspace }}/resume.json
           templates: |
+            minimal
+            modern
             simple
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create_release: true

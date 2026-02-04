@@ -9,15 +9,21 @@ This repository contains the source for my resume in a structured, automated for
 
 ### Architecture
 
-The resume is managed as structured data following the **[JSON Resume](https://jsonresume.org/)** standard (`resume.json`) rather than static documents. The **[Pause](https://github.com/usually-frustrated/pause)** GitHub Action automatically generates PDF and HTML versions from this single source of truth.
+The resume is managed as structured data following the **[JSON Resume](https://jsonresume.org/)** standard (`resume.json`). The **[Pause](https://github.com/usually-frustrated/pause)** GitHub Action automatically generates PDF and HTML versions from this source.
+
+> [!TIP]
+> **Pause v0.2.0** supports a **Three-Tier Template System**:
+> 1. **Built-in**: `minimal` (LaTeX), `modern` (Typst), `simple` (HTML).
+> 2. **Official**: Community templates from `pause-org/pause-templates`.
+> 3. **Custom**: Any GitHub repository (e.g., `user/repo`).
 
 ### Components
 
 | Layer | Technology | Role |
 | :--- | :--- | :--- |
-| **Data** | `resume.json` (JSON Resume) | Single source of truth. |
-| **Build** | **Pause GitHub Action** | Renders JSON to PDF & HTML. |
-| **Output** | **LaTeX** (PDF) + **HTML** | Artifacts & Release attachments. |
+| **Data** | `resume.json` | Single source of truth. |
+| **Build** | **[Pause Action](https://github.com/usually-frustrated/pause)** | Multi-template engine (LaTeX, Typst, HTML). |
+| **Output** | **PDF** + **HTML** | Automated Releases & GitHub Pages. |
 
 ### Workflow
 
