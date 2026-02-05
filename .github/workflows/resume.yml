@@ -27,7 +27,7 @@ jobs:
           resume_file: ${{ github.workspace }}/resume.json
           templates: |
             latex-template
-            html-simple
+            html-template
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create_release: true
           deploy_github_pages: html-simple
