@@ -26,8 +26,9 @@ jobs:
         with:
           resume_file: ${{ github.workspace }}/resume.json
           templates: |
-            latex-minimal
+            latex-template
             html-simple
           github_token: ${{ secrets.GITHUB_TOKEN }}
           create_release: true
           deploy_github_pages: html-simple
+          artifact_name_template: "{name} {MMM} {yyyy} Resume"
