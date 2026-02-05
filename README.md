@@ -1,15 +1,21 @@
 # Sushruth Sastry
 _Senior/Lead Frontend Engineer, Gearing Toward Principal_
 
-This repository contains the source for my resume in a structured, automated format. The latest PDF is available on the [**Releases**](https://github.com/sushruth/resume/releases) page.
-
 [![Build Resume](https://github.com/sushruth/resume/actions/workflows/resume.yml/badge.svg)](https://github.com/sushruth/resume/actions/workflows/resume.yml)
 
 ---
 
-### How It Works
+I'm a frontend engineer with 12+ years of experience, currently at DocuSign and previously at Microsoft. I specialize in **Frontend Platform Engineering** and **Developer Experience**—building the infrastructure and tooling that lets large engineering organizations ship reliably.
 
-The resume is stored as structured data following the [JSON Resume](https://jsonresume.org/) standard (`resume.json`). I built [**Pause**](https://github.com/usually-frustrated/pause), a GitHub Action that generates PDF and HTML versions from this source. Pushing changes to `main` triggers a new release automatically.
+My work tends to focus on the problems that sit between "individual feature" and "organizational scale": monorepo architecture, micro-frontend platforms, CI/CD pipelines, and the kind of developer tooling that turns a painful local dev loop into something fast and predictable. At DocuSign, I've led initiatives impacting 440+ engineers. At Microsoft, I worked on Teams Admin Center and healthcare integrations.
+
+I care about making things work well for other engineers. That often means building frameworks, writing internal tools, or modernizing legacy systems in ways that don't break production.
+
+---
+
+### About This Repo
+
+This is the source for my resume—stored as structured data following the [JSON Resume](https://jsonresume.org/) standard. I built [**Pause**](https://github.com/usually-frustrated/pause), a GitHub Action that generates PDF and HTML versions automatically. The latest PDF is available on the [**Releases**](https://github.com/sushruth/resume/releases) page.
 
 ---
 
