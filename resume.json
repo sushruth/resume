@@ -34,7 +34,7 @@
 			"location": "Seattle, WA",
 			"startDate": "2023-03",
 			"endDate": "Present",
-			"summary": "Feature owner for select platform capabilities and contributor to frontend infrastructure used by 440+ engineers. Operate at platform scope—designing systems that accelerate delivery for multiple product teams.",
+			"summary": "Lead features for a frontend platform that serves 440+ engineers internally. Operate at platform scope—designing systems that accelerate delivery for multiple product teams.",
 			"highlights": [
 				"Created the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",
 				"Designed a monorepo CI/CD architecture on Azure DevOps that enabled atomic multi-package releases, drastically reducing integration failures from uncoordinated deployments.",
@@ -198,7 +198,7 @@
 		"points": [
 			{
 				"header": "Force Multiplier",
-				"detail": "I build infrastructure that makes entire teams faster. At DocuSign, my platform work impacts 440+ engineers. I operate at organizational scope, not just individual contribution."
+				"detail": "I build infrastructure that makes entire teams faster. At DocuSign, I lead features for a platform serving 440+ engineers. I operate at organizational scope, not just individual contribution."
 			},
 			{
 				"header": "Safe Modernization",
