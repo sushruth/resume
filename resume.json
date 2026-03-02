@@ -36,7 +36,7 @@
 			"endDate": "Present",
 			"summary": "Lead features for a frontend platform that serves 440+ engineers internally. Operate at platform scope—designing systems that accelerate delivery for multiple product teams.",
 			"highlights": [
-				"Created the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",
+				"Created several feature on the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",
 				"Designed a monorepo CI/CD architecture on Azure DevOps that enabled atomic multi-package releases, drastically reducing integration failures from uncoordinated deployments.",
 				"Built the Scenes feature—a live, in-place Storybook replacement for micro-frontends across the DocuSign website, enabling API and property mocking. Reduced dev churn during parallel API/UI development and let stakeholders see progress without manual mock setup. Now used by 6 teams.",
 				"Shipped a shared component variant strategy adopted by 16 production applications, eliminating the need for duplicate implementations and enforcing design system consistency.",
