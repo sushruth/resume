@@ -15,6 +15,11 @@ permissions:
   pages: write
   id-token: write
 
+# On a PR, a newer push cancels the older run so the preview comment never points at a stale PDF.
+concurrency:
+  group: resume-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     runs-on: ubuntu-latest

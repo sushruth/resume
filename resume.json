@@ -33,7 +33,6 @@
 			"position": "Senior Software Engineer II",
 			"location": "Remote",
 			"startDate": "2026-03",
-			"endDate": "Present",
 			"summary": "Platform-minded engineer on a gym-management SaaS. Deliver customer-facing product while building the developer and AI-agent infrastructure the whole engineering team ships on.",
 			"highlights": [
 				"Architected Hotswap, a tool that runs any dev-environment page against a local UI or API build with real data and no Docker or deploy. Adopted by engineers and by cloud coding agents (Claude, Codex, and the in-house background agent), which now verify their own changes and attach before/after screenshots to their PRs.",
