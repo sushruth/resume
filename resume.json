@@ -29,11 +29,27 @@
 	},
 	"work": [
 		{
+			"name": "PushPress",
+			"position": "Senior Software Engineer II",
+			"location": "Remote",
+			"startDate": "2026-03",
+			"endDate": "Present",
+			"summary": "Platform-minded engineer on a gym-management SaaS. Deliver customer-facing product while building the developer and AI-agent infrastructure the whole engineering team ships on.",
+			"highlights": [
+				"Architected Hotswap, a tool that runs any dev-environment page against a local UI or API build with real data and no Docker or deploy. Adopted by engineers and by cloud coding agents (Claude, Codex, and the in-house background agent), which now verify their own changes and attach before/after screenshots to their PRs.",
+				"Replaced LocalStack with fakecloud across ephemeral PR sandboxes, cutting AWS-emulator memory from ~1 GB to ~14 MB per sandbox. Validated the change with a 10-vs-10 sandbox E2E benchmark before rollout.",
+				"Engineered affected-only test selection for PR CI with a merge-queue safeguard, cutting median Core API unit-test time 42% (289s to 167s). Added CI stress-testing so engineers can prove flaky-test fixes.",
+				"Drove end-to-end delivery of Go Pages, the rebuilt lead-conversion funnel: plan selection, class scheduling, guardian-aware waivers, Stripe checkout, and confirmation. Took it from scaffolding to launch with first gyms in under 10 weeks, backed by end-to-end Playwright coverage.",
+				"Initiated a monolith modularization program, from pitch to first merged changes, using agent-driven PRs to cut cross-package coupling. Hardened authorization across REST and GraphQL endpoints as part of a company-wide API security initiative.",
+				"Migrated public-facing PHP pages (events, calendar, short links, password reset, card capture) to React and Fastify, test-first, then deleted the legacy code. Rebuilt member email sending in an 8-PR stack after on-call triage, surfacing failure reasons to staff and ending retry-driven pages."
+			]
+		},
+		{
 			"name": "DocuSign, Inc.",
 			"position": "Senior Software Engineer",
 			"location": "Seattle, WA",
 			"startDate": "2023-03",
-			"endDate": "Present",
+			"endDate": "2026-03",
 			"summary": "Lead features for a frontend platform that serves 440+ engineers internally. Operate at platform scope—designing systems that accelerate delivery for multiple product teams.",
 			"highlights": [
 				"Created several feature on the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",

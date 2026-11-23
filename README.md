@@ -5,9 +5,9 @@ _Senior/Lead Frontend Engineer, Gearing Toward Principal_
 
 ---
 
-I'm a frontend engineer with 12+ years of experience, currently at DocuSign and previously at Microsoft. I specialize in **Frontend Platform Engineering** and **Developer Experience**—building infrastructure and tooling that makes large engineering organizations more effective.
+I'm a frontend engineer with 12+ years of experience, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering** and **Developer Experience**—building infrastructure and tooling that makes large engineering organizations more effective.
 
-At DocuSign, I lead features for a platform used by 440+ engineers. At Microsoft, I worked on Teams Admin Center and healthcare integrations. My focus is on the problems between individual features and organizational scale: monorepo architecture, micro-frontend platforms, CI/CD pipelines, and developer tooling that makes iteration faster.
+At DocuSign, I led features for a platform used by 440+ engineers. At Microsoft, I worked on Teams Admin Center and healthcare integrations. My focus is on the problems between individual features and organizational scale: monorepo architecture, micro-frontend platforms, CI/CD pipelines, and developer tooling that makes iteration faster.
 
 ---
 
