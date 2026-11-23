@@ -7,6 +7,7 @@ on:
     paths:
       - "resume.json"
       - ".github/workflows/resume.yml"
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -17,6 +18,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pdf-url: ${{ steps.upload.outputs.artifact-url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -29,6 +32,44 @@ jobs:
             latex-template
             html-template
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          create_release: true
+          # Pull requests only build: no release, no tag, no Pages deploy
+          # (Pause deploys Pages only as part of creating a release).
+          create_release: ${{ github.event_name != 'pull_request' }}
           deploy_github_pages: html-simple
           artifact_name_template: "{name} {MMM} {yyyy} Resume"
+
+      - name: Upload PDF preview
+        id: upload
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          # Pause writes <output_name>.<ext> to the workspace root; the LaTeX template's output_name is "resume".
+          path: ${{ github.workspace }}/resume.pdf
+          if-no-files-found: error
+
+  comment:
+    name: Comment PDF link on PR
+    needs: build
+    # Fork PRs get a read-only token, so skip instead of failing.
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Create or update sticky comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+          PDF_URL: ${{ needs.build.outputs.pdf-url }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          marker='<!-- resume-pdf-preview -->'
+          body="$(printf '%s\n**Resume PDF preview** for %s: [download resume-pdf.zip](%s)\n\nThe link downloads a zip containing `resume.pdf`. You must be signed in to GitHub to download workflow artifacts.' "$marker" "$SHA" "$PDF_URL")"
+          id="$(gh api "repos/$GH_REPO/issues/$PR/comments" --paginate --jq ".[] | select(.body | contains(\"$marker\")) | .id" | head -n 1)"
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GH_REPO/issues/comments/$id" -f body="$body" --silent
+          else
+            gh pr comment "$PR" --body "$body"
+          fi
