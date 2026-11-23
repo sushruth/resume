@@ -46,9 +46,10 @@ jobs:
       - name: Upload PDF preview
         id: upload
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
-          name: resume-pdf
+          # Unzipped single-file upload, so the link serves the PDF itself (artifact is named resume.pdf).
+          archive: false
           # Pause writes <output_name>.<ext> to the workspace root; the LaTeX template's output_name is "resume".
           path: ${{ github.workspace }}/resume.pdf
           if-no-files-found: error
@@ -71,7 +72,7 @@ jobs:
           SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           marker='<!-- resume-pdf-preview -->'
-          body="$(printf '%s\n**Resume PDF preview** for %s: [download resume-pdf.zip](%s)\n\nThe link downloads a zip containing `resume.pdf`. You must be signed in to GitHub to download workflow artifacts.' "$marker" "$SHA" "$PDF_URL")"
+          body="$(printf '%s\n**Resume PDF preview** for %s: [resume.pdf](%s)\n\nYou must be signed in to GitHub to open workflow artifacts.' "$marker" "$SHA" "$PDF_URL")"
           id="$(gh api "repos/$GH_REPO/issues/$PR/comments" --paginate --jq ".[] | select(.body | contains(\"$marker\")) | .id" | head -n 1)"
           if [ -n "$id" ]; then
             gh api -X PATCH "repos/$GH_REPO/issues/comments/$id" -f body="$body" --silent
