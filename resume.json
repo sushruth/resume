@@ -33,14 +33,13 @@
 			"position": "Senior Software Engineer II",
 			"location": "Remote",
 			"startDate": "2026-03",
-			"summary": "Platform-minded engineer on a gym-management SaaS. Deliver customer-facing product while building the developer and AI-agent infrastructure the whole engineering team ships on.",
+			"summary": "Joined as a product engineer and moved onto the Agent Platform core team within seven months. Own the developer and AI-agent infrastructure the engineering organization ships on, while delivering revenue-facing product.",
 			"highlights": [
-				"Architected Hotswap, a tool that runs any dev-environment page against a local UI or API build with real data and no Docker or deploy. Adopted by engineers and by cloud coding agents (Claude, Codex, and the in-house background agent), which now verify their own changes and attach before/after screenshots to their PRs.",
-				"Replaced LocalStack with fakecloud across ephemeral PR sandboxes, cutting AWS-emulator memory from ~1 GB to ~14 MB per sandbox. Validated the change with a 10-vs-10 sandbox E2E benchmark before rollout.",
-				"Engineered affected-only test selection for PR CI with a merge-queue safeguard, cutting median Core API unit-test time 42% (289s to 167s). Added CI stress-testing so engineers can prove flaky-test fixes.",
-				"Drove end-to-end delivery of Go Pages, the rebuilt lead-conversion funnel: plan selection, class scheduling, guardian-aware waivers, Stripe checkout, and confirmation. Took it from scaffolding to launch with first gyms in under 10 weeks, backed by end-to-end Playwright coverage.",
-				"Initiated a monolith modularization program, from pitch to first merged changes, using agent-driven PRs to cut cross-package coupling. Hardened authorization across REST and GraphQL endpoints as part of a company-wide API security initiative.",
-				"Migrated public-facing PHP pages (events, calendar, short links, password reset, card capture) to React and Fastify, test-first, then deleted the legacy code. Rebuilt member email sending in an 8-PR stack after on-call triage, surfacing failure reasons to staff and ending retry-driven pages."
+				"Built the verification layer that lets AI coding agents ship production changes. Agents on three platforms (Claude, Codex, and the in-house background agent) now run, test, and screenshot their own work against real environments before a human reviews it.",
+				"Cut the cost of the engineering feedback loop for humans and agents alike: 42% faster PR test runs and a 98% smaller cloud-emulation footprint per environment, raising how many parallel environments the same infrastructure supports.",
+				"Initiated a monolith modularization program. Identified architecture as the limit on build speed and agent effectiveness, won leadership backing, and landed the first changes through agent-authored PRs.",
+				"Drove delivery of the company's rebuilt lead-conversion funnel (scheduling, waivers, payments) from scaffolding to launch with first customers in under 10 weeks.",
+				"Reduced platform risk across the stack: retired legacy PHP surfaces in favor of React and TypeScript services, and closed authorization gaps across REST and GraphQL in a company-wide security program."
 			]
 		},
 		{
