@@ -44,15 +44,25 @@ jobs:
           deploy_github_pages: html-simple
           artifact_name_template: "{name} {MMM} {yyyy} Resume"
 
+      # An unzipped artifact is named after its file, so copy the outputs to the name a reader will download.
+      - name: Name preview files
+        id: name
+        if: github.event_name == 'pull_request'
+        run: |
+          base="$(jq -r '.basics.name' resume.json | tr ' ' '-')-Resume"
+          cp resume.pdf "$base.pdf"
+          cp resume.html "$base.html"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+
       - name: Upload PDF preview
         id: upload
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v7
         with:
-          # Unzipped single-file upload, so the link serves the PDF itself (artifact is named resume.pdf).
+          # Unzipped single-file upload, so the link serves the PDF itself.
           archive: false
           # Pause writes <output_name>.<ext> to the workspace root; the LaTeX template's output_name is "resume".
-          path: ${{ github.workspace }}/resume.pdf
+          path: ${{ github.workspace }}/${{ steps.name.outputs.base }}.pdf
           if-no-files-found: error
 
       - name: Upload HTML preview
@@ -61,7 +71,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           archive: false
-          path: ${{ github.workspace }}/resume.html
+          path: ${{ github.workspace }}/${{ steps.name.outputs.base }}.html
           if-no-files-found: error
 
   comment:
@@ -83,7 +93,7 @@ jobs:
           SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           marker='<!-- resume-pdf-preview -->'
-          body="$(printf '%s\n**Resume preview** for %s: [resume.pdf](%s) | [resume.html](%s)\n\nYou must be signed in to GitHub to open workflow artifacts.' "$marker" "$SHA" "$PDF_URL" "$HTML_URL")"
+          body="$(printf '%s\n**Resume preview** for %s: [PDF](%s) | [HTML](%s)\n\nYou must be signed in to GitHub to open workflow artifacts.' "$marker" "$SHA" "$PDF_URL" "$HTML_URL")"
           id="$(gh api "repos/$GH_REPO/issues/$PR/comments" --paginate --jq ".[] | select(.body | contains(\"$marker\")) | .id" | head -n 1)"
           if [ -n "$id" ]; then
             gh api -X PATCH "repos/$GH_REPO/issues/comments/$id" -f body="$body" --silent
