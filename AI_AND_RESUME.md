@@ -16,3 +16,13 @@ When I have AI work that reflects principal-level ownership—strategy, reliabil
 ---
 
 *January 2025*
+
+---
+
+## Update, November 2026
+
+The resume now lists agent work. At PushPress I build the tooling that AI coding agents use to run and check their own changes, and I work on the Agent Platform core team. Engineers and agents at the company use that tooling, which is the kind of ownership the note above describes.
+
+The side projects are still side projects. The skills row names the agent harnesses, MCP servers, and multi-agent tools I have built or used, and the PushPress entry carries the production work.
+
+*November 2026*

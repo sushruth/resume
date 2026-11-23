@@ -5,7 +5,7 @@ _Senior/Lead Frontend Engineer, Gearing Toward Principal_
 
 ---
 
-I'm a frontend engineer with 12+ years of experience, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering** and **Developer Experience**—building infrastructure and tooling that makes large engineering organizations more effective.
+I'm a frontend engineer with 14 years of experience, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering** and **Developer Experience**—building infrastructure and tooling that makes large engineering organizations more effective.
 
 At DocuSign, I led features for a platform used by 440+ engineers. At Microsoft, I worked on Teams Admin Center and healthcare integrations. My focus is on the problems between individual features and organizational scale: monorepo architecture, micro-frontend platforms, CI/CD pipelines, and developer tooling that makes iteration faster.
 
@@ -22,4 +22,4 @@ Every pull request also builds the PDF and HTML (no release is created) and post
 **Sushruth Sastry**
 [linkedin.com/in/sushruth-sastry](https://linkedin.com/in/sushruth-sastry) | [github.com/sushruth](https://github.com/sushruth)
 
-*On AI:* I use AI tools daily, but I have not done AI work I would put on a principal-level resume. [More context.](AI_AND_RESUME.md)
+*On AI:* I kept AI work off this resume until I had some I owned in production. That changed at PushPress in 2026. [More context.](AI_AND_RESUME.md)
