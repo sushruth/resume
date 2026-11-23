@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       pdf-url: ${{ steps.upload.outputs.artifact-url }}
+      html-url: ${{ steps.upload-html.outputs.artifact-url }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -54,6 +55,15 @@ jobs:
           path: ${{ github.workspace }}/resume.pdf
           if-no-files-found: error
 
+      - name: Upload HTML preview
+        id: upload-html
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v7
+        with:
+          archive: false
+          path: ${{ github.workspace }}/resume.html
+          if-no-files-found: error
+
   comment:
     name: Comment PDF link on PR
     needs: build
@@ -69,10 +79,11 @@ jobs:
           GH_REPO: ${{ github.repository }}
           PR: ${{ github.event.pull_request.number }}
           PDF_URL: ${{ needs.build.outputs.pdf-url }}
+          HTML_URL: ${{ needs.build.outputs.html-url }}
           SHA: ${{ github.event.pull_request.head.sha }}
         run: |
           marker='<!-- resume-pdf-preview -->'
-          body="$(printf '%s\n**Resume PDF preview** for %s: [resume.pdf](%s)\n\nYou must be signed in to GitHub to open workflow artifacts.' "$marker" "$SHA" "$PDF_URL")"
+          body="$(printf '%s\n**Resume preview** for %s: [resume.pdf](%s) | [resume.html](%s)\n\nYou must be signed in to GitHub to open workflow artifacts.' "$marker" "$SHA" "$PDF_URL" "$HTML_URL")"
           id="$(gh api "repos/$GH_REPO/issues/$PR/comments" --paginate --jq ".[] | select(.body | contains(\"$marker\")) | .id" | head -n 1)"
           if [ -n "$id" ]; then
             gh api -X PATCH "repos/$GH_REPO/issues/comments/$id" -f body="$body" --silent

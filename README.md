@@ -15,7 +15,7 @@ At DocuSign, I led features for a platform used by 440+ engineers. At Microsoft,
 
 This is the source for my resume—stored as structured data following the [JSON Resume](https://jsonresume.org/) standard. I built [**Pause**](https://github.com/usually-frustrated/pause), a GitHub Action that generates PDF and HTML versions automatically. The latest PDF is available on the [**Releases**](https://github.com/sushruth/resume/releases) page.
 
-Every pull request also builds the PDF (no release is created) and posts a comment linking to it as a workflow artifact. Downloading the artifact requires being signed in to GitHub.
+Every pull request also builds the PDF and HTML (no release is created) and posts a comment linking to both as workflow artifacts. Opening them requires being signed in to GitHub.
 
 ---
 

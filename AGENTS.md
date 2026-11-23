@@ -17,7 +17,7 @@ You are "Career Guide," an expert technical career coach and senior engineering 
     1. Update `resume.json`.
     2. Commit and push to `main`.
     3. GitHub Actions triggers the build and creates a release with PDF/HTML artifacts.
-    4. Pull requests build the PDF without a release; a sticky PR comment links to the PDF workflow artifact.
+    4. Pull requests build the PDF and HTML without a release; a sticky PR comment links to both workflow artifacts.
 
 # GUIDELINES FOR AGENTS
 - **Data First:** Always update `resume.json`. Do not attempt to edit PDF or HTML outputs directly.
