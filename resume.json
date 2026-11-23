@@ -6,12 +6,10 @@
 		"email": "sushruth.sastry@gmail.com",
 		"phone": "5732005345",
 		"url": "https://github.com/sushruth",
-		"summary": "Frontend Platform Engineer with 12+ years of experience building infrastructure that scales engineering organizations. I design monorepo architectures, micro-frontend platforms, and CI/CD systems that enable hundreds of engineers to ship reliably. Track record of modernizing legacy codebases at Microsoft and DocuSign while maintaining production stability.",
+		"summary": "Frontend Platform Engineer with 14 years of experience building the infrastructure engineering organizations ship on. I design monorepo architectures, micro-frontend platforms, and CI/CD systems used by hundreds of engineers. At PushPress I build the tooling AI coding agents use to run and check their own changes. Track record of modernizing legacy codebases at Microsoft, DocuSign, and PushPress while maintaining production stability.",
 		"location": {
-			"address": "13378 188th Ave SE",
-			"postalCode": "98272",
-			"city": "Monroe",
-			"region": "WA",
+			"city": "Milpitas",
+			"region": "CA",
 			"countryCode": "US"
 		},
 		"profiles": [
@@ -29,16 +27,30 @@
 	},
 	"work": [
 		{
+			"name": "PushPress",
+			"position": "Senior Software Engineer II",
+			"location": "Remote",
+			"startDate": "2026-03",
+			"summary": "Product engineer on a gym-management platform, on the Agent Platform core team since November 2026. Work on the sandboxes that engineers and AI coding agents run code in.",
+			"highlights": [
+				"Built the tool AI coding agents use to check their own changes. Agents in Claude Code, Codex, and the company's background agent run a change against real dev data and attach before and after screenshots to the pull request. Engineers use the same tool to try a local change before any deploy.",
+				"Changed pull-request CI to run only the Core API unit tests a change touches; their median run fell from 289 to 167 seconds. Replaced LocalStack with fakecloud as the AWS emulator in test sandboxes, which cut emulator memory from about 1 GB to about 14 MB per sandbox.",
+				"Started the program to split the monolith into packages. Pitched it to the head of engineering and landed the first changes, with coding agents opening pull requests from a standing set of instructions.",
+				"Built the booking and checkout flow for the company's new landing pages: class scheduling, participant details, waivers with guardian consent for minors, payment, and confirmation. The flow launched to its first gyms in September 2026.",
+				"Moved public PHP pages for events, short links, and password reset to React and Fastify, then deleted the PHP. Added authorization checks to REST and GraphQL endpoints in the company's API security project."
+			]
+		},
+		{
 			"name": "DocuSign, Inc.",
 			"position": "Senior Software Engineer",
 			"location": "Seattle, WA",
 			"startDate": "2023-03",
-			"endDate": "Present",
-			"summary": "Lead features for a frontend platform that serves 440+ engineers internally. Operate at platform scope—designing systems that accelerate delivery for multiple product teams.",
+			"endDate": "2026-03",
+			"summary": "Led features for a frontend platform that served 440+ engineers internally. Operated at platform scope—designing systems that accelerated delivery for multiple product teams.",
 			"highlights": [
-				"Created several feature on the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",
-				"Designed a monorepo CI/CD architecture on Azure DevOps that enabled atomic multi-package releases, drastically reducing integration failures from uncoordinated deployments.",
-				"Built the Scenes feature—a live, in-place Storybook replacement for micro-frontends across the DocuSign website, enabling API and property mocking. Reduced dev churn during parallel API/UI development and let stakeholders see progress without manual mock setup. Now used by 6 teams.",
+				"Created several features on the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",
+				"Designed a monorepo CI/CD architecture on Azure DevOps that enabled atomic multi-package releases, reducing integration failures from uncoordinated deployments.",
+				"Built the Scenes feature—a live, in-place Storybook replacement for micro-frontends across the DocuSign website, enabling API and property mocking. Reduced dev churn during parallel API/UI development and let stakeholders see progress without manual mock setup. Adopted by 6 teams.",
 				"Shipped a shared component variant strategy adopted by 16 production applications, eliminating the need for duplicate implementations and enforcing design system consistency.",
 				"Delivered Maestro workflow features and built internal tooling that auto-maps Figma tokens to design system values, reducing manual design-to-code translation errors."
 			]
@@ -51,7 +63,7 @@
 			"endDate": "2023-02",
 			"summary": "Frontend lead on a Teams product integrating into Admin Center. Drove Module Federation adoption, build modernization, and developer experience improvements for the project.",
 			"highlights": [
-				"Pioneered the setup of Webpack 5 Module Federation in Teams Admin Center, enabling independent feature deployment and cutting local dev loop time from minutes to under 60 seconds.",
+				"Pioneered Webpack 5 Module Federation in Teams Admin Center, enabling independent feature deployment and cutting local dev loop time from minutes to under 60 seconds.",
 				"Migrated build infrastructure to Webpack 5 and Yarn PnP across several projects with a coworker, reducing build times and eliminating intermittent CI failures caused by dependency resolution overloading the Node.js package proxy.",
 				"Built and maintained the graph-js library for MS Graph API consumption—fully type-safe with automatic typing from OData schemas. Adopted as the standard across all teams in the broader organization.",
 				"Owned the Visits analytics dashboard frontend, delivering healthcare usage metrics for organizations using Epic EHR integration with Teams.",
@@ -145,9 +157,19 @@
 			"keywords": [
 				"Micro-Frontend Architecture (Module Federation)",
 				"Monorepo Strategy & Distributed Builds (Nx, Remote Caching)",
-				"CI/CD System Design & Governance (Azure DevOps)",
+				"CI/CD System Design & Governance (Azure DevOps, GitHub Actions)",
 				"Frontend Platform Standardization",
 				"Design System Architecture & Versioning"
+			]
+		},
+		{
+			"name": "Agentic LLM Systems & Tooling",
+			"keywords": [
+				"Coding-Agent Harnesses (Claude Code, Codex, OpenCode, pi, aider)",
+				"Model Context Protocol (MCP) Server Development",
+				"Multi-Agent Orchestration (cross-model deliberation, agent-to-agent delegation)",
+				"Agent Verification Loops (sandboxed execution, self-checked changes, screenshot evidence)",
+				"Agent Skill Authoring & Context Management (prompt caching, per-agent sessions, tool permissions)"
 			]
 		},
 		{
@@ -173,7 +195,7 @@
 			"name": "Modernization & Developer Experience",
 			"keywords": [
 				"Developer Experience (DX) Platform Engineering",
-				"Legacy Frontend Modernization (AngularJS to React)",
+				"Legacy Frontend Modernization (AngularJS to Angular, PHP to React)",
 				"Accessibility Engineering (WCAG 2.1)",
 				"Automated Dependency Management (Renovate, Dependabot)"
 			]
@@ -198,7 +220,7 @@
 		"points": [
 			{
 				"header": "Force Multiplier",
-				"detail": "I build infrastructure that makes entire teams faster. At DocuSign, I lead features for a platform serving 440+ engineers. I operate at organizational scope, not just individual contribution."
+				"detail": "I build infrastructure that makes entire teams faster. At DocuSign, I led features for a platform serving 440+ engineers. I operate at organizational scope, not just individual contribution."
 			},
 			{
 				"header": "Safe Modernization",
