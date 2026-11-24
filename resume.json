@@ -35,8 +35,10 @@
 			"highlights": [
 				"Built the tool AI coding agents use to check their own changes. Agents in Claude Code, Codex, and the company's background agent run a change against real dev data and attach before and after screenshots to the pull request. Engineers use the same tool to try a local change before any deploy.",
 				"Changed pull-request CI to run only the Core API unit tests a change touches; their median run fell from 289 to 167 seconds. Replaced LocalStack with fakecloud as the AWS emulator in test sandboxes, which cut emulator memory from about 1 GB to about 14 MB per sandbox.",
+				"Added CI stress runs that prove a flaky-test fix, merge-queue messages that tell an author why their pull request was removed, and Playwright end-to-end tests for the landing-page booking flow. Extended the team's release guide tool so coding agents can run it, with an audit trail of every release step and one shared state for all engineers.",
+				"As primary on-call, traced member-email alerts to repeated signature-request sends hitting a rate limit. Used coding agents to ship the fix as eight pull requests the following week; staff now see why an email failed, and their retries no longer page on-call.",
 				"Started the program to split the monolith into packages. Pitched it to the head of engineering and landed the first changes, with coding agents opening pull requests from a standing set of instructions.",
-				"Built the booking and checkout flow for the company's new landing pages: class scheduling, participant details, waivers with guardian consent for minors, payment, and confirmation. The flow launched to its first gyms in September 2026.",
+				"Designed form-flow, a TypeScript form-field package in which each field is assembled from a chain of pluggable standards: type, shape, validations, copy, and persistence. Each field owns its own store, and one hook binds it to React. The landing-page booking and checkout flow is built on it, from class scheduling and waivers with guardian consent for minors through payment, and launched to its first gyms in September 2026.",
 				"Moved public PHP pages for events, short links, and password reset to React and Fastify, then deleted the PHP. Added authorization checks to REST and GraphQL endpoints in the company's API security project."
 			]
 		},
@@ -167,7 +169,7 @@
 			"keywords": [
 				"Coding-Agent Harnesses (Claude Code, Codex, OpenCode, pi, aider)",
 				"Model Context Protocol (MCP) Server Development",
-				"Multi-Agent Orchestration (cross-model deliberation, agent-to-agent delegation)",
+				"Multi-Agent Orchestration (cross-model deliberation)",
 				"Agent Verification Loops (sandboxed execution, self-checked changes, screenshot evidence)",
 				"Agent Skill Authoring & Context Management (prompt caching, per-agent sessions, tool permissions)"
 			]
