@@ -27,7 +27,7 @@
 	},
 	"work": [
 		{
-			"name": "PushPress",
+			"name": "PushPress, Inc.",
 			"position": "Senior Software Engineer II",
 			"location": "Remote",
 			"startDate": "2026-03",
@@ -35,10 +35,9 @@
 			"highlights": [
 				"Built the tool AI coding agents use to check their own changes: agents in Claude Code, Codex, and the company's background agent run a change against real dev data and attach before and after screenshots to the pull request.",
 				"Shortened the pull-request feedback loop. Core API unit tests now run only what a change touches, taking their median from 289 to 167 seconds, and a new AWS emulator cut memory from about 1 GB to about 14 MB per test sandbox.",
-				"Added quality controls to CI and releases: stress runs that prove a flaky-test fix, merge-queue messages that explain a removed pull request, and an audit trail of every release step.",
 				"As primary on-call, traced member-email alerts to a rate limit and used coding agents to ship the fix as eight pull requests; staff retries no longer page on-call.",
 				"Started the program to split the monolith into packages: pitched it to the head of engineering and landed the first changes through agent-opened pull requests.",
-				"Designed form-flow, a form-field package that assembles each field from pluggable standards for type, validation, copy, and persistence. The landing-page booking and checkout flow is built on it and launched to its first gyms in September 2026.",
+				"Designed form-flow, a form-field package that assembles each field from pluggable standards for type, validation, copy, and persistence. The booking flow built on it launched to its first gyms in September 2026.",
 				"Moved public PHP pages to React and Fastify and deleted the PHP, and added authorization checks to REST and GraphQL endpoints in the company's API security project."
 			]
 		},
@@ -48,11 +47,11 @@
 			"location": "Seattle, WA",
 			"startDate": "2023-03",
 			"endDate": "2026-03",
-			"summary": "Led features for a frontend platform that served 440+ engineers internally. Operated at platform scope—designing systems that accelerated delivery for multiple product teams.",
+			"summary": "Led features for a frontend platform that served 440+ engineers internally. Operated at platform scope, designing systems that accelerated delivery for multiple product teams.",
 			"highlights": [
 				"Created several features on the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.",
 				"Designed a monorepo CI/CD architecture on Azure DevOps that enabled atomic multi-package releases, reducing integration failures from uncoordinated deployments.",
-				"Built the Scenes feature—a live, in-place Storybook replacement for micro-frontends across the DocuSign website, enabling API and property mocking. Reduced dev churn during parallel API/UI development and let stakeholders see progress without manual mock setup. Adopted by 6 teams.",
+				"Built Scenes, a live, in-place Storybook replacement for micro-frontends across the DocuSign website, enabling API and property mocking. Reduced dev churn during parallel API/UI development and let stakeholders see progress without manual mock setup. Adopted by 6 teams.",
 				"Shipped a shared component variant strategy adopted by 16 production applications, eliminating the need for duplicate implementations and enforcing design system consistency.",
 				"Delivered Maestro workflow features and built internal tooling that auto-maps Figma tokens to design system values, reducing manual design-to-code translation errors."
 			]
@@ -67,7 +66,7 @@
 			"highlights": [
 				"Pioneered Webpack 5 Module Federation in Teams Admin Center, enabling independent feature deployment and cutting local dev loop time from minutes to under 60 seconds.",
 				"Migrated build infrastructure to Webpack 5 and Yarn PnP across several projects with a coworker, reducing build times and eliminating intermittent CI failures caused by dependency resolution overloading the Node.js package proxy.",
-				"Built and maintained the graph-js library for MS Graph API consumption—fully type-safe with automatic typing from OData schemas. Adopted as the standard across all teams in the broader organization.",
+				"Built and maintained the graph-js library for MS Graph API consumption, fully type-safe with automatic typing from OData schemas. Adopted as the standard across all teams in the broader organization.",
 				"Owned the Visits analytics dashboard frontend, delivering healthcare usage metrics for organizations using Epic EHR integration with Teams.",
 				"Maintained 6 shared packages in a JS tooling monorepo (graph-js, graph-based user picker, etc.), all with strict TypeScript typing."
 			]
@@ -79,8 +78,8 @@
 			"startDate": "2018-09",
 			"endDate": "2019-11",
 			"highlights": [
-				"Designed the Setup Wizard framework for Teams Admin Center—became the standard onboarding pattern adopted by subsequent features.",
-				"Shipped the Epic–Teams healthcare integration frontend, enabling clinical staff to launch Teams meetings directly from Epic EHR workflows.",
+				"Designed the Setup Wizard framework for Teams Admin Center, which became the standard onboarding pattern adopted by subsequent features.",
+				"Shipped the Epic-Teams healthcare integration frontend, enabling clinical staff to launch Teams meetings directly from Epic EHR workflows.",
 				"Built the team's first shared libraries: an OData-to-TypeScript generator and typed MS Graph wrappers that automated API contract maintenance."
 			]
 		},
@@ -211,7 +210,7 @@
 			"url": "https://scholarsmine.mst.edu/ele_comeng_facwork/index.50.html"
 		},
 		{
-			"name": "\"i\" — A novel algorithm for optical character recognition (OCR)",
+			"name": "\"i\" - A novel algorithm for optical character recognition (OCR)",
 			"publisher": "IEEE International Multi-Conference (iMac4s)",
 			"releaseDate": "2013",
 			"url": "https://ieeexplore.ieee.org/document/6526442/"
