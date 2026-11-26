@@ -41,7 +41,7 @@ jobs:
           # Pull requests only build: no release, no tag, no Pages deploy
           # (Pause deploys Pages only as part of creating a release).
           create_release: ${{ github.event_name != 'pull_request' }}
-          deploy_github_pages: html-simple
+          deploy_github_pages: html-template
           artifact_name_template: "{name} {MMM} {yyyy} Resume"
 
       # An unzipped artifact is named after its file, so copy the outputs to the name a reader will download.
