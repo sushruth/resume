@@ -22,4 +22,4 @@ Every pull request also builds the PDF and HTML (no release is created) and post
 **Sushruth Sastry**
 [linkedin.com/in/sushruth-sastry](https://linkedin.com/in/sushruth-sastry) | [github.com/sushruth](https://github.com/sushruth)
 
-*On AI:* I kept AI work off this resume until I had some I owned in production. That changed at PushPress in 2026. [More context.](AI_AND_RESUME.md)
+*On AI:* I write most of my code through agents, and I trust their work when it comes with evidence and a second model's check. [How I work with AI.](AI_AND_RESUME.md)

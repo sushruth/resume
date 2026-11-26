@@ -6,7 +6,7 @@
 		"email": "sushruth.sastry@gmail.com",
 		"phone": "5732005345",
 		"url": "https://github.com/sushruth",
-		"summary": "Frontend Platform Engineer with 14 years of experience building the infrastructure engineering organizations ship on. I design monorepo architectures, micro-frontend platforms, and CI/CD systems used by hundreds of engineers. At PushPress I build the tooling AI coding agents use to run and check their own changes. Track record of modernizing legacy codebases at Microsoft, DocuSign, and PushPress while maintaining production stability.",
+		"summary": "Frontend Platform Engineer with 14 years of experience building the infrastructure engineering organizations ship on. I design monorepo architectures, micro-frontend platforms, and CI/CD systems used by hundreds of engineers. At PushPress I build the sandboxes and verification tooling AI coding agents work in, so their changes arrive with evidence. Track record of modernizing legacy codebases at Microsoft, DocuSign, and PushPress while maintaining production stability.",
 		"location": {
 			"city": "Milpitas",
 			"region": "CA",
@@ -229,6 +229,10 @@
 			{
 				"header": "ROI-Driven Decisions",
 				"detail": "Architecture choices should pay off. Faster builds, shorter dev loops, fewer integration failures—I measure success by whether engineers ship faster and ops costs go down."
+			},
+			{
+				"header": "Trust in Agent Work",
+				"detail": "I treat agent output as a claim that needs evidence. I build the sandboxes, checks, and multi-model review a team needs before it merges agent-written code."
 			}
 		]
 	}

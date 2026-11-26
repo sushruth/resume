@@ -1,28 +1,34 @@
-# Why No AI Work on My Resume
+# How I Work With AI
 
 **Author:** Sushruth Sastry  
-**Date:** January 2025
+**Updated:** November 2026
 
 ---
 
-I use AI tools daily—Claude, Gemini, GPT, aider, and various MCP configurations for codebase work. They are part of my workflow the same way an IDE or a calculator is.
+I write most of my code through agents now. My own work has moved to three things: deciding what gets built, building the place agents work in, and checking what comes back.
 
-I do not list this on my resume because I have not done AI work at the level I would expect at the level I'm targeting. Building a side project with extensive prompting is not the same as owning an AI system in production, making adoption decisions for an organization, or operating something with real reliability requirements.
+## What I believe
 
-The projects I have built with AI assistance—like [fossiq.github.io](https://fossiq.github.io), a KQL-to-DuckDB query tool—are useful, but the work was mostly prompting, not architecture. That is not the bar I hold myself to.
+**Evidence earns trust.** I trust an agent's change when it arrives with proof I can look at: a screenshot, a recording, a passing run against real data. A model that wrote the code and then approved it has told me little. A second model reaching the same result tells me more. A model that confirms the outcome with no view of the code tells me the most.
 
-When I have AI work that reflects principal-level ownership—strategy, reliability, long-term operational responsibility—I will add it. Until then, it stays off.
+**Different models catch different mistakes.** Every model carries the blind spots of its training. I put several in one conversation, open-weight ones included, so one model's miss is another's catch. I built [pi-committee](https://github.com/sushruth/pi-committee) to do this.
 
----
+**Small, coordinated models do well on shared work.** When many agents work on one job, a few small models with clear roles have served me better than one large model doing everything. Large models plan well and then over-direct their collaborators. I give the lint fixes, retries, and formatting to small, fast models and keep the large model's context for the decisions.
 
-*January 2025*
+**I prefer purpose-built agents.** An agent with one job, narrow permissions, and the right tools is easier to trust and cheaper to run than a general one with access to everything.
 
----
+**Cost and openness count.** Inference is a bill someone pays. I watch what happens to the prompt cache when work moves between models, I run open models locally, and I prefer setups where the model can be swapped.
 
-## Update, November 2026
+**Quality is a list of named problems.** "Quality" as a general goal sends people and agents down rabbit holes. I name the one problem I want gone and add a check for that problem alone. Each check has holes, and a stack of them covers most of what matters.
 
-The resume now lists agent work. At PushPress I build the tooling that AI coding agents use to run and check their own changes, and I work on the Agent Platform core team. Engineers and agents at the company use that tooling, which is the kind of ownership the note above describes.
+**A fresh start is useful.** An agent begins each session knowing nothing, the way a new teammate does. What survives that reset is whatever was written down: the instructions, the skills, the tests. Teams have always worked this way as people join and leave. Agents do it at a much faster pace.
 
-The side projects are still side projects. The skills row names the agent harnesses, MCP servers, and multi-agent tools I have built or used, and the PushPress entry carries the production work.
+## What I do with it
 
-*November 2026*
+- At PushPress I work on the sandboxes and verification tooling that coding agents and engineers share. Agents in Claude Code, Codex, and the company's background agent run their own changes against real dev data and attach the evidence to the pull request.
+- I hand batches of small tasks to cloud agent sessions overnight and review the pull requests in the morning, each with its screenshots or recording.
+- My open-source work in this area: [pi-committee](https://github.com/sushruth/pi-committee), [zen-devtools-mcp](https://github.com/sushruth/zen-devtools-mcp), and [human-narrative-skill](https://github.com/sushruth/human-narrative-skill).
+
+## The earlier version of this page
+
+In January 2025 this page was titled "Why No AI Work on My Resume". I used the tools daily then and owned nothing built on them in production, so I left AI off. That changed in 2026, and the resume now lists the work.
