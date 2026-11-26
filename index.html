@@ -2,45 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sushruth Sastry - Resume</title>
+  <link href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.3/cmu-serif.css" rel="stylesheet" />
+  <meta name="viewport" content="width=1024, initial-scale=1.0, minimum-scale=1.0" />
+  <title>Resume - Sushruth Sastry</title>
   <style>
-    * {
+    @page {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: #fff;
-      padding: 2em;
+      font-family: "CMU Serif", "Times New Roman", serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      margin: 2em auto;
       max-width: 8.5in;
-      margin: 0 auto;
+      padding: 0 1in;
     }
 
-    h1 {
-      font-size: 2.2em;
-      margin: 0;
-      font-weight: normal;
-    }
-
+    /* Section headers - matches LaTeX \section */
     h2 {
-      font-size: 1.3em;
-      margin: 1.5em 0 0.8em 0;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3em;
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+      border-bottom: 1px solid #000;
+      padding-bottom: 0.2em;
     }
 
+    /* Subsection headers (job titles) - matches LaTeX \subsection */
     h3 {
-      font-size: 1.1em;
-      margin: 0.5em 0;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3em;
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 1em;
+      margin-bottom: 0.3em;
     }
 
+    /* Paragraphs and lists */
+    p {
+      margin: 0.5em 0;
+      text-align: justify;
+    }
+
+    ul {
+      margin: 0.3em 0;
+      padding-left: 1.5em;
+    }
+
+    li {
+      margin: 0.2em 0;
+    }
+
+    /* Table styling for skills - matches LaTeX table with dashed lines */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5em 0;
+    }
+
+    table td {
+      padding: 0.6em 0;
+      vertical-align: top;
+    }
+
+    table td:first-child {
+      font-weight: bold;
+      width: 28%;
+      padding-right: 1.5em;
+    }
+
+    table td:last-child {
+      width: 68%;
+      font-size: 0.9em;
+    }
+
+    /* Links */
     a {
       color: #0066cc;
       text-decoration: none;
@@ -50,155 +85,22 @@
       text-decoration: underline;
     }
 
-    p {
-      margin: 0.3em 0;
-    }
-
-    ul {
-      margin: 0.3em 0;
-      padding-left: 1.5em;
-    }
-
-    li {
-      margin-bottom: 0.2em;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5em;
-    }
-
-    .header-left,
-    .header-right {
-      flex: 0 0 20%;
-      font-size: 0.95em;
-    }
-
-    .header-left {
-      text-align: left;
-    }
-
-    .header-center {
-      flex: 0 0 60%;
-      text-align: center;
-    }
-
-    .header-right {
-      text-align: right;
-    }
-
-    .header-left div,
-    .header-right div {
-      margin: 0.2em 0;
-    }
-
-    .experience-group {
-      margin-bottom: 1.5em;
-    }
-
-    .experience-role {
-      margin-bottom: 1em;
-    }
-
-    .experience-role:not(:last-child) {
-      border-bottom: 1px dashed #eee;
-      padding-bottom: 0.8em;
-    }
-
-    .role-header {
-      display: flex;
-      justify-content: space-between;
-      font-weight: bold;
-      margin-bottom: 0.3em;
-    }
-
-    .role-date {
-      font-weight: normal;
-      font-style: italic;
-    }
-
-    .company-location {
-      font-size: 0.9em;
-      color: #666;
-      margin-bottom: 0.5em;
-    }
-
-    .education-item {
-      margin-bottom: 1em;
-    }
-
-    .education-header {
-      display: flex;
-      justify-content: space-between;
-      margin: 0.5em 0;
-    }
-
-    .skills-table {
-      width: 100%;
-      border-collapse: collapse;
-      border-top: 1px dashed rgba(0, 0, 0, 0.3);
-      border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
-    }
-
-    .skills-table tr:not(:last-child) {
-      border-bottom: 1px dashed rgba(0, 0, 0, 0.3);
-    }
-
-    .skills-table td {
-      vertical-align: top;
-      padding: 0.6em 0;
-    }
-
-    .skill-name {
-      width: 28%;
-      font-weight: bold;
-      padding-right: 1.5em;
-      text-align: left;
-    }
-
-    .skill-keywords {
-      width: 68%;
-      font-size: 0.9em;
-      text-align: left;
-    }
-
-    .publication {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.5em;
-    }
-
+    /* Print styles */
     @media print {
       body {
-        padding: 0;
+        margin: 0;
+        padding: 0.5in;
+      }
+
+      a {
+        color: #000;
       }
     }
 
-    @media (max-width: 600px) {
-      .header {
-        flex-direction: column;
-      }
-
-      .header-left,
-      .header-center,
-      .header-right {
-        flex: 1 1 100%;
-        text-align: center;
-        margin: 0.5em 0;
-      }
-
-      .role-header,
-      .education-header,
-      .publication {
-        flex-direction: column;
-      }
-    }
+    
   </style>
 </head>
 <body>
-
   
   <!-- Header Section -->
   
@@ -224,31 +126,18 @@
     
   
 
-  <div class="header">
-    <div class="header-left">
-      <div>5732005345</div>
-      <div>Monroe, WA</div>
-      <div><a href="mailto:sushruth.sastry@gmail.com">sushruth.sastry@gmail.com</a></div>
-    </div>
-    <div class="header-center">
-      <h1>Sushruth Sastry</h1>
-      <div>Senior Software Engineer</div>
-    </div>
-    <div class="header-right">
-      
-        <div><a href="https://github.com/sushruth">GitHub: sushruth</a></div>
-      
-      
-        <div><a href="https://www.linkedin.com/in/sushruth-sastry">LinkedIn: sushruth-sastry</a></div>
-      
-    </div>
-  </div>
+  <h1>Sushruth Sastry</h1>
+  <p>Milpitas, CA</p>
+  <p><a href="mailto:sushruth.sastry@gmail.com">sushruth.sastry@gmail.com</a></p>
+  <p>5732005345</p>
+  <p><a href="https://github.com/sushruth">GitHub: sushruth</a></p>
+  <p><a href="https://www.linkedin.com/in/sushruth-sastry">LinkedIn: sushruth-sastry</a></p>
   
 
   <!-- Objective/Summary Section -->
   
   <h2>Objective</h2>
-  <p>Senior Software Engineer with 12+ years of experience leading frontend architecture at scale. Specialized in Frontend Platform Engineering, Developer Experience, and performance-sensitive web systems. Known for modernizing large legacy codebases into maintainable monorepo and micro-frontend platforms, defining engineering standards across organizations, and enabling hundreds of engineers to ship reliably.</p>
+  <p>Frontend Platform Engineer with 14 years of experience building the infrastructure engineering organizations ship on. I design monorepo architectures, micro-frontend platforms, and CI/CD systems used by hundreds of engineers. At PushPress I build the tooling AI coding agents use to run and check their own changes. Track record of modernizing legacy codebases at Microsoft, DocuSign, and PushPress while maintaining production stability.</p>
   
 
   <!-- Experience Section -->
@@ -256,226 +145,150 @@
   <h2>Experience</h2>
   
     
-    <div class="experience-group">
-      <h3>
-        DocuSign, Inc.
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2023-03 - Present</span>
-      </h3>
+    <h3>Senior Software Engineer II</h3>
+    <p>PushPress, Inc. · Remote · 2026-03 - Present</p>
+    
+    <p>Product engineer on a gym-management platform, on the Agent Platform core team since November 2026. Work on the sandboxes that engineers and AI coding agents run code in.</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Seattle, WA</div>
+      <li>Agent platform: built the sandbox and verification tooling that AI coding agents and engineers work in. Agents in Claude Code, Codex, and the company&#039;s background agent now verify their own changes and attach the evidence to the pull request.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Senior Software Engineer</span>
-        </div>
-        
-        <p style="font-size: 0.95em;">Senior engineer operating at platform and architectural scope for the Maestro frontend. Technical owner for Developer Experience and frontend infrastructure initiatives impacting 440+ engineers across multiple product teams.</p>
-        
-        
-        <ul>
-          
-          <li>Delivered product features for Maestro&#039;s orchestration engine, including workflow step implementations and an internal design tooling utility that maps Figma colors to DocuSign design system tokens.</li>
-          
-          <li>Led development of the 1FE open-source micro-frontend framework (github.com/docusign/1fe), an external release of DocuSign&#039;s internal platform enabling configuration-driven frontend development.</li>
-          
-          <li>Designed and led adoption of a monorepo-based CI/CD model using Azure DevOps, enabling atomic releases and coordinated multi-package changes across teams.</li>
-          
-          <li>Built an isolated local runtime environment for Micro-Frontends (Storybook-style), enabling independent development and eliminating brittle cross-team mocks.</li>
-          
-          <li>Defined a shared component variant strategy consumed by 16 production applications, reducing UI divergence and duplicated implementation effort.</li>
-          
-          <li>Drove convergence on frontend architectural standards through design reviews and platform tooling, reducing long-term maintenance cost.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+      <li>Developer velocity: cut pull-request feedback time and sandbox cost for the engineering team. Core API unit-test runs are 42% faster, and each test sandbox uses 98% less emulator memory.</li>
+      
+      <li>Architecture: started the program to split the monolith into packages, and designed the form package behind the new customer booking flow.</li>
+      
+      <li>Product: built and shipped the booking and checkout flow for the company&#039;s new landing pages, launched to its first gyms in September 2026.</li>
+      
+      <li>Reliability and security: fixed the source of on-call email alerts, added authorization checks across REST and GraphQL endpoints in the company&#039;s API security program, and moved legacy PHP pages to React.</li>
+      
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        Microsoft Corporation
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2019-11 - 2023-02</span>
-      </h3>
+    <h3>Senior Software Engineer</h3>
+    <p>DocuSign, Inc. · Seattle, WA · 2023-03 - 2026-03</p>
+    
+    <p>Led features for a frontend platform that served 440+ engineers internally. Operated at platform scope, designing systems that accelerated delivery for multiple product teams.</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Bellevue, WA</div>
+      <li>Created several features on the 1DS micro-frontend framework used internally across DocuSign, and open-sourced it as 1FE (github.com/docusign/1fe), enabling configuration-driven frontend composition.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Software Development Engineer II</span>
-        </div>
-        
-        <p style="font-size: 0.95em;">Senior individual contributor and technical lead within the Teams organization, focused on frontend architecture and platform modernization.</p>
-        
-        
-        <ul>
-          
-          <li>Led early adoption of Webpack 5 Module Federation within Teams Admin Center, enabling independent feature deployment and reducing local dev loop time from several minutes to under a minute.</li>
-          
-          <li>Owned frontend integration for the Visits analytics dashboard, displaying Teams usage metrics for healthcare organizations using connected EHR platforms like Epic.</li>
-          
-          <li>Modernized build pipelines across Teams Admin Center products, migrating legacy systems to Webpack 5 and Yarn PnP to improve build reliability and performance.</li>
-          
-          <li>Authored and maintained shared TypeScript libraries for MS Graph API consumption, establishing type-safety and versioning patterns adopted by adjacent teams.</li>
-          
-          <li>Designed frontend resilience strategies for high-scale Frontline Worker scenarios, implementing graceful degradation for intermittent connectivity.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+      <li>Designed a monorepo CI/CD architecture on Azure DevOps that enabled atomic multi-package releases, reducing integration failures from uncoordinated deployments.</li>
+      
+      <li>Built Scenes, a live, in-place Storybook replacement for micro-frontends across the DocuSign website, enabling API and property mocking. Reduced dev churn during parallel API/UI development and let stakeholders see progress without manual mock setup. Adopted by 6 teams.</li>
+      
+      <li>Shipped a shared component variant strategy adopted by 16 production applications, eliminating the need for duplicate implementations and enforcing design system consistency.</li>
+      
+      <li>Delivered Maestro workflow features and built internal tooling that auto-maps Figma tokens to design system values, reducing manual design-to-code translation errors.</li>
+      
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        Microsoft Corporation
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2018-09 - 2019-11</span>
-      </h3>
+    <h3>Software Development Engineer II</h3>
+    <p>Microsoft Corporation · Bellevue, WA · 2019-11 - 2023-02</p>
+    
+    <p>Frontend lead on a Teams product integrating into Admin Center. Drove Module Federation adoption, build modernization, and developer experience improvements for the project.</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Bellevue, WA</div>
+      <li>Pioneered Webpack 5 Module Federation in Teams Admin Center, enabling independent feature deployment and cutting local dev loop time from minutes to under 60 seconds.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Software Development Engineer I</span>
-        </div>
-        
-        
-        <ul>
-          
-          <li>Designed and implemented the Setup Wizard framework for Teams Admin Center, which became the standard onboarding pattern for subsequent features.</li>
-          
-          <li>Delivered the frontend for the EPIC–Teams healthcare integration, enabling clinical staff to join Teams meetings directly from EPIC workflows.</li>
-          
-          <li>Created the team&#039;s first shared component and tooling libraries, including an OData-to-TypeScript generator and typed Microsoft Graph wrappers.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+      <li>Migrated build infrastructure to Webpack 5 and Yarn PnP across several projects with a coworker, reducing build times and eliminating intermittent CI failures caused by dependency resolution overloading the Node.js package proxy.</li>
+      
+      <li>Built and maintained the graph-js library for MS Graph API consumption, fully type-safe with automatic typing from OData schemas. Adopted as the standard across all teams in the broader organization.</li>
+      
+      <li>Owned the Visits analytics dashboard frontend, delivering healthcare usage metrics for organizations using Epic EHR integration with Teams.</li>
+      
+      <li>Maintained 6 shared packages in a JS tooling monorepo (graph-js, graph-based user picker, etc.), all with strict TypeScript typing.</li>
+      
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        CVS Health
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2016-08 - 2018-07</span>
-      </h3>
+    <h3>Software Development Engineer I</h3>
+    <p>Microsoft Corporation · Bellevue, WA · 2018-09 - 2019-11</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Florham Park, NJ</div>
+      <li>Designed the Setup Wizard framework for Teams Admin Center, which became the standard onboarding pattern adopted by subsequent features.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>UI Developer (Contract)</span>
-        </div>
-        
-        
-        <ul>
-          
-          <li>Led the migration of the CareGiver platform from AngularJS to Angular 2+, establishing a sustainable foundation for future development.</li>
-          
-          <li>Developed a custom RequireJS dependency configuration generator to reduce manual errors in a pre-Webpack environment.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+      <li>Shipped the Epic-Teams healthcare integration frontend, enabling clinical staff to launch Teams meetings directly from Epic EHR workflows.</li>
+      
+      <li>Built the team&#039;s first shared libraries: an OData-to-TypeScript generator and typed MS Graph wrappers that automated API contract maintenance.</li>
+      
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        Heartland Payment Systems
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2015-11 - 2016-06</span>
-      </h3>
+    <h3>UI Developer (Contract)</h3>
+    <p>CVS Health · Florham Park, NJ · 2016-08 - 2018-07</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Plano, TX</div>
+      <li>Led the AngularJS-to-Angular 2+ migration for the CareGiver platform, delivering a maintainable architecture that supported continued feature development.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Full Stack Developer (Contract)</span>
-        </div>
-        
-        
-        <ul>
-          
-          <li>Evaluated and prototyped mobile application architectures, comparing React Native with Angular-based hybrid approaches.</li>
-          
-          <li>Executed backend modernization from PHP 5 to PHP 7, improving runtime performance and security posture.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+      <li>Built a RequireJS dependency generator that automated configuration and eliminated a class of manual integration errors.</li>
+      
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        Missouri S&amp;T
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2014-01 - 2015-05</span>
-      </h3>
+    <h3>Full Stack Developer (Contract)</h3>
+    <p>Heartland Payment Systems · Plano, TX · 2015-11 - 2016-06</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Rolla, MO</div>
+      <li>Evaluated mobile architectures (React Native vs Angular hybrid), delivering prototypes that informed the team&#039;s technology decision.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Graduate Teaching Assistant</span>
-        </div>
-        
-        
-        <ul>
-          
-          <li>Supported instruction and laboratory operations for Digital Signal Processing and Analog Signals courses.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+      <li>Modernized backend from PHP 5 to PHP 7, improving runtime performance and closing security vulnerabilities.</li>
+      
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        Cachy Graphics / GXS
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2013-07 - 2014-04</span>
-      </h3>
+    <h3>Graduate Teaching Assistant</h3>
+    <p>Missouri S&amp;T · Rolla, MO · 2014-01 - 2015-05</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Bangalore, India</div>
+      <li>Taught labs and graded coursework for Digital Signal Processing and Analog Signals courses.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Founder &amp; Lead Developer</span>
-        </div>
-        
-        
-        <ul>
-          
-          <li>Founded and led a small services startup, delivering a warehouse distribution system for Nestlé using Cordova-based mobile technology.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+    </ul>
+    
   
     
-    <div class="experience-group">
-      <h3>
-        EzSwype Business Solutions
-        <span style="float: right; font-weight: normal; font-size: 0.9em;">2012-09 - 2013-06</span>
-      </h3>
+    <h3>Founder &amp; Lead Developer</h3>
+    <p>Cachy Graphics / GXS · Bangalore, India · 2013-07 - 2014-04</p>
+    
+    
+    <ul>
       
-      <div class="company-location">Bangalore, India</div>
+      <li>Founded a services startup; delivered a Cordova-based warehouse distribution system for Nestlé.</li>
       
-      <div class="experience-role">
-        <div class="role-header">
-          <span>Software Engineer</span>
-        </div>
-        
-        
-        <ul>
-          
-          <li>Established the initial frontend architecture for the company&#039;s payment platform, including build tooling and UI foundations.</li>
-          
-        </ul>
-        
-      </div>
-    </div>
+    </ul>
+    
+  
+    
+    <h3>Software Engineer</h3>
+    <p>EzSwype Business Solutions · Bangalore, India · 2012-09 - 2013-06</p>
+    
+    
+    <ul>
+      
+      <li>Built the initial frontend architecture and build tooling for the company&#039;s payment platform.</li>
+      
+    </ul>
+    
   
   
 
@@ -489,13 +302,8 @@
     
     
     
-    <div class="education-item">
-      <h3 class="education-header">
-        <span>M.S. in Electrical and Computer Engineering</span>
-        <span>2015</span>
-      </h3>
-      <div style="font-size: 0.9em; color: #666;">Missouri University of Science and Technology</div>
-    </div>
+    <h3>M.S. in Electrical and Computer Engineering</h3>
+    <p>Missouri University of Science and Technology · 2015</p>
   
     
     
@@ -503,40 +311,40 @@
     
     
     
-    <div class="education-item">
-      <h3 class="education-header">
-        <span>B.E. in Electronics and Communications</span>
-        <span>2012</span>
-      </h3>
-      <div style="font-size: 0.9em; color: #666;">Visvesvaraya Technological University</div>
-    </div>
+    <h3>B.E. in Electronics and Communications</h3>
+    <p>Visvesvaraya Technological University · 2012</p>
   
   
 
   <!-- Skills Section -->
   
-  <h2>Skills</h2>
-  <table class="skills-table">
+  <h2>Proficiency</h2>
+  <table>
     <tbody>
       
       <tr>
-        <td class="skill-name">Architecture &amp; Platform Engineering</td>
-        <td class="skill-keywords">Micro-Frontend Architecture (Module Federation), Monorepo Strategy &amp; Distributed Builds (Nx, Remote Caching), CI/CD System Design &amp; Governance (Azure DevOps), Frontend Platform Standardization, Design System Architecture &amp; Versioning</td>
+        <td>Architecture &amp; Platform Engineering</td>
+        <td>Micro-Frontend Architecture (Module Federation), Monorepo Strategy &amp; Distributed Builds (Nx, Remote Caching), CI/CD System Design &amp; Governance (Azure DevOps, GitHub Actions), Frontend Platform Standardization, Design System Architecture &amp; Versioning</td>
       </tr>
       
       <tr>
-        <td class="skill-name">Frontend Engineering</td>
-        <td class="skill-keywords">TypeScript System Design (Strict Typing, Generics, Conditional Types), React (Hooks, Context, Suspense, Error Boundaries), State Management (Redux Toolkit, MobX, Zustand), Web Performance Engineering (Core Web Vitals, Bundle Analysis), Package Management (Yarn Berry / PnP, npm workspaces)</td>
+        <td>Agentic LLM Systems &amp; Tooling</td>
+        <td>Coding-Agent Harnesses (Claude Code, Codex, OpenCode, pi, aider), Model Context Protocol (MCP) Server Development, Multi-Agent Orchestration (cross-model deliberation), Agent Verification Loops (sandboxed execution, self-checked changes, screenshot evidence), Agent Skill Authoring &amp; Context Management (prompt caching, per-agent sessions, tool permissions)</td>
       </tr>
       
       <tr>
-        <td class="skill-name">Backend &amp; Integration</td>
-        <td class="skill-keywords">Backend-for-Frontend (BFF) Patterns, API Contract Design (REST, OData, type generation and automation, Swagger), C# / .NET Service Integration, Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)</td>
+        <td>Frontend Engineering</td>
+        <td>TypeScript System Design (Strict Typing, Generics, Conditional Types), React (Hooks, Context, Suspense, Error Boundaries), State Management (Redux Toolkit, MobX, Zustand), Web Performance Engineering (Core Web Vitals, Bundle Analysis), Package Management (Yarn Berry / PnP, npm workspaces)</td>
       </tr>
       
       <tr>
-        <td class="skill-name">Modernization &amp; Developer Experience</td>
-        <td class="skill-keywords">Developer Experience (DX) Platform Engineering, Legacy Frontend Modernization (AngularJS to React), Accessibility Engineering (WCAG 2.1), Automated Dependency Management (Renovate, Dependabot)</td>
+        <td>Backend &amp; Integration</td>
+        <td>Backend-for-Frontend (BFF) Patterns, API Contract Design (REST, OData, type generation and automation, Swagger), C# / .NET Service Integration, Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)</td>
+      </tr>
+      
+      <tr>
+        <td>Modernization &amp; Developer Experience</td>
+        <td>Developer Experience (DX) Platform Engineering, Legacy Frontend Modernization (AngularJS to Angular, PHP to React), Accessibility Engineering (WCAG 2.1), Automated Dependency Management (Renovate, Dependabot)</td>
       </tr>
       
     </tbody>
@@ -547,21 +355,9 @@
   
   <h2>Publications</h2>
   
-  <div class="publication">
-    <div>
-      <a href="https://scholarsmine.mst.edu/ele_comeng_facwork/index.50.html">A Modular Scheme to Detect and Combat Sinusoidal Variation in Fading Channels</a>
-      (International Telemetering Conference)
-    </div>
-    <div>2015</div>
-  </div>
+    <p>A Modular Scheme to Detect and Combat Sinusoidal Variation in Fading Channels (International Telemetering Conference) · 2015</p>
   
-  <div class="publication">
-    <div>
-      <a href="https://ieeexplore.ieee.org/document/6526442/">&quot;i&quot; — A novel algorithm for optical character recognition (OCR)</a>
-      (IEEE International Multi-Conference (iMac4s))
-    </div>
-    <div>2013</div>
-  </div>
+    <p>&quot;i&quot; - A novel algorithm for optical character recognition (OCR) (IEEE International Multi-Conference (iMac4s)) · 2013</p>
   
   
 
