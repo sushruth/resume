@@ -6,7 +6,7 @@
 		"email": "sushruth.sastry@gmail.com",
 		"phone": "5732005345",
 		"url": "https://github.com/sushruth",
-		"summary": "Frontend Platform Engineer with 14 years of experience building the infrastructure engineering organizations ship on. I design monorepo architectures, micro-frontend platforms, and CI/CD systems used by hundreds of engineers. At PushPress I build the sandboxes and verification tooling AI coding agents work in, so their changes arrive with evidence. Track record of modernizing legacy codebases at Microsoft, DocuSign, and PushPress while maintaining production stability.",
+		"summary": "Platform engineer with 14 years of experience across frontend and backend, building the infrastructure engineering organizations ship on. I design monorepo architectures, micro-frontend platforms, and CI/CD systems used by hundreds of engineers. At PushPress I build the sandboxes and verification tooling AI coding agents work in, so their changes arrive with evidence. Track record of modernizing legacy codebases at Microsoft, DocuSign, and PushPress while maintaining production stability.",
 		"location": {
 			"city": "Milpitas",
 			"region": "CA",
@@ -35,9 +35,10 @@
 			"highlights": [
 				"Agent platform: built the sandbox and verification tooling that AI coding agents and engineers work in. Agents in Claude Code, Codex, and the company's background agent now verify their own changes and attach the evidence to the pull request.",
 				"Developer velocity: cut pull-request feedback time and sandbox cost for the engineering team. Core API unit-test runs are 42% faster, and each test sandbox uses 98% less emulator memory.",
+				"Backend services: moved public PHP pages and their endpoints to React and Node.js services on Fastify, moved GraphQL endpoints to Fastify routes, and fixed the source of on-call email alerts.",
+				"API security: added authorization checks across REST and GraphQL endpoints in the company's API security program, including tenant scoping and staff-only guards.",
 				"Architecture: started the program to split the monolith into packages, and designed the form package behind the new customer booking flow.",
-				"Product: built and shipped the booking and checkout flow for the company's new landing pages, launched to its first gyms in September 2026.",
-				"Reliability and security: fixed the source of on-call email alerts, added authorization checks across REST and GraphQL endpoints in the company's API security program, and moved legacy PHP pages to React."
+				"Product: built and shipped the booking and checkout flow for the company's new landing pages, frontend and API, launched to its first gyms in September 2026."
 			]
 		},
 		{
@@ -65,6 +66,7 @@
 			"highlights": [
 				"Pioneered Webpack 5 Module Federation in Teams Admin Center, enabling independent feature deployment and cutting local dev loop time from minutes to under 60 seconds.",
 				"Migrated build infrastructure to Webpack 5 and Yarn PnP across several projects with a coworker, reducing build times and eliminating intermittent CI failures caused by dependency resolution overloading the Node.js package proxy.",
+				"Worked across the stack on Teams Admin Center: the C# OData services on the backend and the frontend that consumed them.",
 				"Built and maintained the graph-js library for MS Graph API consumption, fully type-safe with automatic typing from OData schemas. Adopted as the standard across all teams in the broader organization.",
 				"Owned the Visits analytics dashboard frontend, delivering healthcare usage metrics for organizations using Epic EHR integration with Teams.",
 				"Maintained 6 shared packages in a JS tooling monorepo (graph-js, graph-based user picker, etc.), all with strict TypeScript typing."
@@ -173,6 +175,17 @@
 			]
 		},
 		{
+			"name": "Backend & Integration",
+			"keywords": [
+				"Node.js Services (Fastify, NestJS, GraphQL)",
+				"API Authorization (tenant scoping, role guards)",
+				"Backend-for-Frontend (BFF) Patterns",
+				"API Contract Design (REST, OData, type generation and automation, Swagger)",
+				"C# / .NET Service Integration",
+				"Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)"
+			]
+		},
+		{
 			"name": "Frontend Engineering",
 			"keywords": [
 				"TypeScript System Design (Strict Typing, Generics, Conditional Types)",
@@ -180,15 +193,6 @@
 				"State Management (Redux Toolkit, MobX, Zustand)",
 				"Web Performance Engineering (Core Web Vitals, Bundle Analysis)",
 				"Package Management (Yarn Berry / PnP, npm workspaces)"
-			]
-		},
-		{
-			"name": "Backend & Integration",
-			"keywords": [
-				"Backend-for-Frontend (BFF) Patterns",
-				"API Contract Design (REST, OData, type generation and automation, Swagger)",
-				"C# / .NET Service Integration",
-				"Azure (Front Door, CDN, Key Vault, Functions, DevOps, App Service, Cert automation, Networking)"
 			]
 		},
 		{
