@@ -1,13 +1,13 @@
 # Sushruth Sastry
-_Senior/Lead Frontend Engineer, Gearing Toward Principal_
+_Senior Software Engineer: platform, frontend, and backend_
 
 [![Build Resume](https://github.com/sushruth/resume/actions/workflows/resume.yml/badge.svg)](https://github.com/sushruth/resume/actions/workflows/resume.yml)
 
 ---
 
-I'm a frontend engineer with 14 years of experience, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering**, **Developer Experience**, and **infrastructure for AI coding agents**—building the tooling that makes engineering organizations more effective.
+I'm a platform engineer with 14 years of experience across frontend and backend, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering**, **Developer Experience**, and **infrastructure for AI coding agents**—building the tooling that makes engineering organizations more effective.
 
-At PushPress, I work on the Agent Platform core team, building the sandboxes and verification tooling that AI coding agents and engineers share. I also cut pull-request feedback time, started the program to split the monolith into packages, and built the booking and checkout flow behind the company's new landing pages.
+At PushPress, I work on the Agent Platform core team, building the sandboxes and verification tooling that AI coding agents and engineers share. I also moved PHP endpoints to Node.js services, added authorization checks across the API, cut pull-request feedback time, started the program to split the monolith into packages, and built the booking and checkout flow behind the company's new landing pages.
 
 At DocuSign, I led features for a platform used by 440+ engineers. At Microsoft, I worked on Teams Admin Center and healthcare integrations. My focus is on the problems between individual features and organizational scale: monorepo architecture, micro-frontend platforms, CI/CD pipelines, and developer tooling that makes iteration faster.
 
