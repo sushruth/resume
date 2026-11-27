@@ -5,7 +5,9 @@ _Senior/Lead Frontend Engineer, Gearing Toward Principal_
 
 ---
 
-I'm a frontend engineer with 14 years of experience, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering** and **Developer Experience**—building infrastructure and tooling that makes large engineering organizations more effective.
+I'm a frontend engineer with 14 years of experience, currently at PushPress and previously at DocuSign and Microsoft. I specialize in **Frontend Platform Engineering**, **Developer Experience**, and **infrastructure for AI coding agents**—building the tooling that makes engineering organizations more effective.
+
+At PushPress, I work on the Agent Platform core team, building the sandboxes and verification tooling that AI coding agents and engineers share. I also cut pull-request feedback time, started the program to split the monolith into packages, and built the booking and checkout flow behind the company's new landing pages.
 
 At DocuSign, I led features for a platform used by 440+ engineers. At Microsoft, I worked on Teams Admin Center and healthcare integrations. My focus is on the problems between individual features and organizational scale: monorepo architecture, micro-frontend platforms, CI/CD pipelines, and developer tooling that makes iteration faster.
 
@@ -13,7 +15,7 @@ At DocuSign, I led features for a platform used by 440+ engineers. At Microsoft,
 
 ### About This Repo
 
-This is the source for my resume—stored as structured data following the [JSON Resume](https://jsonresume.org/) standard. I built [**Pause**](https://github.com/usually-frustrated/pause), a GitHub Action that generates PDF and HTML versions automatically. The latest PDF is available on the [**Releases**](https://github.com/sushruth/resume/releases) page.
+This is the source for my resume—stored as structured data following the [JSON Resume](https://jsonresume.org/) standard. I built [**Pause**](https://github.com/usually-frustrated/pause), a GitHub Action that generates PDF and HTML versions automatically. The latest PDF is available on the [**Releases**](https://github.com/sushruth/resume/releases) page. The HTML version is live at [sushruth.github.io/resume](https://sushruth.github.io/resume/).
 
 Every pull request also builds the PDF and HTML (no release is created) and posts a comment linking to both as workflow artifacts. Opening them requires being signed in to GitHub.
 
