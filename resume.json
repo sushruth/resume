@@ -31,7 +31,7 @@
 			"position": "Senior Software Engineer II",
 			"location": "Remote",
 			"startDate": "2026-03",
-			"summary": "Product engineer on a gym-management platform, on the Agent Platform core team since November 2026. Work on the sandboxes that engineers and AI coding agents run code in.",
+			"summary": "Product engineer on a gym-management platform, now on the Agent Platform core team. Work on the sandboxes that engineers and AI coding agents run code in.",
 			"highlights": [
 				"Agent platform: built the sandbox and verification tooling that AI coding agents and engineers work in. Agents in Claude Code, Codex, and the company's background agent now verify their own changes and attach the evidence to the pull request.",
 				"Developer velocity: cut pull-request feedback time and sandbox cost for the engineering team. Core API unit-test runs are 42% faster, and each test sandbox uses 98% less emulator memory.",
